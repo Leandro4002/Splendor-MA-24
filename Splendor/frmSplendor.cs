@@ -18,6 +18,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic;
 using System.Windows.Forms;
 
 namespace Splendor
@@ -31,8 +32,11 @@ namespace Splendor
         private int nbRubis;
         private int nbOnyx;
         private int nbEmeraude;
-        private int nbDiamand;
+        private int nbDiamant;
         private int nbSaphir;
+
+        //Used to set new players into the game
+        private string newPlayer;
 
         //id of the player that is playing
         private int currentPlayerId;
@@ -73,13 +77,13 @@ namespace Splendor
             Card card11 = new Card();
             card11.Level = 1;
             card11.PrestigePt = 1;
-            card11.Cout = new int[] { 1, 0, 2, 0, 2 };
+            //card11.Price = new int[] { 1, 0, 2, 0, 2 };
             card11.Ress = Ressources.Rubis;
 
             Card card12 = new Card();
             card12.Level = 1;
             card12.PrestigePt = 0;
-            card12.Cout = new int[] { 0, 1, 2, 1, 0 };
+           // card12.Price = new int[] { 0, 1, 2, 1, 0 };
             card12.Ress = Ressources.Saphir;
 
             txtLevel11.Text = card11.ToString();
@@ -154,7 +158,7 @@ namespace Splendor
             lblChoiceCard.Text = "";
 
             //no coins selected
-            nbDiamand = 0;
+            nbDiamant = 0;
             nbOnyx = 0;
             nbRubis = 0;
             nbSaphir = 0;
@@ -256,7 +260,7 @@ namespace Splendor
         /// <param name="e"></param>
         private void cmdInsertPlayer_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("A implémenter");
+            newPlayer = Interaction.InputBox("Enter the name ", "Add player", "", 500, 500);
         }
 
         /// <summary>
