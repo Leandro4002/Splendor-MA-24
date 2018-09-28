@@ -55,12 +55,6 @@
   <ItemGroup>
     <Compile Include="Card.cs" />
     <Compile Include="ConnectionDB.cs" />
-    <Compile Include="PlayerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PlayerForm.Designer.cs">
-      <DependentUpon>PlayerForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmSplendor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,9 +67,6 @@
     <Compile Include="Ressources.cs" />
     <EmbeddedResource Include="frmSplendor.resx">
       <DependentUpon>frmSplendor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PlayerForm.resx">
-      <DependentUpon>PlayerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
