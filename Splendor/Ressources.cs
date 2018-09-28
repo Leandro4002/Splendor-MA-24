@@ -16,6 +16,6 @@ namespace Splendor
         Emeraude,
         Onyx,
         Saphir,
-        Diamand
+        Diamant
     }
 }
