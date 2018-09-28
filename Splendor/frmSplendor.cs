@@ -87,6 +87,18 @@ namespace Splendor
 
             //load cards from the database
             Stack<Card> listCardOne = conn.GetListCardAccordingToLevel(1);
+
+            foreach (Card karde in listCardOne)
+            {
+                MessageBox.Show("level : " + karde.Level.ToString() + "\n" +
+                "prestigePt : " + karde.PrestigePt.ToString() + "\n" +
+                "price[0] : " + karde.Price[0].ToString() + "\n" +
+                "price[1] : " + karde.Price[1].ToString() + "\n" +
+                "price[2] : " + karde.Price[2].ToString() + "\n" +
+                "price[3] : " + karde.Price[3].ToString() + "\n" +
+                "price[4] : " + karde.Price[4].ToString() + "\n" +
+                "price[5] : " + karde.Price[5].ToString() + "\n");
+            }
             //Go through the results
             //Don't forget to check when you are at the end of the stack
             

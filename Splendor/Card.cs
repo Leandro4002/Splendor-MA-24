@@ -16,7 +16,7 @@ namespace Splendor
         private int prestigePt;
         private int level;
         //tableau : l'index correspond à l'énumération, la valeur à la ressource requise
-        private int[] price = new int[4];
+        private int[] price = new int[6];
         #endregion Private attributes
 
         #region Public attributes
