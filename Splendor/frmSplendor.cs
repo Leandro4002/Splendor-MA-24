@@ -256,15 +256,19 @@ namespace Splendor
 
         /// <summary>
         /// click on the insert button to insert player in the game
+        /// This function also show a message box to ensure that the player has been created
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void cmdInsertPlayer_Click(object sender, EventArgs e)
         {
             newPlayer = Interaction.InputBox("Enter the name ", "Add player", "", 500, 500);
-
             //call the object "conn" to send player name's string to DB
             conn.AddPlayer(newPlayer);
+
+            // Displays a MessageBox to inform that the player is done.
+
+            MessageBox.Show("The player "+ newPlayer +" has been added");
         }
 
         /// <summary>

@@ -73,19 +73,36 @@ namespace Splendor
         /// </summary>
         private void CreateInsertPlayer()
         {
-            string sql = "CREATE TABLE player (id INT PRIMARY KEY AUTO_INCREMENT, pseudo VARCHAR(20))";
+            string sql = "CREATE TABLE player (id INT PRIMARY KEY, pseudo VARCHAR(20))";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
 
-            sql = "insert into player (pseudo) values (0, 'Fred')";
+            sql = "insert into player (id, pseudo) values (0, 'Fred')";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into player (pseudo) values (1, 'Harry')";
+            sql = "insert into player (id, pseudo) values (1, 'Harry')";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into player (pseudo) values (2, 'Sam')";
+            sql = "insert into player (id, pseudo) values (2, 'Sam')";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
+        }
+
+        /// <summary>
+        /// search IDs
+        ///</summary> 
+
+        public string GrabIds()
+        {
+            string sql = "Select id from player";
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            command.ExecuteNonQuery();
+            string Ids = "";
+            while (reader.Read())
+            {
+                Ids = reader["id"].ToString();
+            }
+            return Ids;
         }
 
         /// <summary>
@@ -95,8 +112,8 @@ namespace Splendor
         
         public void AddPlayer(string playerName)
         {
-            string sql = "insert into player (id, pseudo) values (1, '"+playerName+"')";
-            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);//////////////////////////////////////////////////////////
+            string sql = "insert into player (id, pseudo) values (45, '"+playerName+"')";
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
         }
 
