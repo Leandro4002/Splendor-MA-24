@@ -13,16 +13,16 @@ namespace Splendor
     class ConnectionDB
     {
         //Connection to the database
-        private SQLiteConnection m_dbConnection; 
+        private SQLiteConnection m_dbConnection;
 
         /// <summary>
-        /// constructor : creates the connection to the database SQLite
+        /// Constructor : Creates the connection to the database SQLite
         /// </summary>
         public ConnectionDB()
         {
 
             SQLiteConnection.CreateFile("Splendor.sqlite");
-            
+
             m_dbConnection = new SQLiteConnection("Data Source=Splendor.sqlite;Version=3;");
             m_dbConnection.Open();
 
@@ -52,7 +52,7 @@ namespace Splendor
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
         }
-        
+
         /// <summary>
         /// Create the "Cost" table and insert data
         /// </summary>
@@ -335,7 +335,7 @@ namespace Splendor
         /// </summary>
         private void CreateInsertNbCoin()
         {
-            SQLiteCommand command = new SQLiteCommand("CREATE TABLE NbCoin (idNbCoin INT PRIMARY KEY, fkPlayer INT, fkRessource INT, nbCoin INT, FOREIGN KEY (fkPlayer) REFERENCES Player(idPlayer), FOREIGN KEY (fkRessource) REFERENCES Rssource(idRessource))",
+            SQLiteCommand command = new SQLiteCommand("CREATE TABLE NbCoin (idNbCoin INT PRIMARY KEY , fkPlayer INT, fkRessource INT, nbCoin INT, FOREIGN KEY (fkPlayer) REFERENCES Player(idPlayer), FOREIGN KEY (fkRessource) REFERENCES Rssource(idRessource))",
             m_dbConnection);
             command.ExecuteNonQuery();
         }
@@ -460,7 +460,7 @@ namespace Splendor
                 command.ExecuteNonQuery();
             }
         }
-        
+
         #endregion Create and insert data
 
         #region Get query
@@ -469,7 +469,7 @@ namespace Splendor
         /// Get the name of the player according to his id
         /// </summary>
         /// <param name="id">Id of the player</param>
-        /// <returns></returns>
+        /// <returns>Player name</returns>
         public string GetPlayerName(int id)
         {
             string sql = "SELECT pseudo FROM player WHERE id = " + id;
@@ -507,7 +507,7 @@ namespace Splendor
 
                 while (reader2.Read())
                 {
-                    card.Price[int.Parse(reader["fkRessource"].ToString())] = int.Parse(reader2["nbRessource"].ToString());
+                    card.Price[int.Parse(reader2["fkRessource"].ToString())] = int.Parse(reader2["nbRessource"].ToString());
                 }
 
                 listCard.Push(card);
@@ -547,6 +547,37 @@ namespace Splendor
             }
 
             return listCard;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Card GetCardById(int id)
+        {
+            string sql = "SELECT * FROM Card WHERE IdCard = " + id + " LIMIT 1";
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            Card card = new Card();
+
+            while (reader.Read())
+            {
+                card.PrestigePt = int.Parse(reader["nbPtPrestige"].ToString());
+                card.Level = int.Parse(reader["level"].ToString());
+
+                string sql2 = "SELECT * FROM Cost WHERE fkCard = " + reader["idCard"];
+                SQLiteCommand command2 = new SQLiteCommand(sql2, m_dbConnection);
+                SQLiteDataReader reader2 = command2.ExecuteReader();
+
+                while (reader2.Read())
+                {
+                    card.Price[int.Parse(reader["fkRessource"].ToString())] = int.Parse(reader2["nbRessource"].ToString());
+                }
+            }
+
+            return card;
         }
 
         #endregion Get query
