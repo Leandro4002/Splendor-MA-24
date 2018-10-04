@@ -68,6 +68,7 @@ namespace Splendor
             lblRubisCoin.Text = "7";
             lblSaphirCoin.Text = "7";
 
+            //Create object conn to call "ConnectionDB" class
             conn = new ConnectionDB();
 
             //load cards from the database
@@ -261,6 +262,9 @@ namespace Splendor
         private void cmdInsertPlayer_Click(object sender, EventArgs e)
         {
             newPlayer = Interaction.InputBox("Enter the name ", "Add player", "", 500, 500);
+
+            //call the object "conn" to send player name's string to DB
+            conn.AddPlayer(newPlayer);
         }
 
         /// <summary>
