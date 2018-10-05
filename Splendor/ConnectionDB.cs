@@ -73,18 +73,32 @@ namespace Splendor
         /// </summary>
         private void CreateInsertPlayer()
         {
-            string sql = "CREATE TABLE player (id INT PRIMARY KEY, pseudo VARCHAR(20))";
+            string sql = "CREATE TABLE player (id INTEGER PRIMARY KEY, pseudo VARCHAR(20))";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
 
-            sql = "insert into player (id, pseudo) values (0, 'Fred')";
+            sql = "insert into player (pseudo) values ('Fred')";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into player (id, pseudo) values (1, 'Harry')";
+            sql = "insert into player (pseudo) values ('Harry')";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into player (id, pseudo) values (2, 'Sam')";
+            sql = "insert into player (pseudo) values ('Sam')";
             command = new SQLiteCommand(sql, m_dbConnection);
+            command.ExecuteNonQuery();
+        }
+
+
+
+        /// <summary>
+        /// add a new player to the DB
+        /// that's an easter egg
+        /// </summary>
+        
+        public void AddPlayer(string playerName)
+        {
+            string sql = "insert into player ( pseudo) values ('"+playerName+"')";
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
         }
 
