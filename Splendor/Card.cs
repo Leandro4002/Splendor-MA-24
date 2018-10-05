@@ -84,6 +84,7 @@ namespace Splendor
         #endregion Public attributes
 
         #region Public methods
+
         /// <summary>
         /// displays information about the card
         /// </summary>
@@ -91,15 +92,19 @@ namespace Splendor
         public override string ToString()
         {
             string res = "";
-            
-            res = Enum.GetName(typeof(Ressources), Ress);
-            //Be careful, those \t enables to split the string when clicking on a card
-            res += "\t";
-
+            //If there is a prestige score, write it down
             if (prestigePt != 0)
             {
-                res += prestigePt;
+                res += "[" + prestigePt + "]";
             }
+
+            //Write the name of the ressource of the card, if it exists (noble for example)
+            if (Ress != 0)
+            {
+                res += " " + Enum.GetName(typeof(Ressources), Ress);
+            } 
+
+            
             res += "\t";
             res += "\r\n\r\n";
             int boucle = 0;
@@ -109,6 +114,7 @@ namespace Splendor
                 
                 string ressource = "";
 
+                //If there is a ressource, write it down
                 if (i != 0)
                 {
                     ressource = "    ";

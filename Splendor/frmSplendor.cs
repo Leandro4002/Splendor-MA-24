@@ -71,28 +71,12 @@ namespace Splendor
 
             conn = new ConnectionDB();
 
-            //load cards from the database
-            //they are not hard coded any more
-            //TO DO
-            /*
-            Card card11 = new Card();
-            card11.Level = 1;
-            card11.PrestigePt = 1;
-            card11.Price = new int[] { 1, 0, 2, 0, 2 };
-            card11.Ress = Ressources.Rubis;
-
-            Card card12 = new Card();
-            card12.Level = 1;
-            card12.PrestigePt = 0;
-            card12.Price = new int[] { 0, 1, 2, 1, 0 };
-            card12.Ress = Ressources.Saphir;
-            */
-
-            cardLists[0] = conn.GetListCardAccordingToLevel(1);
-            cardLists[1] = conn.GetListCardAccordingToLevel(2);
-            cardLists[2] = conn.GetListCardAccordingToLevel(3);
-            cardLists[3] = conn.GetListCardAccordingToLevel(4);
-
+            //Get the cards from DB and shuffle them
+            cardLists[0] = Tools.Shuffle(conn.GetListCardAccordingToLevel(1));
+            cardLists[1] = Tools.Shuffle(conn.GetListCardAccordingToLevel(2));
+            cardLists[2] = Tools.Shuffle(conn.GetListCardAccordingToLevel(3));
+            cardLists[3] = Tools.Shuffle(conn.GetListCardAccordingToLevel(4));
+            
             //Display the fourth cards for each level
             #region First card display
 
@@ -162,20 +146,6 @@ namespace Splendor
 
             #endregion First card display
 
-            /*
-            foreach (Card karde in listCardOne)
-            {
-                MessageBox.Show("level : " + karde.Level.ToString() + "\n" +
-                "prestigePt : " + karde.PrestigePt.ToString() + "\n" +
-                "price[0] : " + karde.Price[0].ToString() + "\n" +
-                "price[1] : " + karde.Price[1].ToString() + "\n" +
-                "price[2] : " + karde.Price[2].ToString() + "\n" +
-                "price[3] : " + karde.Price[3].ToString() + "\n" +
-                "price[4] : " + karde.Price[4].ToString() + "\n" +
-                "price[5] : " + karde.Price[5].ToString() + "\n");
-            }
-            */
-
             this.Width = 680;
             this.Height = 540;
 
@@ -191,7 +161,21 @@ namespace Splendor
 
             //we wire the click on all cards to the same event
             //TO DO for all cards
-            txtLevel14.Click += ClickOnCard;
+            txtLevel11.Click += ClickOnCard;
+            txtLevel12.Click += ClickOnCard;
+            txtLevel13.Click += ClickOnCard;
+            txtLevel21.Click += ClickOnCard;
+            txtLevel22.Click += ClickOnCard;
+            txtLevel23.Click += ClickOnCard;
+            txtLevel24.Click += ClickOnCard;
+            txtLevel31.Click += ClickOnCard;
+            txtLevel32.Click += ClickOnCard;
+            txtLevel33.Click += ClickOnCard;
+            txtLevel34.Click += ClickOnCard;
+            txtLevel41.Click += ClickOnCard;
+            txtLevel42.Click += ClickOnCard;
+            txtLevel43.Click += ClickOnCard;
+            txtLevel44.Click += ClickOnCard;
         }
 
         private void ClickOnCard(object sender, EventArgs e)
@@ -216,7 +200,6 @@ namespace Splendor
             LoadPlayer(id);
 
         }
-
 
         /// <summary>
         /// load data about the current player

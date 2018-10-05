@@ -501,6 +501,9 @@ namespace Splendor
                 card.PrestigePt = int.Parse(reader["nbPtPrestige"].ToString());
                 card.Level = int.Parse(reader["level"].ToString());
 
+                //Get the ressource of the card by casting to Ressource type the int value got by reading fkRessource
+                card.Ress = (Ressources)int.Parse(reader["fkRessource"].ToString());
+
                 string sql2 = "SELECT * FROM Cost WHERE fkCard = " + reader["idCard"];
                 SQLiteCommand command2 = new SQLiteCommand(sql2, m_dbConnection);
                 SQLiteDataReader reader2 = command2.ExecuteReader();

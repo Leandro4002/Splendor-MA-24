@@ -63,6 +63,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ressources.cs" />
+    <Compile Include="Tools.cs" />
     <EmbeddedResource Include="frmSplendor.resx">
       <DependentUpon>frmSplendor.cs</DependentUpon>
     </EmbeddedResource>
