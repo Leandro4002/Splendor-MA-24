@@ -45,7 +45,7 @@ namespace Splendor
         /// </summary>
         private void CreateInsertPlayer()
         {
-            string sql = "CREATE TABLE Player (id INTEGER PRIMARY KEY, pseudo VARCHAR(20));"
+            string sql = "CREATE TABLE Player (id INTEGER PRIMARY KEY, pseudo VARCHAR(20));";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
         }
