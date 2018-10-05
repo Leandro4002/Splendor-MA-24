@@ -38,6 +38,11 @@ namespace Splendor
         //Used to set new players into the game
         private string newPlayer;
 
+        private Stack<Card>[] cardLists = new Stack<Card>[4];
+
+        //Used to store cards temporary
+        private Card[] buffer = new Card[4];
+
         //id of the player that is playing
         private int currentPlayerId;
         //boolean to enable us to know if the user can click on a coin or a card
@@ -71,31 +76,80 @@ namespace Splendor
             //Create object conn to call "ConnectionDB" class
             conn = new ConnectionDB();
 
-            //load cards from the database
-            //they are not hard coded any more
-            //TO DO
-
-            Card card11 = new Card();
-            card11.Level = 1;
-            card11.PrestigePt = 1;
-            //card11.Price = new int[] { 1, 0, 2, 0, 2 };
-            card11.Ress = Ressources.Rubis;
-
-            Card card12 = new Card();
-            card12.Level = 1;
-            card12.PrestigePt = 0;
-           // card12.Price = new int[] { 0, 1, 2, 1, 0 };
-            card12.Ress = Ressources.Saphir;
-
-            txtLevel11.Text = card11.ToString();
-            txtLevel12.Text = card12.ToString();
-
-            //load cards from the database
-            Stack<Card> listCardOne = conn.GetListCardAccordingToLevel(1);
-            //Go through the results
-            //Don't forget to check when you are at the end of the stack
+            //Get the cards from DB and shuffle them
+            cardLists[0] = Tools.Shuffle(conn.GetListCardAccordingToLevel(1));
+            cardLists[1] = Tools.Shuffle(conn.GetListCardAccordingToLevel(2));
+            cardLists[2] = Tools.Shuffle(conn.GetListCardAccordingToLevel(3));
+            cardLists[3] = Tools.Shuffle(conn.GetListCardAccordingToLevel(4));
             
-            //fin TO DO
+            //Display the fourth cards for each level
+            #region First card display
+
+            //Level 1
+            buffer[0] = cardLists[0].Pop();
+            buffer[1] = cardLists[0].Pop();
+            buffer[2] = cardLists[0].Pop();
+            buffer[3] = cardLists[0].Pop();
+
+            txtLevel14.Text = buffer[0].ToString();
+            txtLevel13.Text = buffer[1].ToString();
+            txtLevel12.Text = buffer[2].ToString();
+            txtLevel11.Text = buffer[3].ToString();
+
+            cardLists[0].Push(buffer[3]);
+            cardLists[0].Push(buffer[2]);
+            cardLists[0].Push(buffer[1]);
+            cardLists[0].Push(buffer[0]);
+
+            //Level 2
+            buffer[0] = cardLists[1].Pop();
+            buffer[1] = cardLists[1].Pop();
+            buffer[2] = cardLists[1].Pop();
+            buffer[3] = cardLists[1].Pop();
+
+            txtLevel24.Text = buffer[0].ToString();
+            txtLevel23.Text = buffer[1].ToString();
+            txtLevel22.Text = buffer[2].ToString();
+            txtLevel21.Text = buffer[3].ToString();
+
+            cardLists[1].Push(buffer[3]);
+            cardLists[1].Push(buffer[2]);
+            cardLists[1].Push(buffer[1]);
+            cardLists[1].Push(buffer[0]);
+
+            //Level 3
+            buffer[0] = cardLists[2].Pop();
+            buffer[1] = cardLists[2].Pop();
+            buffer[2] = cardLists[2].Pop();
+            buffer[3] = cardLists[2].Pop();
+
+            txtLevel34.Text = buffer[0].ToString();
+            txtLevel33.Text = buffer[1].ToString();
+            txtLevel32.Text = buffer[2].ToString();
+            txtLevel31.Text = buffer[3].ToString();
+
+            cardLists[2].Push(buffer[3]);
+            cardLists[2].Push(buffer[2]);
+            cardLists[2].Push(buffer[1]);
+            cardLists[2].Push(buffer[0]);
+
+            //Level 4
+            buffer[0] = cardLists[3].Pop();
+            buffer[1] = cardLists[3].Pop();
+            buffer[2] = cardLists[3].Pop();
+            buffer[3] = cardLists[3].Pop();
+
+            txtLevel44.Text = buffer[0].ToString();
+            txtLevel43.Text = buffer[1].ToString();
+            txtLevel42.Text = buffer[2].ToString();
+            txtLevel41.Text = buffer[3].ToString();
+
+            cardLists[3].Push(buffer[3]);
+            cardLists[3].Push(buffer[2]);
+            cardLists[3].Push(buffer[1]);
+            cardLists[3].Push(buffer[0]);
+
+            #endregion First card display
 
             this.Width = 680;
             this.Height = 540;
@@ -113,6 +167,20 @@ namespace Splendor
             //we wire the click on all cards to the same event
             //TO DO for all cards
             txtLevel11.Click += ClickOnCard;
+            txtLevel12.Click += ClickOnCard;
+            txtLevel13.Click += ClickOnCard;
+            txtLevel21.Click += ClickOnCard;
+            txtLevel22.Click += ClickOnCard;
+            txtLevel23.Click += ClickOnCard;
+            txtLevel24.Click += ClickOnCard;
+            txtLevel31.Click += ClickOnCard;
+            txtLevel32.Click += ClickOnCard;
+            txtLevel33.Click += ClickOnCard;
+            txtLevel34.Click += ClickOnCard;
+            txtLevel41.Click += ClickOnCard;
+            txtLevel42.Click += ClickOnCard;
+            txtLevel43.Click += ClickOnCard;
+            txtLevel44.Click += ClickOnCard;
         }
 
         private void ClickOnCard(object sender, EventArgs e)
@@ -137,7 +205,6 @@ namespace Splendor
             LoadPlayer(id);
 
         }
-
 
         /// <summary>
         /// load data about the current player
@@ -284,6 +351,10 @@ namespace Splendor
             //We are not allowed to click on the next button
             
         }
+
+        #region private methods
+
+        #endregion private methods
 
     }
 }

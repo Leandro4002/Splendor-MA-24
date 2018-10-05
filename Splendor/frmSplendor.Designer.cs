@@ -42,10 +42,10 @@
             this.txtLevel22 = new System.Windows.Forms.TextBox();
             this.txtLevel23 = new System.Windows.Forms.TextBox();
             this.txtLevel24 = new System.Windows.Forms.TextBox();
-            this.txtLevel11 = new System.Windows.Forms.TextBox();
-            this.txtLevel12 = new System.Windows.Forms.TextBox();
-            this.txtLevel13 = new System.Windows.Forms.TextBox();
             this.txtLevel14 = new System.Windows.Forms.TextBox();
+            this.txtLevel13 = new System.Windows.Forms.TextBox();
+            this.txtLevel12 = new System.Windows.Forms.TextBox();
+            this.txtLevel11 = new System.Windows.Forms.TextBox();
             this.cmdInsertPlayer = new System.Windows.Forms.Button();
             this.cmdPlay = new System.Windows.Forms.Button();
             this.txtPlayerEmeraudeCard = new System.Windows.Forms.TextBox();
@@ -69,21 +69,21 @@
             this.cmdNextPlayer = new System.Windows.Forms.Button();
             this.lblPlayer = new System.Windows.Forms.Label();
             this.lblChoiceCard = new System.Windows.Forms.Label();
-            this.txtNoble4 = new System.Windows.Forms.TextBox();
-            this.txtNoble3 = new System.Windows.Forms.TextBox();
-            this.txtNoble2 = new System.Windows.Forms.TextBox();
-            this.txtNoble1 = new System.Windows.Forms.TextBox();
+            this.txtLevel44 = new System.Windows.Forms.TextBox();
+            this.txtLevel43 = new System.Windows.Forms.TextBox();
+            this.txtLevel42 = new System.Windows.Forms.TextBox();
+            this.txtLevel41 = new System.Windows.Forms.TextBox();
             this.lblNbPtPrestige = new System.Windows.Forms.Label();
             this.flwCardLevel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.flwCardLevel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.flwCardLevel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flwCardNoble = new System.Windows.Forms.FlowLayoutPanel();
+            this.flwCardLevel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.flwCardLevel1.SuspendLayout();
             this.flwCardLevel2.SuspendLayout();
             this.flwCardLevel3.SuspendLayout();
-            this.flwCardNoble.SuspendLayout();
+            this.flwCardLevel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblGoldCoin
@@ -167,8 +167,6 @@
             // 
             this.txtLevel31.Location = new System.Drawing.Point(320, 2);
             this.txtLevel31.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtLevel31.Location = new System.Drawing.Point(320, 2);
-            this.txtLevel31.Margin = new System.Windows.Forms.Padding(2);
             this.txtLevel31.Multiline = true;
             this.txtLevel31.Name = "txtLevel31";
             this.txtLevel31.Size = new System.Drawing.Size(102, 98);
@@ -178,8 +176,6 @@
             // 
             this.txtLevel32.Location = new System.Drawing.Point(214, 2);
             this.txtLevel32.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtLevel32.Location = new System.Drawing.Point(214, 2);
-            this.txtLevel32.Margin = new System.Windows.Forms.Padding(2);
             this.txtLevel32.Multiline = true;
             this.txtLevel32.Name = "txtLevel32";
             this.txtLevel32.Size = new System.Drawing.Size(102, 98);
@@ -189,8 +185,6 @@
             // 
             this.txtLevel33.Location = new System.Drawing.Point(108, 2);
             this.txtLevel33.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtLevel33.Location = new System.Drawing.Point(108, 2);
-            this.txtLevel33.Margin = new System.Windows.Forms.Padding(2);
             this.txtLevel33.Multiline = true;
             this.txtLevel33.Name = "txtLevel33";
             this.txtLevel33.Size = new System.Drawing.Size(102, 98);
@@ -200,8 +194,6 @@
             // 
             this.txtLevel34.Location = new System.Drawing.Point(2, 2);
             this.txtLevel34.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtLevel34.Location = new System.Drawing.Point(2, 2);
-            this.txtLevel34.Margin = new System.Windows.Forms.Padding(2);
             this.txtLevel34.Multiline = true;
             this.txtLevel34.Name = "txtLevel34";
             this.txtLevel34.Size = new System.Drawing.Size(102, 98);
@@ -211,8 +203,6 @@
             // 
             this.txtLevel21.Location = new System.Drawing.Point(320, 2);
             this.txtLevel21.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtLevel21.Location = new System.Drawing.Point(320, 2);
-            this.txtLevel21.Margin = new System.Windows.Forms.Padding(2);
             this.txtLevel21.Multiline = true;
             this.txtLevel21.Name = "txtLevel21";
             this.txtLevel21.Size = new System.Drawing.Size(102, 98);
@@ -222,8 +212,6 @@
             // 
             this.txtLevel22.Location = new System.Drawing.Point(214, 2);
             this.txtLevel22.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtLevel22.Location = new System.Drawing.Point(214, 2);
-            this.txtLevel22.Margin = new System.Windows.Forms.Padding(2);
             this.txtLevel22.Multiline = true;
             this.txtLevel22.Name = "txtLevel22";
             this.txtLevel22.Size = new System.Drawing.Size(102, 98);
@@ -233,8 +221,6 @@
             // 
             this.txtLevel23.Location = new System.Drawing.Point(108, 2);
             this.txtLevel23.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtLevel23.Location = new System.Drawing.Point(108, 2);
-            this.txtLevel23.Margin = new System.Windows.Forms.Padding(2);
             this.txtLevel23.Multiline = true;
             this.txtLevel23.Name = "txtLevel23";
             this.txtLevel23.Size = new System.Drawing.Size(102, 98);
@@ -244,56 +230,54 @@
             // 
             this.txtLevel24.Location = new System.Drawing.Point(2, 2);
             this.txtLevel24.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtLevel24.Location = new System.Drawing.Point(2, 2);
-            this.txtLevel24.Margin = new System.Windows.Forms.Padding(2);
             this.txtLevel24.Multiline = true;
             this.txtLevel24.Name = "txtLevel24";
             this.txtLevel24.Size = new System.Drawing.Size(102, 98);
             this.txtLevel24.TabIndex = 13;
             // 
-            // txtLevel11
-            // 
-            this.txtLevel11.BackColor = System.Drawing.SystemColors.Window;
-            this.txtLevel11.Location = new System.Drawing.Point(108, 2);
-            this.txtLevel11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtLevel11.Location = new System.Drawing.Point(108, 2);
-            this.txtLevel11.Margin = new System.Windows.Forms.Padding(2);
-            this.txtLevel11.Multiline = true;
-            this.txtLevel11.Name = "txtLevel11";
-            this.txtLevel11.Size = new System.Drawing.Size(102, 98);
-            this.txtLevel11.TabIndex = 14;
-            // 
-            // txtLevel12
-            // 
-            this.txtLevel12.Location = new System.Drawing.Point(2, 2);
-            this.txtLevel12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtLevel12.Location = new System.Drawing.Point(2, 2);
-            this.txtLevel12.Margin = new System.Windows.Forms.Padding(2);
-            this.txtLevel12.Multiline = true;
-            this.txtLevel12.Name = "txtLevel12";
-            this.txtLevel12.Size = new System.Drawing.Size(102, 98);
-            this.txtLevel12.TabIndex = 15;
-            // 
-            // txtLevel13
-            // 
-            this.txtLevel13.Location = new System.Drawing.Point(214, 2);
-            this.txtLevel13.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtLevel13.Location = new System.Drawing.Point(214, 2);
-            this.txtLevel13.Margin = new System.Windows.Forms.Padding(2);
-            this.txtLevel13.Multiline = true;
-            this.txtLevel13.Name = "txtLevel13";
-            this.txtLevel13.Size = new System.Drawing.Size(102, 98);
-            this.txtLevel13.TabIndex = 16;
-            // 
             // txtLevel14
             // 
-            this.txtLevel14.Location = new System.Drawing.Point(320, 2);
+            this.txtLevel14.BackColor = System.Drawing.SystemColors.Window;
+            this.txtLevel14.Location = new System.Drawing.Point(2, 2);
             this.txtLevel14.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtLevel14.Location = new System.Drawing.Point(320, 2);
-            this.txtLevel14.Margin = new System.Windows.Forms.Padding(2);
             this.txtLevel14.Multiline = true;
             this.txtLevel14.Name = "txtLevel14";
             this.txtLevel14.Size = new System.Drawing.Size(102, 98);
+            this.txtLevel14.TabIndex = 14;
+            // 
+            // txtLevel13
+            // 
+            this.txtLevel13.Location = new System.Drawing.Point(108, 2);
+            this.txtLevel13.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLevel13.Multiline = true;
+            this.txtLevel13.Name = "txtLevel13";
+            this.txtLevel13.Size = new System.Drawing.Size(102, 98);
+            this.txtLevel13.TabIndex = 15;
+            // 
+            // txtLevel12
+            // 
+            this.txtLevel12.Location = new System.Drawing.Point(214, 2);
+            this.txtLevel12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLevel12.Multiline = true;
+            this.txtLevel12.Name = "txtLevel12";
+            this.txtLevel12.Size = new System.Drawing.Size(102, 98);
+            this.txtLevel12.TabIndex = 16;
+            // 
+            // txtLevel11
+            // 
+            this.txtLevel11.Location = new System.Drawing.Point(320, 2);
+            this.txtLevel11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLevel11.Multiline = true;
+            this.txtLevel11.Name = "txtLevel11";
+            this.txtLevel11.Size = new System.Drawing.Size(102, 98);
+            this.txtLevel11.TabIndex = 17;
+            // 
+            // txtLevel14
+            // 
+            this.txtLevel14.Location = new System.Drawing.Point(426, 3);
+            this.txtLevel14.Multiline = true;
+            this.txtLevel14.Name = "txtLevel14";
+            this.txtLevel14.Size = new System.Drawing.Size(135, 120);
             this.txtLevel14.TabIndex = 17;
             // 
             // cmdInsertPlayer
@@ -313,8 +297,6 @@
             // 
             this.cmdPlay.Location = new System.Drawing.Point(501, 211);
             this.cmdPlay.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cmdPlay.Location = new System.Drawing.Point(501, 211);
-            this.cmdPlay.Margin = new System.Windows.Forms.Padding(2);
             this.cmdPlay.Name = "cmdPlay";
             this.cmdPlay.Size = new System.Drawing.Size(82, 39);
             this.cmdPlay.TabIndex = 19;
@@ -327,8 +309,6 @@
             this.txtPlayerEmeraudeCard.ForeColor = System.Drawing.Color.Green;
             this.txtPlayerEmeraudeCard.Location = new System.Drawing.Point(380, 624);
             this.txtPlayerEmeraudeCard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtPlayerEmeraudeCard.Location = new System.Drawing.Point(380, 624);
-            this.txtPlayerEmeraudeCard.Margin = new System.Windows.Forms.Padding(2);
             this.txtPlayerEmeraudeCard.Multiline = true;
             this.txtPlayerEmeraudeCard.Name = "txtPlayerEmeraudeCard";
             this.txtPlayerEmeraudeCard.Size = new System.Drawing.Size(81, 98);
@@ -338,8 +318,6 @@
             // 
             this.txtPlayerOnyxCard.Location = new System.Drawing.Point(260, 624);
             this.txtPlayerOnyxCard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtPlayerOnyxCard.Location = new System.Drawing.Point(260, 624);
-            this.txtPlayerOnyxCard.Margin = new System.Windows.Forms.Padding(2);
             this.txtPlayerOnyxCard.Multiline = true;
             this.txtPlayerOnyxCard.Name = "txtPlayerOnyxCard";
             this.txtPlayerOnyxCard.Size = new System.Drawing.Size(81, 98);
@@ -350,8 +328,6 @@
             this.txtPlayerSaphirCard.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.txtPlayerSaphirCard.Location = new System.Drawing.Point(140, 624);
             this.txtPlayerSaphirCard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtPlayerSaphirCard.Location = new System.Drawing.Point(140, 624);
-            this.txtPlayerSaphirCard.Margin = new System.Windows.Forms.Padding(2);
             this.txtPlayerSaphirCard.Multiline = true;
             this.txtPlayerSaphirCard.Name = "txtPlayerSaphirCard";
             this.txtPlayerSaphirCard.Size = new System.Drawing.Size(81, 98);
@@ -362,8 +338,6 @@
             this.txtPlayerRubisCard.ForeColor = System.Drawing.Color.Red;
             this.txtPlayerRubisCard.Location = new System.Drawing.Point(20, 624);
             this.txtPlayerRubisCard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtPlayerRubisCard.Location = new System.Drawing.Point(20, 624);
-            this.txtPlayerRubisCard.Margin = new System.Windows.Forms.Padding(2);
             this.txtPlayerRubisCard.Multiline = true;
             this.txtPlayerRubisCard.Name = "txtPlayerRubisCard";
             this.txtPlayerRubisCard.Size = new System.Drawing.Size(81, 98);
@@ -445,8 +419,6 @@
             // 
             this.txtPlayerBookedCard.Location = new System.Drawing.Point(503, 374);
             this.txtPlayerBookedCard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtPlayerBookedCard.Location = new System.Drawing.Point(503, 374);
-            this.txtPlayerBookedCard.Margin = new System.Windows.Forms.Padding(2);
             this.txtPlayerBookedCard.Multiline = true;
             this.txtPlayerBookedCard.Name = "txtPlayerBookedCard";
             this.txtPlayerBookedCard.Size = new System.Drawing.Size(81, 98);
@@ -457,8 +429,6 @@
             this.txtPlayerDiamandCard.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.txtPlayerDiamandCard.Location = new System.Drawing.Point(502, 624);
             this.txtPlayerDiamandCard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtPlayerDiamandCard.Location = new System.Drawing.Point(502, 624);
-            this.txtPlayerDiamandCard.Margin = new System.Windows.Forms.Padding(2);
             this.txtPlayerDiamandCard.Multiline = true;
             this.txtPlayerDiamandCard.Name = "txtPlayerDiamandCard";
             this.txtPlayerDiamandCard.Size = new System.Drawing.Size(81, 98);
@@ -528,8 +498,6 @@
             // 
             this.cmdValidateChoice.Location = new System.Drawing.Point(20, 554);
             this.cmdValidateChoice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cmdValidateChoice.Location = new System.Drawing.Point(20, 554);
-            this.cmdValidateChoice.Margin = new System.Windows.Forms.Padding(2);
             this.cmdValidateChoice.Name = "cmdValidateChoice";
             this.cmdValidateChoice.Size = new System.Drawing.Size(83, 21);
             this.cmdValidateChoice.TabIndex = 38;
@@ -541,8 +509,6 @@
             // 
             this.cmdNextPlayer.Location = new System.Drawing.Point(135, 554);
             this.cmdNextPlayer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cmdNextPlayer.Location = new System.Drawing.Point(135, 554);
-            this.cmdNextPlayer.Margin = new System.Windows.Forms.Padding(2);
             this.cmdNextPlayer.Name = "cmdNextPlayer";
             this.cmdNextPlayer.Size = new System.Drawing.Size(106, 20);
             this.cmdNextPlayer.TabIndex = 39;
@@ -570,49 +536,41 @@
             this.lblChoiceCard.TabIndex = 41;
             this.lblChoiceCard.Text = "carte choisie";
             // 
-            // txtNoble4
+            // txtLevel44
             // 
-            this.txtNoble4.Location = new System.Drawing.Point(2, 2);
-            this.txtNoble4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtNoble4.Location = new System.Drawing.Point(2, 2);
-            this.txtNoble4.Margin = new System.Windows.Forms.Padding(2);
-            this.txtNoble4.Multiline = true;
-            this.txtNoble4.Name = "txtNoble4";
-            this.txtNoble4.Size = new System.Drawing.Size(102, 98);
-            this.txtNoble4.TabIndex = 45;
+            this.txtLevel44.Location = new System.Drawing.Point(2, 2);
+            this.txtLevel44.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLevel44.Multiline = true;
+            this.txtLevel44.Name = "txtLevel44";
+            this.txtLevel44.Size = new System.Drawing.Size(102, 98);
+            this.txtLevel44.TabIndex = 45;
             // 
-            // txtNoble3
+            // txtLevel43
             // 
-            this.txtNoble3.Location = new System.Drawing.Point(108, 2);
-            this.txtNoble3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtNoble3.Location = new System.Drawing.Point(108, 2);
-            this.txtNoble3.Margin = new System.Windows.Forms.Padding(2);
-            this.txtNoble3.Multiline = true;
-            this.txtNoble3.Name = "txtNoble3";
-            this.txtNoble3.Size = new System.Drawing.Size(102, 98);
-            this.txtNoble3.TabIndex = 44;
+            this.txtLevel43.Location = new System.Drawing.Point(108, 2);
+            this.txtLevel43.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLevel43.Multiline = true;
+            this.txtLevel43.Name = "txtLevel43";
+            this.txtLevel43.Size = new System.Drawing.Size(102, 98);
+            this.txtLevel43.TabIndex = 44;
             // 
-            // txtNoble2
+            // txtLevel42
             // 
-            this.txtNoble2.Location = new System.Drawing.Point(214, 2);
-            this.txtNoble2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtNoble2.Location = new System.Drawing.Point(214, 2);
-            this.txtNoble2.Margin = new System.Windows.Forms.Padding(2);
-            this.txtNoble2.Multiline = true;
-            this.txtNoble2.Name = "txtNoble2";
-            this.txtNoble2.Size = new System.Drawing.Size(102, 98);
-            this.txtNoble2.TabIndex = 43;
+            this.txtLevel42.Location = new System.Drawing.Point(214, 2);
+            this.txtLevel42.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLevel42.Multiline = true;
+            this.txtLevel42.Name = "txtLevel42";
+            this.txtLevel42.Size = new System.Drawing.Size(102, 98);
+            this.txtLevel42.TabIndex = 43;
             // 
-            // txtNoble1
+            // txtLevel41
             // 
-            this.txtNoble1.Location = new System.Drawing.Point(320, 2);
-            this.txtNoble1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtNoble1.Location = new System.Drawing.Point(320, 2);
-            this.txtNoble1.Margin = new System.Windows.Forms.Padding(2);
-            this.txtNoble1.Multiline = true;
-            this.txtNoble1.Name = "txtNoble1";
-            this.txtNoble1.Size = new System.Drawing.Size(102, 98);
-            this.txtNoble1.TabIndex = 42;
+            this.txtLevel41.Location = new System.Drawing.Point(320, 2);
+            this.txtLevel41.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLevel41.Multiline = true;
+            this.txtLevel41.Name = "txtLevel41";
+            this.txtLevel41.Size = new System.Drawing.Size(102, 98);
+            this.txtLevel41.TabIndex = 42;
             // 
             // lblNbPtPrestige
             // 
@@ -626,14 +584,12 @@
             // 
             // flwCardLevel1
             // 
+            this.flwCardLevel1.Controls.Add(this.txtLevel14);
+            this.flwCardLevel1.Controls.Add(this.txtLevel13);
             this.flwCardLevel1.Controls.Add(this.txtLevel12);
             this.flwCardLevel1.Controls.Add(this.txtLevel11);
-            this.flwCardLevel1.Controls.Add(this.txtLevel13);
-            this.flwCardLevel1.Controls.Add(this.txtLevel14);
             this.flwCardLevel1.Location = new System.Drawing.Point(14, 374);
             this.flwCardLevel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.flwCardLevel1.Location = new System.Drawing.Point(14, 374);
-            this.flwCardLevel1.Margin = new System.Windows.Forms.Padding(2);
             this.flwCardLevel1.Name = "flwCardLevel1";
             this.flwCardLevel1.Size = new System.Drawing.Size(452, 107);
             this.flwCardLevel1.TabIndex = 47;
@@ -646,8 +602,6 @@
             this.flwCardLevel2.Controls.Add(this.txtLevel21);
             this.flwCardLevel2.Location = new System.Drawing.Point(14, 257);
             this.flwCardLevel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.flwCardLevel2.Location = new System.Drawing.Point(14, 257);
-            this.flwCardLevel2.Margin = new System.Windows.Forms.Padding(2);
             this.flwCardLevel2.Name = "flwCardLevel2";
             this.flwCardLevel2.Size = new System.Drawing.Size(452, 117);
             this.flwCardLevel2.TabIndex = 48;
@@ -660,26 +614,21 @@
             this.flwCardLevel3.Controls.Add(this.txtLevel31);
             this.flwCardLevel3.Location = new System.Drawing.Point(14, 145);
             this.flwCardLevel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.flwCardLevel3.Location = new System.Drawing.Point(14, 145);
-            this.flwCardLevel3.Margin = new System.Windows.Forms.Padding(2);
             this.flwCardLevel3.Name = "flwCardLevel3";
             this.flwCardLevel3.Size = new System.Drawing.Size(452, 111);
             this.flwCardLevel3.TabIndex = 49;
             // 
-            // flwCardNoble
+            // flwCardLevel4
             // 
-            this.flwCardNoble.Controls.Add(this.txtNoble4);
-            this.flwCardNoble.Controls.Add(this.txtNoble3);
-            this.flwCardNoble.Controls.Add(this.txtNoble2);
-            this.flwCardNoble.Controls.Add(this.txtNoble1);
-            this.flwCardNoble.Location = new System.Drawing.Point(14, 37);
-            this.flwCardNoble.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.flwCardNoble.Controls.Add(this.checkBox1);
-            this.flwCardNoble.Location = new System.Drawing.Point(14, 37);
-            this.flwCardNoble.Margin = new System.Windows.Forms.Padding(2);
-            this.flwCardNoble.Name = "flwCardNoble";
-            this.flwCardNoble.Size = new System.Drawing.Size(452, 109);
-            this.flwCardNoble.TabIndex = 50;
+            this.flwCardLevel4.Controls.Add(this.txtLevel44);
+            this.flwCardLevel4.Controls.Add(this.txtLevel43);
+            this.flwCardLevel4.Controls.Add(this.txtLevel42);
+            this.flwCardLevel4.Controls.Add(this.txtLevel41);
+            this.flwCardLevel4.Location = new System.Drawing.Point(14, 37);
+            this.flwCardLevel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flwCardLevel4.Name = "flwCardLevel4";
+            this.flwCardLevel4.Size = new System.Drawing.Size(452, 109);
+            this.flwCardLevel4.TabIndex = 50;
             // 
             // openFileDialog1
             // 
@@ -700,7 +649,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(606, 763);
-            this.Controls.Add(this.flwCardNoble);
+            this.Controls.Add(this.flwCardLevel4);
             this.Controls.Add(this.flwCardLevel3);
             this.Controls.Add(this.flwCardLevel2);
             this.Controls.Add(this.flwCardLevel1);
@@ -735,7 +684,6 @@
             this.Controls.Add(this.lblRubisCoin);
             this.Controls.Add(this.lblGoldCoin);
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmSplendor";
             this.Text = "Splendor";
             this.Load += new System.EventHandler(this.frmSplendor_Load);
@@ -745,8 +693,8 @@
             this.flwCardLevel2.PerformLayout();
             this.flwCardLevel3.ResumeLayout(false);
             this.flwCardLevel3.PerformLayout();
-            this.flwCardNoble.ResumeLayout(false);
-            this.flwCardNoble.PerformLayout();
+            this.flwCardLevel4.ResumeLayout(false);
+            this.flwCardLevel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -768,10 +716,10 @@
         private System.Windows.Forms.TextBox txtLevel22;
         private System.Windows.Forms.TextBox txtLevel23;
         private System.Windows.Forms.TextBox txtLevel24;
-        private System.Windows.Forms.TextBox txtLevel11;
-        private System.Windows.Forms.TextBox txtLevel12;
-        private System.Windows.Forms.TextBox txtLevel13;
         private System.Windows.Forms.TextBox txtLevel14;
+        private System.Windows.Forms.TextBox txtLevel13;
+        private System.Windows.Forms.TextBox txtLevel12;
+        private System.Windows.Forms.TextBox txtLevel11;
         private System.Windows.Forms.Button cmdInsertPlayer;
         private System.Windows.Forms.Button cmdPlay;
         private System.Windows.Forms.TextBox txtPlayerEmeraudeCard;
@@ -795,15 +743,15 @@
         private System.Windows.Forms.Button cmdNextPlayer;
         private System.Windows.Forms.Label lblPlayer;
         private System.Windows.Forms.Label lblChoiceCard;
-        private System.Windows.Forms.TextBox txtNoble4;
-        private System.Windows.Forms.TextBox txtNoble3;
-        private System.Windows.Forms.TextBox txtNoble2;
-        private System.Windows.Forms.TextBox txtNoble1;
+        private System.Windows.Forms.TextBox txtLevel44;
+        private System.Windows.Forms.TextBox txtLevel43;
+        private System.Windows.Forms.TextBox txtLevel42;
+        private System.Windows.Forms.TextBox txtLevel41;
         private System.Windows.Forms.Label lblNbPtPrestige;
         private System.Windows.Forms.FlowLayoutPanel flwCardLevel1;
         private System.Windows.Forms.FlowLayoutPanel flwCardLevel2;
         private System.Windows.Forms.FlowLayoutPanel flwCardLevel3;
-        private System.Windows.Forms.FlowLayoutPanel flwCardNoble;
+        private System.Windows.Forms.FlowLayoutPanel flwCardLevel4;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.CheckBox checkBox1;
     }
