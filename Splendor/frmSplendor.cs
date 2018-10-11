@@ -299,7 +299,7 @@ namespace Splendor
         }
 
         /// <summary>
-        /// click on the white coin (diamand) to tell the player has selected this coin
+        /// click on the white coin (diamond) to tell the player has selected this coin
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -329,13 +329,26 @@ namespace Splendor
         /// <param name="e"></param>
         private void cmdInsertPlayer_Click(object sender, EventArgs e)
         {
-            newPlayer = Interaction.InputBox("Enter the name ", "Add player", "", 500, 500);
-            //call the object "conn" to send player name's string to DB
-            conn.AddPlayer(newPlayer);
+            bool playerRegistered = false;
 
-            // Displays a MessageBox to inform that the player is done.
+            do
+            {
+                newPlayer = Interaction.InputBox("Enter the name ", "Add player", "", 500, 500);
+                //call the object "conn" to send player name's string to DB
+                conn.AddPlayer(newPlayer);
+                if (!string.IsNullOrWhiteSpace(newPlayer)) //if the field is empty or only contain white spaces
+                {
+                    // Displays a MessageBox to inform that the player is done.
+                    MessageBox.Show("The player " + newPlayer + " has been added");
+                    playerRegistered = true;
+                }
+                else
+                {
+                    MessageBox.Show("It seem that there is no name in the field, try again", "Empty name field", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    playerRegistered = false;
+                }
+            } while (playerRegistered);
 
-            MessageBox.Show("The player "+ newPlayer +" has been added");
         }
 
         /// <summary>
@@ -345,7 +358,7 @@ namespace Splendor
         /// <param name="e"></param>
         private void cmdNextPlayer_Click(object sender, EventArgs e)
         {
-            //TO DO in release 1.0 : 3 is hard coded (number of players for the game), it shouldn't. 
+            //TO DO in release 1.0 : 3 is hard coded (number of players for the game), it shouldn't.
             //TO DO Get the id of the player : in release 0.1 there are only 3 players
             //Reload the data of the player
             //We are not allowed to click on the next button
