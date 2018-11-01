@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualBasic;
+using Microsoft.VisualBasic;
 /**
  * \file      frmAddVideoGames.cs
  * \author    F. Andolfatto
@@ -309,7 +309,9 @@ namespace Splendor
         }
 
         /// <summary>
-        /// Click on the insert button to insert player in the game
+
+        /// click on the insert button to insert player in the game
+        /// Check for the field completion
         /// This function also show a message box to ensure that the player has been created
         /// </summary>
         /// <param name="sender"></param>

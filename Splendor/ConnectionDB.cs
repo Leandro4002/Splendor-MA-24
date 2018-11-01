@@ -41,7 +41,7 @@ namespace Splendor
         #region Create and insert data
 
         /// <summary>
-        /// Create the "Player" table and insert data (Hardcoded (temp))
+        /// Create the "Player" table and insert data also ensure that the ID is auto incremental
         /// </summary>
         private void CreateInsertPlayer()
         {
@@ -462,6 +462,7 @@ namespace Splendor
 
         /// <summary>
         /// add a new player to the DB
+        /// <paramref name="playerName">Name of the player</paramref>
         /// </summary>
         
         public void AddPlayer(string playerName)
@@ -510,6 +511,7 @@ namespace Splendor
         /// <summary>
         /// Get the list of cards according to the level
         /// </summary>
+        /// <param name="level">card's level</param>
         /// <returns>Cards stack</returns>
         public Stack<Card> GetListCardAccordingToLevel(int level)
         {
@@ -579,7 +581,7 @@ namespace Splendor
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Card's id</param>
         /// <returns></returns>
         public Card GetCardById(int id)
         {
