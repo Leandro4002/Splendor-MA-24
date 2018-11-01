@@ -1,4 +1,5 @@
-﻿/**
+﻿using Microsoft.VisualBasic;
+/**
  * \file      frmAddVideoGames.cs
  * \author    F. Andolfatto
  * \version   1.0
@@ -12,13 +13,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualBasic;
 using System.Windows.Forms;
 
 namespace Splendor
@@ -40,13 +35,20 @@ namespace Splendor
 
         private Stack<Card>[] cardLists = new Stack<Card>[4];
 
+        private List<Player> players = new List<Player>();
+
         //Used to store cards temporary
         private Card[] buffer = new Card[4];
 
         //id of the player that is playing
         private int currentPlayerId;
+
         //boolean to enable us to know if the user can click on a coin or a card
         private bool enableClicLabel;
+
+        //Store the id of the choiced card
+        private int choiceCard;
+
         //connection to the database
         private ConnectionDB conn;
 
@@ -67,7 +69,7 @@ namespace Splendor
         {
             lblGoldCoin.Text = "5";
 
-            lblDiamandCoin.Text = "7";
+            lblDiamantCoin.Text = "7";
             lblEmeraudeCoin.Text = "7" ;
             lblOnyxCoin.Text = "7";
             lblRubisCoin.Text = "7";
@@ -156,7 +158,7 @@ namespace Splendor
 
             enableClicLabel = false;
 
-            lblChoiceDiamand.Visible = false;
+            lblChoiceDiamant.Visible = false;
             lblChoiceOnyx.Visible = false;
             lblChoiceRubis.Visible = false;
             lblChoiceSaphir.Visible = false;
@@ -197,59 +199,46 @@ namespace Splendor
         /// <param name="e"></param>
         private void cmdPlay_Click(object sender, EventArgs e)
         {
+            //Initialize every player
+            for (int i = 1; i < conn.getNumberOfPlayers() + 1; i++)
+                LoadPlayer(i);
+
+            currentPlayerId = 1;
+
+            //Test if there is at least 2 players
+            if (players.Count() < 2)
+            {
+                MessageBox.Show("il faut au moins 2 joueurs pour commencer une partie", "Erreur");
+                return;
+            }
+
+            enableClicLabel = true;
+            cmdValidateChoice.Visible = true;
+
+            changeTurn(1);
+
             this.Width = 680;
             this.Height = 780;
-
-            int id = 0;
-           
-            LoadPlayer(id);
-
         }
 
         /// <summary>
-        /// load data about the current player
+        /// Load data about a player and put this data in variable
         /// </summary>
         /// <param name="id">identifier of the player</param>
-        private void LoadPlayer(int id) { 
+        private void LoadPlayer(int id) {
 
-            enableClicLabel = true;
-
-            string name = conn.GetPlayerName(currentPlayerId);
-
-            //no coins or card selected yet, labels are empty
-            lblChoiceDiamand.Text = "";
-            lblChoiceOnyx.Text = "";
-            lblChoiceRubis.Text = "";
-            lblChoiceSaphir.Text = "";
-            lblChoiceEmeraude.Text = "";
-
-            lblChoiceCard.Text = "";
-
-            //no coins selected
-            nbDiamant = 0;
-            nbOnyx = 0;
-            nbRubis = 0;
-            nbSaphir = 0;
-            nbEmeraude = 0;
+            string name = conn.GetPlayerName(id);
 
             Player player = new Player();
             player.Name = name;
             player.Id = id;
-            player.Ressources = new int[] { 2, 0, 1, 1, 1 };
-            player.Coins = new int[] { 0, 1, 0, 1, 1 };
+            player.Ressources = new int[] { 0, 0, 0, 0, 0 };
+            player.Coins = new int[] { 0, 0, 0, 0, 0 };
 
-            lblPlayerDiamandCoin.Text = player.Coins[0].ToString();
-            lblPlayerOnyxCoin.Text = player.Coins[1].ToString();
-            lblPlayerRubisCoin.Text = player.Coins[2].ToString();
-            lblPlayerSaphirCoin.Text = player.Coins[3].ToString();
-            lblPlayerEmeraudeCoin.Text = player.Coins[4].ToString();
-            currentPlayerId = id;
-
-            lblPlayer.Text = "Jeu de " + name;
-
-            cmdPlay.Enabled = false;
+            players.Add(player);
         }
 
+        #region Click on gems
         /// <summary>
         /// click on the red coin (rubis) to tell the player has selected this coin
         /// </summary>
@@ -257,14 +246,7 @@ namespace Splendor
         /// <param name="e"></param>
         private void lblRubisCoin_Click(object sender, EventArgs e)
         {
-            if (enableClicLabel)
-            {
-                cmdValidateChoice.Visible = true;
-                lblChoiceRubis.Visible = true;
-                //TO DO check if possible to choose a coin, update the number of available coin
-                nbRubis++;
-                lblChoiceRubis.Text = nbRubis + "\r\n";
-            }
+            gemClick((int)Ressources.Rubis);
         }
 
         /// <summary>
@@ -274,7 +256,7 @@ namespace Splendor
         /// <param name="e"></param>
         private void lblSaphirCoin_Click(object sender, EventArgs e)
         {
-            
+            gemClick((int)Ressources.Saphir);
         }
 
         /// <summary>
@@ -284,7 +266,7 @@ namespace Splendor
         /// <param name="e"></param>
         private void lblOnyxCoin_Click(object sender, EventArgs e)
         {
-            
+            gemClick((int)Ressources.Onyx);
         }
 
         /// <summary>
@@ -294,8 +276,7 @@ namespace Splendor
         /// <param name="e"></param>
         private void lblEmeraudeCoin_Click(object sender, EventArgs e)
         {
-
-            
+            gemClick((int)Ressources.Emeraude);
         }
 
         /// <summary>
@@ -305,8 +286,9 @@ namespace Splendor
         /// <param name="e"></param>
         private void lblDiamandCoin_Click(object sender, EventArgs e)
         {
-            
+            gemClick((int)Ressources.Diamant);
         }
+        #endregion Click on gems
 
         /// <summary>
         /// click on the validate button to approve the selection of coins or card
@@ -315,14 +297,19 @@ namespace Splendor
         /// <param name="e"></param>
         private void cmdValidateChoice_Click(object sender, EventArgs e)
         {
+            //Sélection correcte
+            cmdValidateChoice.Visible = false;
             cmdNextPlayer.Visible = true;
+            enableClicLabel = false;
+
+            //Sélection incorrecte
+            //Message d'erreur indiquant pourquoi
+
             //TO DO Check if card or coins are selected, impossible to do both at the same time
-            
-            cmdNextPlayer.Enabled = true;
         }
 
         /// <summary>
-        /// click on the insert button to insert player in the game
+        /// Click on the insert button to insert player in the game
         /// This function also show a message box to ensure that the player has been created
         /// </summary>
         /// <param name="sender"></param>
@@ -339,7 +326,7 @@ namespace Splendor
         }
 
         /// <summary>
-        /// click on the next player to tell him it is his turn
+        /// Click on the next player to tell him it is his turn
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -349,12 +336,96 @@ namespace Splendor
             //TO DO Get the id of the player : in release 0.1 there are only 3 players
             //Reload the data of the player
             //We are not allowed to click on the next button
-            
+
+            currentPlayerId++;
+
+            int numberOfPlayer = conn.getNumberOfPlayers();
+
+            if (currentPlayerId == numberOfPlayer + 1)
+            {
+                currentPlayerId = 1;
+            }
+
+            changeTurn(currentPlayerId);
+
+            cmdValidateChoice.Visible = true;
+            cmdNextPlayer.Visible = false;
+            enableClicLabel = true;
         }
 
         #region private methods
+        private void changeTurn(int id)
+        {
+            id--;
+
+            //No coins or card selected yet, labels are empty
+            lblChoiceDiamant.Text = "";
+            lblChoiceOnyx.Text = "";
+            lblChoiceRubis.Text = "";
+            lblChoiceSaphir.Text = "";
+            lblChoiceEmeraude.Text = "";
+
+            lblChoiceCard.Text = "";
+
+            //Selected coins
+            nbDiamant = 0;
+            nbOnyx = 0;
+            nbRubis = 0;
+            nbSaphir = 0;
+            nbEmeraude = 0;
+
+            //Draw the player's coins
+            lblPlayerDiamantCoin.Text = players[id].Coins[0].ToString();
+            lblPlayerOnyxCoin.Text = players[id].Coins[1].ToString();
+            lblPlayerRubisCoin.Text = players[id].Coins[2].ToString();
+            lblPlayerSaphirCoin.Text = players[id].Coins[3].ToString();
+            lblPlayerEmeraudeCoin.Text = players[id].Coins[4].ToString();
+
+            lblPlayer.Text = "Au tour de "+ players[id].Name + " ["+id+"]";
+            return;
+        }
+
+        private void gemClick(int id)
+        {
+            if (enableClicLabel)
+            {
+                switch (id)
+                {
+                    case 1:
+                        lblChoiceRubis.Visible = true;
+                        nbRubis++;
+                        lblChoiceRubis.Text = nbRubis + "\r\n";
+                        break;
+                    case 2:
+                        lblChoiceEmeraude.Visible = true;
+                        nbEmeraude++;
+                        lblChoiceEmeraude.Text = nbEmeraude + "\r\n";
+                        break;
+                    case 3:
+                        lblChoiceOnyx.Visible = true;
+                        nbOnyx++;
+                        lblChoiceOnyx.Text = nbOnyx + "\r\n";
+                        break;
+                    case 4:
+                        lblChoiceSaphir.Visible = true;
+                        nbSaphir++;
+                        lblChoiceSaphir.Text = nbSaphir + "\r\n";
+                        break;
+                    case 5:
+                        lblChoiceDiamant.Visible = true;
+                        nbDiamant++;
+                        lblChoiceDiamant.Text = nbDiamant + "\r\n";
+                        break;
+                    default: break;
+                }
+            }
+        }
 
         #endregion private methods
 
+        private void txtLevel14_TextChanged(object sender, EventArgs e)
+        {
+            lblChoiceCard.Text = txtLevel14.Text;
+        }
     }
 }

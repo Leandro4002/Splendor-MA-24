@@ -460,18 +460,32 @@ namespace Splendor
 
         #endregion Create and insert data
 
-        #region Get query
-
         /// <summary>
         /// add a new player to the DB
-        /// that's an easter egg
         /// </summary>
         
         public void AddPlayer(string playerName)
         {
-            string sql = "insert into player ( pseudo) values ('"+playerName+"')";
+            string sql = "INSERT INTO Player (pseudo) VALUES ('"+playerName+"')";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
+        }
+
+        #region Get query
+        public int getNumberOfPlayers()
+        {
+            string sql = "SELECT * FROM Player";
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            int val = 0;
+
+            while (reader.Read())
+            {
+                val++;
+            }
+
+            return val;
         }
 
         /// <summary>
@@ -481,7 +495,8 @@ namespace Splendor
         /// <returns>Player name</returns>
         public string GetPlayerName(int id)
         {
-            string sql = "SELECT pseudo FROM player WHERE id = " + id;
+
+            string sql = "SELECT * FROM Player WHERE id = " + id;
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             SQLiteDataReader reader = command.ExecuteReader();
             string name = "";
