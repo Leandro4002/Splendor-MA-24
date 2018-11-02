@@ -80,6 +80,7 @@
             this.flwCardLevel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.lblPlayerNumber = new System.Windows.Forms.Label();
             this.flwCardLevel1.SuspendLayout();
             this.flwCardLevel2.SuspendLayout();
             this.flwCardLevel3.SuspendLayout();
@@ -173,6 +174,7 @@
             this.txtLevel31.ReadOnly = true;
             this.txtLevel31.Size = new System.Drawing.Size(102, 98);
             this.txtLevel31.TabIndex = 6;
+            this.txtLevel31.Click += new System.EventHandler(this.txtLevel31_Click);
             // 
             // txtLevel32
             // 
@@ -184,6 +186,7 @@
             this.txtLevel32.ReadOnly = true;
             this.txtLevel32.Size = new System.Drawing.Size(102, 98);
             this.txtLevel32.TabIndex = 7;
+            this.txtLevel32.Click += new System.EventHandler(this.txtLevel32_Click);
             // 
             // txtLevel33
             // 
@@ -195,6 +198,7 @@
             this.txtLevel33.ReadOnly = true;
             this.txtLevel33.Size = new System.Drawing.Size(102, 98);
             this.txtLevel33.TabIndex = 8;
+            this.txtLevel33.Click += new System.EventHandler(this.txtLevel33_Click);
             // 
             // txtLevel34
             // 
@@ -206,6 +210,7 @@
             this.txtLevel34.ReadOnly = true;
             this.txtLevel34.Size = new System.Drawing.Size(102, 98);
             this.txtLevel34.TabIndex = 9;
+            this.txtLevel34.Click += new System.EventHandler(this.txtLevel34_Click);
             // 
             // txtLevel21
             // 
@@ -217,6 +222,7 @@
             this.txtLevel21.ReadOnly = true;
             this.txtLevel21.Size = new System.Drawing.Size(102, 98);
             this.txtLevel21.TabIndex = 10;
+            this.txtLevel21.Click += new System.EventHandler(this.txtLevel21_Click);
             // 
             // txtLevel22
             // 
@@ -228,6 +234,7 @@
             this.txtLevel22.ReadOnly = true;
             this.txtLevel22.Size = new System.Drawing.Size(102, 98);
             this.txtLevel22.TabIndex = 11;
+            this.txtLevel22.Click += new System.EventHandler(this.txtLevel22_Click);
             // 
             // txtLevel23
             // 
@@ -239,6 +246,7 @@
             this.txtLevel23.ReadOnly = true;
             this.txtLevel23.Size = new System.Drawing.Size(102, 98);
             this.txtLevel23.TabIndex = 12;
+            this.txtLevel23.Click += new System.EventHandler(this.txtLevel23_Click);
             // 
             // txtLevel24
             // 
@@ -250,6 +258,7 @@
             this.txtLevel24.ReadOnly = true;
             this.txtLevel24.Size = new System.Drawing.Size(102, 98);
             this.txtLevel24.TabIndex = 13;
+            this.txtLevel24.Click += new System.EventHandler(this.txtLevel24_Click);
             // 
             // txtLevel14
             // 
@@ -261,7 +270,7 @@
             this.txtLevel14.ReadOnly = true;
             this.txtLevel14.Size = new System.Drawing.Size(102, 96);
             this.txtLevel14.TabIndex = 17;
-            this.txtLevel14.TextChanged += new System.EventHandler(this.txtLevel14_TextChanged);
+            this.txtLevel14.Click += new System.EventHandler(this.txtLevel14_Click);
             // 
             // txtLevel13
             // 
@@ -273,6 +282,7 @@
             this.txtLevel13.ReadOnly = true;
             this.txtLevel13.Size = new System.Drawing.Size(102, 98);
             this.txtLevel13.TabIndex = 15;
+            this.txtLevel13.Click += new System.EventHandler(this.txtLevel13_Click);
             // 
             // txtLevel12
             // 
@@ -284,6 +294,7 @@
             this.txtLevel12.ReadOnly = true;
             this.txtLevel12.Size = new System.Drawing.Size(102, 98);
             this.txtLevel12.TabIndex = 16;
+            this.txtLevel12.Click += new System.EventHandler(this.txtLevel12_Click);
             // 
             // txtLevel11
             // 
@@ -295,6 +306,7 @@
             this.txtLevel11.ReadOnly = true;
             this.txtLevel11.Size = new System.Drawing.Size(102, 98);
             this.txtLevel11.TabIndex = 17;
+            this.txtLevel11.Click += new System.EventHandler(this.txtLevel11_Click);
             // 
             // cmdInsertPlayer
             // 
@@ -560,6 +572,7 @@
             this.txtLevel44.ReadOnly = true;
             this.txtLevel44.Size = new System.Drawing.Size(102, 98);
             this.txtLevel44.TabIndex = 45;
+            this.txtLevel44.Click += new System.EventHandler(this.txtLevel44_Click);
             // 
             // txtLevel43
             // 
@@ -571,6 +584,7 @@
             this.txtLevel43.ReadOnly = true;
             this.txtLevel43.Size = new System.Drawing.Size(102, 98);
             this.txtLevel43.TabIndex = 44;
+            this.txtLevel43.Click += new System.EventHandler(this.txtLevel43_Click);
             // 
             // txtLevel42
             // 
@@ -582,6 +596,7 @@
             this.txtLevel42.ReadOnly = true;
             this.txtLevel42.Size = new System.Drawing.Size(102, 98);
             this.txtLevel42.TabIndex = 43;
+            this.txtLevel42.Click += new System.EventHandler(this.txtLevel42_Click);
             // 
             // txtLevel41
             // 
@@ -593,6 +608,7 @@
             this.txtLevel41.ReadOnly = true;
             this.txtLevel41.Size = new System.Drawing.Size(102, 98);
             this.txtLevel41.TabIndex = 42;
+            this.txtLevel41.Click += new System.EventHandler(this.txtLevel41_Click);
             // 
             // lblNbPtPrestige
             // 
@@ -666,11 +682,21 @@
             this.checkBox1.Text = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // lblPlayerNumber
+            // 
+            this.lblPlayerNumber.AutoSize = true;
+            this.lblPlayerNumber.Location = new System.Drawing.Point(478, 124);
+            this.lblPlayerNumber.Name = "lblPlayerNumber";
+            this.lblPlayerNumber.Size = new System.Drawing.Size(111, 13);
+            this.lblPlayerNumber.TabIndex = 51;
+            this.lblPlayerNumber.Text = "Nombre de joueurs : 0";
+            // 
             // frmSplendor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(606, 763);
+            this.Controls.Add(this.lblPlayerNumber);
             this.Controls.Add(this.flwCardLevel4);
             this.Controls.Add(this.flwCardLevel3);
             this.Controls.Add(this.flwCardLevel2);
@@ -776,6 +802,7 @@
         private System.Windows.Forms.FlowLayoutPanel flwCardLevel4;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label lblPlayerNumber;
     }
 }
 

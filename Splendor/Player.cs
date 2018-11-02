@@ -149,5 +149,12 @@ namespace Splendor
             }
         }
         #endregion private methods
+
+        #region public methods
+        public string GetPrestigeScore()
+        {
+            return "WIP";
+        }
+        #endregion public methods
     }
 }
