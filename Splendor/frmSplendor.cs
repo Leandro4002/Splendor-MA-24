@@ -23,6 +23,7 @@ namespace Splendor
     /// </summary>
     public partial class frmSplendor : Form
     {
+
         //used to store the number of coins selected for the current round of game
         private int nbRubis;
         private int nbOnyx;
@@ -33,7 +34,7 @@ namespace Splendor
         //Used to set new players into the game
         private string newPlayer;
 
-        private Stack<Card>[] cardLists = new Stack<Card>[4];
+        private List<Card>[] cardLists = new List<Card>[4];
 
         private List<Player> players = new List<Player>();
 
@@ -88,68 +89,28 @@ namespace Splendor
             #region First card display
 
             //Level 1
-            buffer[0] = cardLists[0].Pop();
-            buffer[1] = cardLists[0].Pop();
-            buffer[2] = cardLists[0].Pop();
-            buffer[3] = cardLists[0].Pop();
-
-            txtLevel14.Text = buffer[0].ToString();
-            txtLevel13.Text = buffer[1].ToString();
-            txtLevel12.Text = buffer[2].ToString();
-            txtLevel11.Text = buffer[3].ToString();
-
-            cardLists[0].Push(buffer[3]);
-            cardLists[0].Push(buffer[2]);
-            cardLists[0].Push(buffer[1]);
-            cardLists[0].Push(buffer[0]);
+            txtLevel14.Text = cardLists[0][0].ToString();
+            txtLevel13.Text = cardLists[0][1].ToString();
+            txtLevel12.Text = cardLists[0][2].ToString();
+            txtLevel11.Text = cardLists[0][3].ToString();
 
             //Level 2
-            buffer[0] = cardLists[1].Pop();
-            buffer[1] = cardLists[1].Pop();
-            buffer[2] = cardLists[1].Pop();
-            buffer[3] = cardLists[1].Pop();
-
-            txtLevel24.Text = buffer[0].ToString();
-            txtLevel23.Text = buffer[1].ToString();
-            txtLevel22.Text = buffer[2].ToString();
-            txtLevel21.Text = buffer[3].ToString();
-
-            cardLists[1].Push(buffer[3]);
-            cardLists[1].Push(buffer[2]);
-            cardLists[1].Push(buffer[1]);
-            cardLists[1].Push(buffer[0]);
+            txtLevel24.Text = cardLists[1][0].ToString();
+            txtLevel23.Text = cardLists[1][1].ToString();
+            txtLevel22.Text = cardLists[1][2].ToString();
+            txtLevel21.Text = cardLists[1][3].ToString();
 
             //Level 3
-            buffer[0] = cardLists[2].Pop();
-            buffer[1] = cardLists[2].Pop();
-            buffer[2] = cardLists[2].Pop();
-            buffer[3] = cardLists[2].Pop();
-
-            txtLevel34.Text = buffer[0].ToString();
-            txtLevel33.Text = buffer[1].ToString();
-            txtLevel32.Text = buffer[2].ToString();
-            txtLevel31.Text = buffer[3].ToString();
-
-            cardLists[2].Push(buffer[3]);
-            cardLists[2].Push(buffer[2]);
-            cardLists[2].Push(buffer[1]);
-            cardLists[2].Push(buffer[0]);
+            txtLevel34.Text = cardLists[2][0].ToString();
+            txtLevel33.Text = cardLists[2][1].ToString();
+            txtLevel32.Text = cardLists[2][2].ToString();
+            txtLevel31.Text = cardLists[2][3].ToString();
 
             //Level 4
-            buffer[0] = cardLists[3].Pop();
-            buffer[1] = cardLists[3].Pop();
-            buffer[2] = cardLists[3].Pop();
-            buffer[3] = cardLists[3].Pop();
-
-            txtLevel44.Text = buffer[0].ToString();
-            txtLevel43.Text = buffer[1].ToString();
-            txtLevel42.Text = buffer[2].ToString();
-            txtLevel41.Text = buffer[3].ToString();
-
-            cardLists[3].Push(buffer[3]);
-            cardLists[3].Push(buffer[2]);
-            cardLists[3].Push(buffer[1]);
-            cardLists[3].Push(buffer[0]);
+            txtLevel44.Text = cardLists[3][0].ToString();
+            txtLevel43.Text = cardLists[3][1].ToString();
+            txtLevel42.Text = cardLists[3][2].ToString();
+            txtLevel41.Text = cardLists[3][3].ToString();
 
             #endregion First card display
 
