@@ -512,10 +512,10 @@ namespace Splendor
         /// Get the list of cards according to the level
         /// </summary>
         /// <param name="level">card's level</param>
-        /// <returns>Cards stack</returns>
-        public Stack<Card> GetListCardAccordingToLevel(int level)
+        /// <returns>Cards list</returns>
+        public List<Card> GetListCardAccordingToLevel(int level)
         {
-            Stack<Card> listCard = new Stack<Card>();
+            List<Card> listCard = new List<Card>();
 
             string sql = "SELECT * FROM Card WHERE level = " + level;
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
@@ -539,7 +539,7 @@ namespace Splendor
                     card.Price[int.Parse(reader2["fkRessource"].ToString())] = int.Parse(reader2["nbRessource"].ToString());
                 }
 
-                listCard.Push(card);
+                listCard.Add(card);
             }
 
             return listCard;
@@ -548,10 +548,10 @@ namespace Splendor
         /// <summary>
         /// Get the list of all the cards
         /// </summary>
-        /// <returns>Cards stack</returns>
-        public Stack<Card> GetListCard()
+        /// <returns>Cards list</returns>
+        public List<Card> GetListCard()
         {
-            Stack<Card> listCard = new Stack<Card>();
+            List<Card> listCard = new List<Card>();
 
             string sql = "SELECT * FROM Card";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
@@ -572,7 +572,7 @@ namespace Splendor
                     card.Price[int.Parse(reader["fkRessource"].ToString())] = int.Parse(reader2["nbRessource"].ToString());
                 }
 
-                listCard.Push(card);
+                listCard.Add(card);
             }
 
             return listCard;

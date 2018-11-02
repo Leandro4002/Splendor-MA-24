@@ -9,15 +9,23 @@ namespace Splendor
     class Tools
     {
         /// <summary>
-        /// Shuffle a stack
+        /// https://www.csharp-console-examples.com/loop/c-shuffle-list/
+        /// Shuffle a list
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="stack"></param>
-        /// <returns>Shuffled stack</returns>
-        public static Stack<T> Shuffle<T>(Stack<T> stack)
+        /// <param name="list"></param>
+        /// <returns>Shuffled list</returns>
+        public static List<T> Shuffle<T>(List<T> list)
         {
             Random rnd = new Random();
-            return new Stack<T>(stack.OrderBy(x => rnd.Next()));
+            for (int i = 0; i < list.Count; i++)
+            {
+                int k = rnd.Next(0, i);
+                T value = list[k];
+                list[k] = list[i];
+                list[i] = value;
+            }
+            return list;
         }
     }
 }
