@@ -318,10 +318,6 @@ namespace Splendor
         /// <param name="e"></param>
         private void cmdInsertPlayer_Click(object sender, EventArgs e)
         {
-            bool playerRegistered = false;
-
-            do
-            {
                 newPlayer = Interaction.InputBox("Enter the name ", "Add player", "", 500, 500);
                 //call the object "conn" to send player name's string to DB
                 conn.AddPlayer(newPlayer);
@@ -329,14 +325,11 @@ namespace Splendor
                 {
                     // Displays a MessageBox to inform that the player is done.
                     MessageBox.Show("The player " + newPlayer + " has been added");
-                    playerRegistered = true;
                 }
                 else
                 {
                     MessageBox.Show("It seem that there is no name in the field, try again", "Empty name field", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    playerRegistered = false;
                 }
-            } while (playerRegistered);
 
         }
 
