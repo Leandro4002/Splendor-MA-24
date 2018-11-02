@@ -27,5 +27,22 @@ namespace Splendor
             }
             return list;
         }
+
+        public bool CheckEnoughtToBuy(int[] money, int[] price)
+        {
+            //Check if price format is incorrect
+            if (price.Length != 6)
+            {
+                throw new ArrayTypeMismatchException("The price must be int[6]");
+            }
+
+            //Check if money format is incorrect
+            if (money.Length != 6)
+            {
+                throw new ArrayTypeMismatchException("The money must be int[6]");
+            }
+
+            return false;
+        }
     }
 }

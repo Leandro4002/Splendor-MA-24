@@ -39,12 +39,11 @@ namespace Splendor
 
         private List<Player> players = new List<Player>();
 
+        private Card selectedCard;
+
         private System.Drawing.Color selectedCardColor = System.Drawing.Color.FromArgb(255, 102, 178, 255);
 
         private System.Drawing.Color unSelectedCardColor = System.Drawing.Color.FromArgb(255, 255, 255);
-
-        //Used to store cards temporary
-        private Card[] buffer = new Card[4];
 
         //Id of the player that is playing
         private int currentPlayerId;
@@ -54,7 +53,7 @@ namespace Splendor
         //Boolean to enable us to know if the user can click on a coin or a card
         private bool enableClicLabel;
 
-        //Store the id of the choiced card
+        //Store the emplacement id of the choiced card
         private string choiceCard;
 
         //Connection to the database
@@ -380,14 +379,17 @@ namespace Splendor
         {
             if (enableClicLabel)
             {
-                //cardLists[level - 1][val - 1];
+                if (cardLists[level - 1][val - 1].Price[])
+                //Set the selected card
+                selectedCard = cardLists[level - 1][val - 1];
 
-                //Refresh the selected card
-                choiceCard = level.ToString() + val.ToString();
+                //Refresh the selected card display
+                choiceCard = (level - 1).ToString() + (val - 1).ToString();
+                refreshChoiceDisplay(6);
 
+                //Clear the highlight of all cards (the selected card will be highlighted just after)
                 SelectedCardHiglightClear();
 
-                refreshChoiceDisplay(0);
                 return true;
             }
             return false;
@@ -431,7 +433,7 @@ namespace Splendor
                     lblChoiceDiamant.Text = nbDiamant + "\r\n";
                     break;
                 case 6://Refresh Card
-                    lblChoiceDiamant.Visible = true;
+                    lblChoiceCard.Visible = true;
                     lblChoiceCard.Text = choiceCard;
                     break;
                 default: break;
@@ -531,130 +533,145 @@ namespace Splendor
 
         private void txtLevel44_Click(object sender, EventArgs e)
         {
-            selectCard(4, 4);
-
-            //Change txt back color if the selection is active
-            txtLevel44.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            if (selectCard(4, 4))
+            {
+                //Highlight the card if the selection is possible
+                txtLevel44.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            }
         }
 
         private void txtLevel43_Click(object sender, EventArgs e)
         {
-            selectCard(4, 3);
-
-            //Change txt back color if the selection is active
-            txtLevel43.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            if (selectCard(4, 3)) {
+                //Highlight the card if the selection is possible
+                txtLevel43.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;$
+            }
         }
 
         private void txtLevel42_Click(object sender, EventArgs e)
         {
-            selectCard(4, 2);
-
-            //Change txt back color if the selection is active
-            txtLevel42.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            if (selectCard(4, 2))
+            {
+                //Highlight the card if the selection is possible
+                txtLevel42.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            }
         }
 
         private void txtLevel41_Click(object sender, EventArgs e)
         {
-            selectCard(4, 1);
-
-            //Change txt back color if the selection is active
-            txtLevel41.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            if (selectCard(4, 1))
+            {
+                //Highlight the card if the selection is possible
+                txtLevel41.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            }
         }
 
         private void txtLevel34_Click(object sender, EventArgs e)
         {
-            selectCard(3, 4);
-
-            //Change txt back color if the selection is active
-            txtLevel34.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            if (selectCard(3, 4))
+            {
+                //Highlight the card if the selection is possible
+                txtLevel34.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            }
         }
 
         private void txtLevel33_Click(object sender, EventArgs e)
         {
-            selectCard(3, 3);
-
-            //Change txt back color if the selection is active
-            txtLevel33.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            if (selectCard(3, 3))
+            {
+                //Highlight the card if the selection is possible
+                txtLevel33.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            }
         }
 
         private void txtLevel32_Click(object sender, EventArgs e)
         {
-            selectCard(3, 2);
-
-            //Change txt back color if the selection is active
-            txtLevel32.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            if (selectCard(3, 2))
+            {
+                //Highlight the card if the selection is possible
+                txtLevel32.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            }
         }
 
         private void txtLevel31_Click(object sender, EventArgs e)
         {
-            selectCard(3, 1);
-
-            //Change txt back color if the selection is active
-            txtLevel31.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            if (selectCard(3, 1))
+            {
+                //Highlight the card if the selection is possible
+                txtLevel31.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            }
         }
 
         private void txtLevel24_Click(object sender, EventArgs e)
         {
-            selectCard(2, 4);
-
-            //Change txt back color if the selection is active
-            txtLevel24.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            if (selectCard(2, 4))
+            {
+                //Highlight the card if the selection is possible
+                txtLevel24.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            }
         }
 
         private void txtLevel23_Click(object sender, EventArgs e)
         {
-            selectCard(2, 3);
-
-            //Change txt back color if the selection is active
-            txtLevel23.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            if (selectCard(2, 3))
+            {
+                //Highlight the card if the selection is possible
+                txtLevel23.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            }
         }
 
         private void txtLevel22_Click(object sender, EventArgs e)
         {
-            selectCard(2, 2);
-
-            //Change txt back color if the selection is active
-            txtLevel22.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            if (selectCard(2, 2))
+            {
+                //Highlight the card if the selection is possible
+                txtLevel22.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            }
         }
 
         private void txtLevel21_Click(object sender, EventArgs e)
         {
-            selectCard(2, 1);
-
-            //Change txt back color if the selection is active
-            txtLevel21.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            if (selectCard(2, 1))
+            {
+                //Highlight the card if the selection is possible
+                txtLevel21.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            }
         }
 
         private void txtLevel14_Click(object sender, EventArgs e)
         {
-            selectCard(1, 4);
-
-            //Change txt back color if the selection is active
-            txtLevel14.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            if (selectCard(1, 4))
+            {
+                //Highlight the card if the selection is possible
+                txtLevel14.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            }
         }
 
         private void txtLevel13_Click(object sender, EventArgs e)
         {
-            selectCard(1, 3);
-
-            //Change txt back color if the selection is active
-            txtLevel13.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            if (selectCard(1, 3))
+            {
+                //Highlight the card if the selection is possible
+                txtLevel13.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            }
         }
 
         private void txtLevel12_Click(object sender, EventArgs e)
         {
-            selectCard(1, 2);
-
-            //Change txt back color if the selection is active
-            txtLevel12.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            if (selectCard(1, 2))
+            {
+                //Highlight the card if the selection is possible
+                txtLevel12.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            }
         }
 
         private void txtLevel11_Click(object sender, EventArgs e)
         {
-            selectCard(1, 1);
-
-            //Change txt back color if the selection is active
-            txtLevel11.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            if (selectCard(1, 1))
+            {
+                //Highlight the card if the selection is possible
+                txtLevel11.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+            }
         }
         #endregion Click on cards
     }
