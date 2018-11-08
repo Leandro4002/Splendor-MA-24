@@ -103,11 +103,10 @@ namespace Splendor
             {
                 res += " " + Enum.GetName(typeof(Ressources), Ress);
             } 
-
             
             res += "\t";
             res += "\r\n\r\n";
-            int boucle = 0;
+            int loop = 0;
             
             foreach (int i in price)
             {
@@ -118,12 +117,12 @@ namespace Splendor
                 if (i != 0)
                 {
                     ressource = "    ";
-                    ressource += Enum.GetName(typeof(Ressources), boucle) + " ";
+                    ressource += Enum.GetName(typeof(Ressources), loop) + " ";
                     ressource += i + "\r\n";
                 }
                 
                 res += ressource;
-                boucle++;
+                loop++;
 
             }
             return res;

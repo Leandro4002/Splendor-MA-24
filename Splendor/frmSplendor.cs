@@ -30,10 +30,14 @@ namespace Splendor
         private int nbDiamant;
         private int nbSaphir;
 
+        private int[] gemsInBank = { 5, 7, 7, 7, 7, 7 };
+
         //Used to set new players into the game
         private string newPlayer;
 
         private int playerNumber = 0;
+
+        private int totalGems => nbRubis + nbEmeraude + nbOnyx + nbSaphir + nbDiamant;
 
         private List<Card>[] cardLists = new List<Card>[4];
 
@@ -95,28 +99,28 @@ namespace Splendor
             #region First card display
 
             //Level 1
-            txtLevel14.Text = cardLists[0][0].ToString();
-            txtLevel13.Text = cardLists[0][1].ToString();
-            txtLevel12.Text = cardLists[0][2].ToString();
-            txtLevel11.Text = cardLists[0][3].ToString();
+            txtLevel14.Text = cardLists[0][3].ToString();
+            txtLevel13.Text = cardLists[0][2].ToString();
+            txtLevel12.Text = cardLists[0][1].ToString();
+            txtLevel11.Text = cardLists[0][0].ToString();
 
             //Level 2
-            txtLevel24.Text = cardLists[1][0].ToString();
-            txtLevel23.Text = cardLists[1][1].ToString();
-            txtLevel22.Text = cardLists[1][2].ToString();
-            txtLevel21.Text = cardLists[1][3].ToString();
+            txtLevel24.Text = cardLists[1][3].ToString();
+            txtLevel23.Text = cardLists[1][2].ToString();
+            txtLevel22.Text = cardLists[1][1].ToString();
+            txtLevel21.Text = cardLists[1][0].ToString();
 
             //Level 3
-            txtLevel34.Text = cardLists[2][0].ToString();
-            txtLevel33.Text = cardLists[2][1].ToString();
-            txtLevel32.Text = cardLists[2][2].ToString();
-            txtLevel31.Text = cardLists[2][3].ToString();
+            txtLevel34.Text = cardLists[2][3].ToString();
+            txtLevel33.Text = cardLists[2][2].ToString();
+            txtLevel32.Text = cardLists[2][1].ToString();
+            txtLevel31.Text = cardLists[2][0].ToString();
 
             //Level 4
-            txtLevel44.Text = cardLists[3][0].ToString();
+            txtLevel44.Text = cardLists[3][3].ToString();
             txtLevel43.Text = cardLists[3][1].ToString();
-            txtLevel42.Text = cardLists[3][2].ToString();
-            txtLevel41.Text = cardLists[3][3].ToString();
+            txtLevel42.Text = cardLists[3][1].ToString();
+            txtLevel41.Text = cardLists[3][0].ToString();
 
             #endregion First card display
 
@@ -133,30 +137,11 @@ namespace Splendor
             cmdValidateChoice.Visible = false;
             cmdNextPlayer.Visible = false;
 
-            //We wire the click on all cards to the same event
-            //TO DO for all cards
-            txtLevel11.Click += ClickOnCard;
-            txtLevel12.Click += ClickOnCard;
-            txtLevel13.Click += ClickOnCard;
-            txtLevel21.Click += ClickOnCard;
-            txtLevel22.Click += ClickOnCard;
-            txtLevel23.Click += ClickOnCard;
-            txtLevel24.Click += ClickOnCard;
-            txtLevel31.Click += ClickOnCard;
-            txtLevel32.Click += ClickOnCard;
-            txtLevel33.Click += ClickOnCard;
-            txtLevel34.Click += ClickOnCard;
-            txtLevel41.Click += ClickOnCard;
-            txtLevel42.Click += ClickOnCard;
-            txtLevel43.Click += ClickOnCard;
-            txtLevel44.Click += ClickOnCard;
-        }
-
-        private void ClickOnCard(object sender, EventArgs e)
-        {
-            //We get the value on the card and we split it to get all the values we need (number of prestige points and ressource)
-            //Enable the button "Validate"
-            //TO DO
+            //We wire the click on noble cards to the same event
+            txtLevel41.Click += ClickOnNobleCard;
+            txtLevel42.Click += ClickOnNobleCard;
+            txtLevel43.Click += ClickOnNobleCard;
+            txtLevel44.Click += ClickOnNobleCard;
         }
 
         /// <summary>
@@ -205,12 +190,11 @@ namespace Splendor
             Player player = new Player();
             player.Name = name;
             player.Id = id;
-            player.Ressources = new int[] { 0, 0, 0, 0, 0 };
-            player.Coins = new int[] { 0, 0, 0, 0, 0 };
+            player.Ressources = new int[] { 0, 0, 0, 0, 0, 0 };
+            player.Coins = new int[] { 0, 0, 0, 0, 0, 0 };
 
             players.Add(player);
         }
-
 
         /// <summary>
         /// Click on the validate button to approve the selection of coins or card
@@ -220,40 +204,39 @@ namespace Splendor
         private void cmdValidateChoice_Click(object sender, EventArgs e)
         {
 
-            int numberOfDifferentGems = getNumberOfDifferentGems();
-            int totalGems = nbRubis + nbEmeraude + nbOnyx + nbSaphir + nbDiamant;
-
-            //If the selection is correct
-            if (!(totalGems == 2 && numberOfDifferentGems == 1) && !(totalGems == 3 && numberOfDifferentGems == 3))
+            //If the selection is incorrect
+            if (!(totalGems == 2 && getNumberOfDifferentGems() == 1) && !(totalGems == 3 && getNumberOfDifferentGems() == 3))
             {
-                MessageBox.Show("3 options :\n-Choisir 3 gemmes de type différents\n-Choisir 2 gemmes du même type\n-Choisir une carte", "Sélection incorrecte");
-                nbRubis = 0;
-                nbEmeraude = 0;
-                nbOnyx = 0;
-                nbSaphir = 0;
-                nbDiamant = 0;
-                refreshChoiceDisplay();
+                selectionError();
                 return;
             }
 
 
-            //Sélection correcte
+            //Correct selection
             cmdValidateChoice.Visible = false;
             cmdNextPlayer.Visible = true;
             enableClicLabel = false;
 
-            players[currentPlayerId - 1].Coins[0] += nbRubis;
-            players[currentPlayerId - 1].Coins[1] += nbEmeraude;
-            players[currentPlayerId - 1].Coins[2] += nbOnyx;
-            players[currentPlayerId - 1].Coins[3] += nbSaphir;
-            players[currentPlayerId - 1].Coins[4] += nbDiamant;
+            //Add gems to player
+            players[currentPlayerId - 1].Coins[1] += nbRubis;
+            players[currentPlayerId - 1].Coins[2] += nbEmeraude;
+            players[currentPlayerId - 1].Coins[3] += nbOnyx;
+            players[currentPlayerId - 1].Coins[4] += nbSaphir;
+            players[currentPlayerId - 1].Coins[5] += nbDiamant;
+
+            //Delete gems from bank
+            gemsInBank[1] -= nbRubis;
+            gemsInBank[2] -= nbEmeraude;
+            gemsInBank[3] -= nbOnyx;
+            gemsInBank[4] -= nbSaphir;
+            gemsInBank[5] -= nbDiamant;
+
+            refreshBankDisplay();
 
             refreshPlayerDisplay(currentPlayerId - 1);
 
             //TO DO Check if card or coins are selected, impossible to do both at the same time
         }
-
-        /// <summary>
 
         /// click on the insert button to insert player in the game
         /// Check for the field completion
@@ -310,6 +293,18 @@ namespace Splendor
             refreshPlayerDisplay(currentPlayerId - 1);
         }
 
+        private void selectionError()
+        {
+            MessageBox.Show("Pour suprimmer une gemme sélectionnée cliquez dessus dans la ligne du bas\nPour suprimmer une carte sélectionné, recliquer dessus\n\n3 options :\n-Choisir 3 gemmes de type différents\n-Choisir 2 gemmes du même type\n-Choisir une carte", "Sélection incorrecte", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            nbRubis = 0;
+            nbEmeraude = 0;
+            nbOnyx = 0;
+            nbSaphir = 0;
+            nbDiamant = 0;
+            refreshChoiceDisplay();
+            refreshBankDisplay();
+        }
+
         private int getNumberOfDifferentGems()
         {
             int val = 0;
@@ -355,13 +350,33 @@ namespace Splendor
         {
             if (enableClicLabel)
             {
+                if (getNumberOfDifferentGems() > 2 || totalGems > 2){
+                    selectionError();
+                    return;
+                }
+
                 switch (id)
                 {
-                    case 1: nbRubis++; break;
-                    case 2: nbEmeraude++; break;
-                    case 3: nbOnyx++; break;
-                    case 4: nbSaphir++; break;
-                    case 5: nbDiamant++; break;
+                    case 1:
+                        nbRubis++;
+                        lblRubisCoin.Text = (gemsInBank[1] - nbRubis).ToString();
+                        break;
+                    case 2:
+                        nbEmeraude++;
+                        lblEmeraudeCoin.Text = (gemsInBank[2] - nbEmeraude).ToString();
+                        break;
+                    case 3:
+                        nbOnyx++;
+                        lblOnyxCoin.Text = (gemsInBank[3] - nbOnyx).ToString();
+                        break;
+                    case 4:
+                        nbSaphir++;
+                        lblSaphirCoin.Text = (gemsInBank[4] - nbSaphir).ToString();
+                        break;
+                    case 5:
+                        nbDiamant++;
+                        lblDiamantCoin.Text = (gemsInBank[5] - nbDiamant).ToString();
+                        break;
                     default: return;
                 }
 
@@ -379,23 +394,48 @@ namespace Splendor
         {
             if (enableClicLabel)
             {
-                if (cardLists[level - 1][val - 1].Price[])
-                //Set the selected card
-                selectedCard = cardLists[level - 1][val - 1];
+                if (Tools.CheckEnoughtToBuy(players[currentPlayerId - 1].Coins, cardLists[level - 1][val - 1].Price))
+                {
+                    //Set the selected card
+                    selectedCard = cardLists[level - 1][val - 1];
 
-                //Refresh the selected card display
-                choiceCard = (level - 1).ToString() + (val - 1).ToString();
-                refreshChoiceDisplay(6);
+                    //Refresh the selected card display
+                    choiceCard = (level - 1).ToString() + (val - 1).ToString();
+                    refreshChoiceDisplay(6);
 
-                //Clear the highlight of all cards (the selected card will be highlighted just after)
-                SelectedCardHiglightClear();
+                    //Clear the highlight of all cards (the selected card will be highlighted just after)
+                    SelectedCardHiglightClear();
 
-                return true;
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Vous n'avez pas assez de gemmes pour acheter cette carte");
+                    return false;
+                }
             }
             return false;
         }
 
         #region refreshDisplay
+
+        /// <summary>
+        /// Refresh the number of gems of the bank
+        /// </summary>
+        private void refreshBankDisplay()
+        {
+            lblGoldCoin.Text = gemsInBank[0].ToString();
+            lblRubisCoin.Text = gemsInBank[1].ToString();
+            lblEmeraudeCoin.Text = gemsInBank[2].ToString();
+            lblOnyxCoin.Text = gemsInBank[3].ToString();
+            lblSaphirCoin.Text = gemsInBank[4].ToString();
+            lblDiamantCoin.Text = gemsInBank[5].ToString();
+        }
+
+        /// <summary>
+        /// Refresh the player's choice
+        /// </summary>
+        /// <param name="id"></param>
         private void refreshChoiceDisplay(int id = 0)
         {
             switch (id)
@@ -440,13 +480,17 @@ namespace Splendor
             }
         }
 
+        /// <summary>
+        /// Refresh the player's ressources
+        /// </summary>
+        /// <param name="playerId"></param>
         private void refreshPlayerDisplay(int playerId)
         {
-            lblPlayerRubisCoin.Text = players[playerId].Coins[0].ToString();
-            lblPlayerEmeraudeCoin.Text = players[playerId].Coins[1].ToString();
-            lblPlayerOnyxCoin.Text = players[playerId].Coins[2].ToString();
-            lblPlayerSaphirCoin.Text = players[playerId].Coins[3].ToString();
-            lblPlayerDiamantCoin.Text = players[playerId].Coins[4].ToString();
+            lblPlayerRubisCoin.Text = players[playerId].Coins[1].ToString();
+            lblPlayerEmeraudeCoin.Text = players[playerId].Coins[2].ToString();
+            lblPlayerOnyxCoin.Text = players[playerId].Coins[3].ToString();
+            lblPlayerSaphirCoin.Text = players[playerId].Coins[4].ToString();
+            lblPlayerDiamantCoin.Text = players[playerId].Coins[5].ToString();
             lblNbPtPrestige.Text = players[playerId].GetPrestigeScore();
         }
         #endregion refreshDisplay
@@ -519,11 +563,11 @@ namespace Splendor
         }
 
         /// <summary>
-        /// click on the white coin (diamand) to tell the player has selected this coin
+        /// click on the white coin (diamant) to tell the player has selected this coin
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void lblDiamandCoin_Click(object sender, EventArgs e)
+        private void lblDiamantCoin_Click(object sender, EventArgs e)
         {
             gemClick((int)Ressources.Diamant);
         }
@@ -531,38 +575,13 @@ namespace Splendor
 
         #region Click on cards
 
-        private void txtLevel44_Click(object sender, EventArgs e)
+        //Event when a noble card is selected
+        private void ClickOnNobleCard(object sender, EventArgs e)
         {
-            if (selectCard(4, 4))
+            if (enableClicLabel)
             {
-                //Highlight the card if the selection is possible
-                txtLevel44.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
-            }
-        }
-
-        private void txtLevel43_Click(object sender, EventArgs e)
-        {
-            if (selectCard(4, 3)) {
-                //Highlight the card if the selection is possible
-                txtLevel43.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;$
-            }
-        }
-
-        private void txtLevel42_Click(object sender, EventArgs e)
-        {
-            if (selectCard(4, 2))
-            {
-                //Highlight the card if the selection is possible
-                txtLevel42.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
-            }
-        }
-
-        private void txtLevel41_Click(object sender, EventArgs e)
-        {
-            if (selectCard(4, 1))
-            {
-                //Highlight the card if the selection is possible
-                txtLevel41.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
+                //Show a message that to tell that a noble card is not selectable
+                MessageBox.Show("Vous ne pouvez pas sélectionner des cartes nobles\nElles viendront a vous quand vous aurez les ressources nécessaires");
             }
         }
 

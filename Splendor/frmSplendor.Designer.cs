@@ -59,7 +59,7 @@
             this.lblPlayerRubisCoin = new System.Windows.Forms.Label();
             this.lblPlayerGoldCoin = new System.Windows.Forms.Label();
             this.txtPlayerBookedCard = new System.Windows.Forms.TextBox();
-            this.txtPlayerDiamandCard = new System.Windows.Forms.TextBox();
+            this.txtPlayerDiamantCard = new System.Windows.Forms.TextBox();
             this.lblChoiceRubis = new System.Windows.Forms.Label();
             this.lblChoiceSaphir = new System.Windows.Forms.Label();
             this.lblChoiceOnyx = new System.Windows.Forms.Label();
@@ -117,7 +117,7 @@
             this.lblSaphirCoin.AutoSize = true;
             this.lblSaphirCoin.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblSaphirCoin.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblSaphirCoin.Location = new System.Drawing.Point(100, 15);
+            this.lblSaphirCoin.Location = new System.Drawing.Point(265, 15);
             this.lblSaphirCoin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSaphirCoin.Name = "lblSaphirCoin";
             this.lblSaphirCoin.Size = new System.Drawing.Size(58, 13);
@@ -143,7 +143,7 @@
             this.lblEmeraudeCoin.AutoSize = true;
             this.lblEmeraudeCoin.BackColor = System.Drawing.Color.Green;
             this.lblEmeraudeCoin.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblEmeraudeCoin.Location = new System.Drawing.Point(265, 15);
+            this.lblEmeraudeCoin.Location = new System.Drawing.Point(100, 15);
             this.lblEmeraudeCoin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEmeraudeCoin.Name = "lblEmeraudeCoin";
             this.lblEmeraudeCoin.Size = new System.Drawing.Size(76, 13);
@@ -162,7 +162,7 @@
             this.lblDiamantCoin.Size = new System.Drawing.Size(67, 13);
             this.lblDiamantCoin.TabIndex = 5;
             this.lblDiamantCoin.Text = "DiamantCoin";
-            this.lblDiamantCoin.Click += new System.EventHandler(this.lblDiamandCoin_Click);
+            this.lblDiamantCoin.Click += new System.EventHandler(this.lblDiamantCoin_Click);
             // 
             // txtLevel31
             // 
@@ -386,7 +386,7 @@
             this.lblPlayerEmeraudeCoin.AutoSize = true;
             this.lblPlayerEmeraudeCoin.BackColor = System.Drawing.Color.Green;
             this.lblPlayerEmeraudeCoin.ForeColor = System.Drawing.Color.White;
-            this.lblPlayerEmeraudeCoin.Location = new System.Drawing.Point(284, 593);
+            this.lblPlayerEmeraudeCoin.Location = new System.Drawing.Point(108, 593);
             this.lblPlayerEmeraudeCoin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlayerEmeraudeCoin.Name = "lblPlayerEmeraudeCoin";
             this.lblPlayerEmeraudeCoin.Size = new System.Drawing.Size(76, 13);
@@ -410,7 +410,7 @@
             this.lblPlayerSaphirCoin.AutoSize = true;
             this.lblPlayerSaphirCoin.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblPlayerSaphirCoin.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblPlayerSaphirCoin.Location = new System.Drawing.Point(108, 593);
+            this.lblPlayerSaphirCoin.Location = new System.Drawing.Point(284, 593);
             this.lblPlayerSaphirCoin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlayerSaphirCoin.Name = "lblPlayerSaphirCoin";
             this.lblPlayerSaphirCoin.Size = new System.Drawing.Size(58, 13);
@@ -450,15 +450,15 @@
             this.txtPlayerBookedCard.Size = new System.Drawing.Size(81, 98);
             this.txtPlayerBookedCard.TabIndex = 31;
             // 
-            // txtPlayerDiamandCard
+            // txtPlayerDiamantCard
             // 
-            this.txtPlayerDiamandCard.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.txtPlayerDiamandCard.Location = new System.Drawing.Point(502, 624);
-            this.txtPlayerDiamandCard.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPlayerDiamandCard.Multiline = true;
-            this.txtPlayerDiamandCard.Name = "txtPlayerDiamandCard";
-            this.txtPlayerDiamandCard.Size = new System.Drawing.Size(81, 98);
-            this.txtPlayerDiamandCard.TabIndex = 32;
+            this.txtPlayerDiamantCard.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.txtPlayerDiamantCard.Location = new System.Drawing.Point(502, 624);
+            this.txtPlayerDiamantCard.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPlayerDiamantCard.Multiline = true;
+            this.txtPlayerDiamantCard.Name = "txtPlayerDiamantCard";
+            this.txtPlayerDiamantCard.Size = new System.Drawing.Size(81, 98);
+            this.txtPlayerDiamantCard.TabIndex = 32;
             // 
             // lblChoiceRubis
             // 
@@ -477,7 +477,7 @@
             this.lblChoiceSaphir.AutoSize = true;
             this.lblChoiceSaphir.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblChoiceSaphir.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblChoiceSaphir.Location = new System.Drawing.Point(108, 524);
+            this.lblChoiceSaphir.Location = new System.Drawing.Point(284, 524);
             this.lblChoiceSaphir.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblChoiceSaphir.Name = "lblChoiceSaphir";
             this.lblChoiceSaphir.Size = new System.Drawing.Size(63, 13);
@@ -501,7 +501,7 @@
             this.lblChoiceEmeraude.AutoSize = true;
             this.lblChoiceEmeraude.BackColor = System.Drawing.Color.Green;
             this.lblChoiceEmeraude.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblChoiceEmeraude.Location = new System.Drawing.Point(284, 524);
+            this.lblChoiceEmeraude.Location = new System.Drawing.Point(108, 524);
             this.lblChoiceEmeraude.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblChoiceEmeraude.Name = "lblChoiceEmeraude";
             this.lblChoiceEmeraude.Size = new System.Drawing.Size(82, 13);
@@ -572,7 +572,6 @@
             this.txtLevel44.ReadOnly = true;
             this.txtLevel44.Size = new System.Drawing.Size(102, 98);
             this.txtLevel44.TabIndex = 45;
-            this.txtLevel44.Click += new System.EventHandler(this.txtLevel44_Click);
             // 
             // txtLevel43
             // 
@@ -584,7 +583,6 @@
             this.txtLevel43.ReadOnly = true;
             this.txtLevel43.Size = new System.Drawing.Size(102, 98);
             this.txtLevel43.TabIndex = 44;
-            this.txtLevel43.Click += new System.EventHandler(this.txtLevel43_Click);
             // 
             // txtLevel42
             // 
@@ -596,7 +594,6 @@
             this.txtLevel42.ReadOnly = true;
             this.txtLevel42.Size = new System.Drawing.Size(102, 98);
             this.txtLevel42.TabIndex = 43;
-            this.txtLevel42.Click += new System.EventHandler(this.txtLevel42_Click);
             // 
             // txtLevel41
             // 
@@ -608,7 +605,6 @@
             this.txtLevel41.ReadOnly = true;
             this.txtLevel41.Size = new System.Drawing.Size(102, 98);
             this.txtLevel41.TabIndex = 42;
-            this.txtLevel41.Click += new System.EventHandler(this.txtLevel41_Click);
             // 
             // lblNbPtPrestige
             // 
@@ -711,7 +707,7 @@
             this.Controls.Add(this.lblChoiceOnyx);
             this.Controls.Add(this.lblChoiceSaphir);
             this.Controls.Add(this.lblChoiceRubis);
-            this.Controls.Add(this.txtPlayerDiamandCard);
+            this.Controls.Add(this.txtPlayerDiamantCard);
             this.Controls.Add(this.txtPlayerBookedCard);
             this.Controls.Add(this.txtPlayerEmeraudeCard);
             this.Controls.Add(this.txtPlayerOnyxCard);
@@ -781,7 +777,7 @@
         private System.Windows.Forms.Label lblPlayerRubisCoin;
         private System.Windows.Forms.Label lblPlayerGoldCoin;
         private System.Windows.Forms.TextBox txtPlayerBookedCard;
-        private System.Windows.Forms.TextBox txtPlayerDiamandCard;
+        private System.Windows.Forms.TextBox txtPlayerDiamantCard;
         private System.Windows.Forms.Label lblChoiceRubis;
         private System.Windows.Forms.Label lblChoiceSaphir;
         private System.Windows.Forms.Label lblChoiceOnyx;
