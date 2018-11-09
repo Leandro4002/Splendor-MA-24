@@ -492,6 +492,7 @@
             this.lblChoiceRubis.Size = new System.Drawing.Size(79, 18);
             this.lblChoiceRubis.TabIndex = 33;
             this.lblChoiceRubis.Text = "choix rubis";
+            this.lblChoiceRubis.Click += new System.EventHandler(this.lblChoiceRubis_Click);
             // 
             // lblChoiceSaphir
             // 
@@ -505,6 +506,7 @@
             this.lblChoiceSaphir.Size = new System.Drawing.Size(87, 18);
             this.lblChoiceSaphir.TabIndex = 34;
             this.lblChoiceSaphir.Text = "choix saphir";
+            this.lblChoiceSaphir.Click += new System.EventHandler(this.lblChoiceSaphir_Click);
             // 
             // lblChoiceOnyx
             // 
@@ -518,6 +520,7 @@
             this.lblChoiceOnyx.Size = new System.Drawing.Size(78, 18);
             this.lblChoiceOnyx.TabIndex = 35;
             this.lblChoiceOnyx.Text = "choix onyx";
+            this.lblChoiceOnyx.Click += new System.EventHandler(this.lblChoiceOnyx_Click);
             // 
             // lblChoiceEmeraude
             // 
@@ -531,6 +534,7 @@
             this.lblChoiceEmeraude.Size = new System.Drawing.Size(113, 18);
             this.lblChoiceEmeraude.TabIndex = 36;
             this.lblChoiceEmeraude.Text = "choix émeraude";
+            this.lblChoiceEmeraude.Click += new System.EventHandler(this.lblChoiceEmeraude_Click);
             // 
             // lblChoiceDiamant
             // 
@@ -544,6 +548,7 @@
             this.lblChoiceDiamant.Size = new System.Drawing.Size(99, 18);
             this.lblChoiceDiamant.TabIndex = 37;
             this.lblChoiceDiamant.Text = "choix diamant";
+            this.lblChoiceDiamant.Click += new System.EventHandler(this.lblChoiceDiamant_Click);
             // 
             // cmdValidateChoice
             // 

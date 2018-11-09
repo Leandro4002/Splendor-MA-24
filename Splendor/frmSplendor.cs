@@ -295,11 +295,12 @@ namespace Splendor
         }
 
         /// <summary>
-        /// Show an error saying that the selection is false and reset the actual selection (gems and [TODO : cards])
+        /// Show an error saying that the selection is false and reset the actual selection (gems and [TODO : cards]).
+        /// This method show all the rules
         /// </summary>
         private void SelectionError()
         {
-            MessageBox.Show("Pour suprimmer une gemme sélectionnée cliquez dessus dans la ligne du bas\nPour suprimmer une carte sélectionné, recliquer dessus\n\n3 options :\n-Choisir 3 gemmes de type différents\n-Choisir 2 gemmes du même type\n-Choisir une carte", "Sélection incorrecte", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("Vous ne pouvez pas sélectionner une gemme qui a moins de 4\nPour suprimmer une gemme sélectionnée cliquez dessus dans la ligne du bas\nPour suprimmer une carte sélectionné, recliquer dessus\n\n3 options :\n-Choisir 3 gemmes de type différents\n-Choisir 2 gemmes du même type\n-Choisir une carte", "Sélection incorrecte", MessageBoxButtons.OK, MessageBoxIcon.Error);
             nbRubis = 0;
             nbEmeraude = 0;
             nbOnyx = 0;
@@ -573,14 +574,15 @@ namespace Splendor
         #region Click on gems
         
         /// <summary>
-        /// Handle the click on the gems
+        /// Handle the click on the gems in the bank
         /// </summary>
         /// <param name="id"></param>
-        private void gemClick(int id)
+        private void gemClickBank(int id)
         {
             if (enableClicLabel)
             {
-                if (GetNumberOfDifferentGems() > 2 || totalGems > 2)
+                //Test if the gem selection is correct
+                if (GetNumberOfDifferentGems() > 2 || totalGems > 2 || gemsInBank[id] < 4)
                 {
                     SelectionError();
                     return;
@@ -616,55 +618,146 @@ namespace Splendor
         }
 
         /// <summary>
-        /// click on the red coin (rubis) to tell the player has selected this coin
+        /// Handle the click on the gems in the player's choice
+        /// </summary>
+        /// <param name="id"></param>
+        private void gemClickChoice(int id)
+        {
+            if (enableClicLabel)
+            {
+                switch (id)
+                {
+                    case 1:
+                        if (nbRubis > 0) nbRubis--;
+                        lblRubisCoin.Text = (gemsInBank[1] - nbRubis).ToString();
+                        break;
+                    case 2:
+                        if (nbEmeraude > 0) nbEmeraude--;
+                        lblEmeraudeCoin.Text = (gemsInBank[2] - nbEmeraude).ToString();
+                        break;
+                    case 3:
+                        if (nbOnyx > 0) nbOnyx--;
+                        lblOnyxCoin.Text = (gemsInBank[3] - nbOnyx).ToString();
+                        break;
+                    case 4:
+                        if (nbSaphir > 0) nbSaphir--;
+                        lblSaphirCoin.Text = (gemsInBank[4] - nbSaphir).ToString();
+                        break;
+                    case 5:
+                        if (nbDiamant > 0) nbDiamant--;
+                        lblDiamantCoin.Text = (gemsInBank[5] - nbDiamant).ToString();
+                        break;
+                    default: return;
+                }
+
+                RefreshChoiceDisplay(id);
+            }
+        }
+
+        //Bank gems
+
+        /// <summary>
+        /// Click on the red coin (rubis) to tell the player has selected this coin
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void lblRubisCoin_Click(object sender, EventArgs e)
         {
-            gemClick((int)Ressources.Rubis);
+            gemClickBank((int)Ressources.Rubis);
         }
 
         /// <summary>
-        /// click on the blue coin (saphir) to tell the player has selected this coin
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void lblSaphirCoin_Click(object sender, EventArgs e)
-        {
-            gemClick((int)Ressources.Saphir);
-        }
-
-        /// <summary>
-        /// click on the black coin (onyx) to tell the player has selected this coin
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void lblOnyxCoin_Click(object sender, EventArgs e)
-        {
-            gemClick((int)Ressources.Onyx);
-        }
-
-        /// <summary>
-        /// click on the green coin (emeraude) to tell the player has selected this coin
+        /// Click on the green coin (emeraude) to tell the player has selected this coin
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void lblEmeraudeCoin_Click(object sender, EventArgs e)
         {
-            gemClick((int)Ressources.Emeraude);
+            gemClickBank((int)Ressources.Emeraude);
         }
 
         /// <summary>
-        /// click on the white coin (diamant) to tell the player has selected this coin
+        /// Click on the black coin (onyx) to tell the player has selected this coin
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lblOnyxCoin_Click(object sender, EventArgs e)
+        {
+            gemClickBank((int)Ressources.Onyx);
+        }
+
+        /// <summary>
+        /// Click on the blue coin (saphir) to tell the player has selected this coin
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lblSaphirCoin_Click(object sender, EventArgs e)
+        {
+            gemClickBank((int)Ressources.Saphir);
+        }
+
+        /// <summary>
+        /// Click on the white coin (diamant) to tell the player has selected this coin
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void lblDiamantCoin_Click(object sender, EventArgs e)
         {
-            gemClick((int)Ressources.Diamant);
+            gemClickBank((int)Ressources.Diamant);
         }
-        
+
+        //Choice gems
+
+        /// <summary>
+        /// Click on the red coin choice (rubis)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lblChoiceRubis_Click(object sender, EventArgs e)
+        {
+            gemClickChoice((int)Ressources.Rubis);
+        }
+
+        /// <summary>
+        /// Click on the green coin choice (emeraude)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lblChoiceEmeraude_Click(object sender, EventArgs e)
+        {
+            gemClickChoice((int)Ressources.Emeraude);
+        }
+
+        /// <summary>
+        /// Click on the black coin choice (onyx)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lblChoiceOnyx_Click(object sender, EventArgs e)
+        {
+            gemClickChoice((int)Ressources.Onyx);
+        }
+
+        /// <summary>
+        /// Click on the blue coin choice (saphir)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lblChoiceSaphir_Click(object sender, EventArgs e)
+        {
+            gemClickChoice((int)Ressources.Saphir);
+        }
+
+        /// <summary>
+        /// Click on the white coin choice (diamant)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lblChoiceDiamant_Click(object sender, EventArgs e)
+        {
+            gemClickChoice((int)Ressources.Diamant);
+        }
+
         #endregion Click on gems
 
         #region Click on cards
@@ -786,7 +879,7 @@ namespace Splendor
                 txtLevel11.BackColor = (enableClicLabel) ? selectedCardColor : unSelectedCardColor;
             }
         }
-        
+
         #endregion Click on cards
     }
 }
