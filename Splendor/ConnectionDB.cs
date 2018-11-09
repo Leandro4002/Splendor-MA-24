@@ -1,4 +1,14 @@
-﻿using System;
+﻿/**
+ * \file      ConnectionDB.cs
+ * \author    Leandro Saraiva Maia & Alexandre Baseia
+ * \version   1.0
+ * \date      September 14. 2018
+ * \brief     Set of methods related to DB connection
+ *
+ * \details   Insert a complete description of the database connection
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -461,10 +471,9 @@ namespace Splendor
         #endregion Create and insert data
 
         /// <summary>
-        /// add a new player to the DB
+        /// Add a new player to the DB
         /// <paramref name="playerName">Name of the player</paramref>
         /// </summary>
-        
         public void AddPlayer(string playerName)
         {
             string sql = "INSERT INTO Player (pseudo) VALUES ('"+playerName+"')";
@@ -473,7 +482,8 @@ namespace Splendor
         }
 
         #region Get query
-        public int getNumberOfPlayers()
+
+        public int GetNumberOfPlayers()
         {
             string sql = "SELECT * FROM Player";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
@@ -560,6 +570,7 @@ namespace Splendor
             while (reader.Read())
             {
                 Card card = new Card();
+                card.Id = int.Parse(reader["idCard"].ToString());
                 card.PrestigePt = int.Parse(reader["nbPtPrestige"].ToString());
                 card.Level = int.Parse(reader["level"].ToString());
 
@@ -579,10 +590,10 @@ namespace Splendor
         }
 
         /// <summary>
-        /// 
+        /// Get card information with an id
         /// </summary>
         /// <param name="id">Card's id</param>
-        /// <returns></returns>
+        /// <returns>Card information</returns>
         public Card GetCardById(int id)
         {
             string sql = "SELECT * FROM Card WHERE IdCard = " + id + " LIMIT 1";
@@ -608,7 +619,18 @@ namespace Splendor
 
             return card;
         }
-
+        
         #endregion Get query
+
+        #region Delete query
+
+        public void RemoveCardById(int id)
+        {
+            string sql = "DELETE FROM Card WHERE IdCard = " + id;
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            command.ExecuteNonQuery();
+        }
+        
+        #endregion Delete query
     }
 }

@@ -1,4 +1,14 @@
-﻿using System;
+﻿/**
+ * \file      Tools.cs
+ * \author    Leandro Saraiva Maia & Alexandre Baseia
+ * \version   1.0
+ * \date      September 14. 2018
+ * \brief     Set of functions used in multiple ways
+ *
+ * \details   Insert a complete description of the tools here
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +38,12 @@ namespace Splendor
             return list;
         }
 
+        /// <summary>
+        /// Takes money and price parameters and check if there is enought money to pay the price
+        /// </summary>
+        /// <param name="money"></param>
+        /// <param name="price"></param>
+        /// <returns>True if there is enought money to pay the price and false if not</returns>
         public static bool CheckEnoughtToBuy(int[] money, int[] price)
         {
             //Check if price format is incorrect

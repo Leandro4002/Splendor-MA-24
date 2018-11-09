@@ -1,4 +1,14 @@
-﻿using System;
+﻿/**
+ * \file      Player.cs
+ * \author    Alexandre Baseia
+ * \version   1.0
+ * \date      September 14. 2018
+ * \brief     The model of player used in the game
+ *
+ * \details   Insert a complete description of the player here
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,22 +16,24 @@ using System.Threading.Tasks;
 
 namespace Splendor
 {
-
     /// <summary>
-    /// class Player : attributes and methods to deal with a player
+    /// Class Player : attributes and methods to deal with a player
     /// </summary>
     class Player
     {
-        #region private attributes
+        #region Private attributes
+
         private string name;
         private int id;
         private int[] ressources;
         private int[] coins;
-        #endregion private attributes
 
-        #region public accessor
+        #endregion Private attributes
+
+        #region Public accessor
+
         /// <summary>
-        /// name of the player
+        /// Name of the player
         /// </summary>
         public string Name
         {
@@ -36,7 +48,7 @@ namespace Splendor
         }
 
         /// <summary>
-        /// all the precious stones he has
+        /// All the precious stones he has
         /// </summary>
         public int[] Ressources
         {
@@ -51,7 +63,7 @@ namespace Splendor
         }
 
         /// <summary>
-        /// all the coins he has
+        /// All the coins he has
         /// </summary>
         public int[] Coins
         {
@@ -66,7 +78,7 @@ namespace Splendor
         }
 
         /// <summary>
-        /// id of the player
+        /// Id of the player
         /// </summary>
         public int Id
         {
@@ -79,13 +91,15 @@ namespace Splendor
                 id = value;
             }
         }
-        #endregion public accessor
 
-        #region private methods
+        #endregion Public accessor
+
+        #region Private methods
+
         /// <summary>
         /// The player takes gems from the bank
         /// </summary>
-        /// <returns></returns>
+        /// <returns>True or false to tell if the player can take ressources from the bank</returns>
         private static bool TakeRessourcesFromBank()
         {
             try {
@@ -119,7 +133,7 @@ namespace Splendor
         /// <summary>
         /// The player takes a card from the bank
         /// </summary>
-        /// <returns></returns>
+        /// <returns>True or false to tell if the player can take card from the bank</returns>
         private static bool TakeCardFromBank()
         {
             try
@@ -148,13 +162,16 @@ namespace Splendor
                 return false;
             }
         }
-        #endregion private methods
 
-        #region public methods
+        #endregion Private methods
+
+        #region Public methods
+
         public string GetPrestigeScore()
         {
             return "WIP";
         }
-        #endregion public methods
+
+        #endregion Public methods
     }
 }

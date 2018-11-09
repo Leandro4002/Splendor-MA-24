@@ -1,4 +1,14 @@
-﻿using System;
+/**
+ * \file      Card.cs
+ * \author    Leandro Saraiva Maia
+ * \version   1.0
+ * \date      September 14. 2018
+ * \brief     The model of card used in the game
+ *
+ * \details   Insert a complete description of the card here
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,21 +17,24 @@ using System.Threading.Tasks;
 namespace Splendor
 {
     /// <summary>
-    /// class Card : attributes and methods to deal with a card
+    /// Class Card : attributes and methods to deal with a card
     /// </summary>
     class Card
     {
         #region Private attributes
+
         private Ressources ress;
         private int prestigePt;
         private int level;
-        //tableau : l'index correspond à l'énumération, la valeur à la ressource requise
+        private int id;
         private int[] price = new int[6];
+
         #endregion Private attributes
 
         #region Public attributes
+
         /// <summary>
-        /// the precious stone that the card gives
+        /// The precious stone that the card gives
         /// </summary>
         public Ressources Ress
         {
@@ -37,7 +50,7 @@ namespace Splendor
         }
 
         /// <summary>
-        /// number of prestige point of the card
+        /// Number of prestige point of the card
         /// </summary>
         public int PrestigePt
         {
@@ -53,7 +66,7 @@ namespace Splendor
         }
 
         /// <summary>
-        /// level of the card : 1, 2 or 3
+        /// Level of the card : 1, 2 or 3
         /// </summary>
         public int Level
         {
@@ -68,7 +81,21 @@ namespace Splendor
         }
 
         /// <summary>
-        /// all the precious stones that are needed to buy the card
+        /// Id of the card in the database
+        /// </summary>
+        public int Id {
+            get
+            {
+                return id;
+            }
+            set
+            {
+                id = value;
+            }
+        }
+
+        /// <summary>
+        /// All the precious stones that are needed to buy the card
         /// </summary>
         public int[] Price
         {
@@ -81,14 +108,15 @@ namespace Splendor
                 price = value;
             }
         }
+
         #endregion Public attributes
 
         #region Public methods
 
         /// <summary>
-        /// displays information about the card
+        /// Displays information about the card
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A representation of the card in a string</returns>
         public override string ToString()
         {
             string res = "";
@@ -125,8 +153,10 @@ namespace Splendor
                 loop++;
 
             }
+
             return res;
         }
+
         #endregion Public methods
     }
 }
