@@ -4,8 +4,6 @@
  * \version   1.0
  * \date      September 14. 2018
  * \brief     Entry point of the program
- *
- * \details   Insert a complete description of the program
  */
 
 using System;

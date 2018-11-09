@@ -5,7 +5,17 @@
  * \date      September 14. 2018
  * \brief     Set of methods related to DB connection
  *
- * \details   Insert a complete description of the database connection
+ * \details   This file is used to handle all the connection with the pseudo database in SQLITE.
+ *            SQLITE is a library that simulate a database localy.
+ *            We use an object call m_dbConnection to initialize a connexion with the database.
+ *            The m_dbConnection object is instanciated in the connectionDB constructor.
+ *            In this file, we ofently use `SQLiteCommand command = new SQLiteCommand(sqlRequest, m_dbConnection);`
+ *            to create a new SQLITE command giving a string(sqlRequest) and a SQLITe connection(m_dbConnection).
+ *            Then we use `SQLiteDataReader reader = command.ExecuteReader();` to actually execute the query.
+ *            
+ *            The "Create and insert data" region is a set of function called on ConnectionDB constructor to create the all the cards of the game.
+ *            The "Get query" region is a set of function to get miscellaneous value from the database
+ *            The "Remove query" region is the same but to remove
  */
 
 using System;
@@ -483,6 +493,10 @@ namespace Splendor
 
         #region Get query
 
+        /// <summary>
+        /// Gets the number of players in the database
+        /// </summary>
+        /// <returns>The number of players</returns>
         public int GetNumberOfPlayers()
         {
             string sql = "SELECT * FROM Player";
@@ -624,6 +638,10 @@ namespace Splendor
 
         #region Delete query
 
+        /// <summary>
+        /// Remove a card according a card with it's id
+        /// </summary>
+        /// <param name="id"></param>
         public void RemoveCardById(int id)
         {
             string sql = "DELETE FROM Card WHERE IdCard = " + id;
