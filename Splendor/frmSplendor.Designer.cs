@@ -3,14 +3,14 @@
     partial class frmSplendor
     {
         /// <summary>
-        /// Variable nécessaire au concepteur.
+        /// Necessary variable to the conceptor
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Nettoyage des ressources utilisées.
+        /// Cleaning used ressources
         /// </summary>
-        /// <param name="disposing">true si les ressources managées doivent être supprimées ; sinon, false.</param>
+        /// <param name="disposing">True if managed ressources must be deleted ; else, false</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,11 +20,10 @@
             base.Dispose(disposing);
         }
 
-        #region Code généré par le Concepteur Windows Form
+        #region Generated code by Windows form conceptor
 
         /// <summary>
-        /// Méthode requise pour la prise en charge du concepteur - ne modifiez pas
-        /// le contenu de cette méthode avec l'éditeur de code.
+        /// Required method for the conceptor
         /// </summary>
         private void InitializeComponent()
         {

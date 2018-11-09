@@ -4,8 +4,6 @@
  * \version   1.0
  * \date      September 14. 2018
  * \brief     The model of card used in the game
- *
- * \details   Insert a complete description of the card here
  */
 
 using System;

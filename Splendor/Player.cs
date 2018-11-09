@@ -4,8 +4,6 @@
  * \version   1.0
  * \date      September 14. 2018
  * \brief     The model of player used in the game
- *
- * \details   Insert a complete description of the player here
  */
 
 using System;

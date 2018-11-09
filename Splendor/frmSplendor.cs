@@ -5,7 +5,18 @@
  * \date      September 14. 2018
  * \brief     The famous Splendor card game
  *
- * \details   Insert a complete description of the program here
+ * \details   This file used to handle the game mechanics, the label/buttons click and to refresh the display.
+ *            
+ *            First, the program needs at least 2 players to start the game, a player can be added by clicking the "Entrer joueur" button.
+ *            To start a game, click on the "Jouer" button.
+ *            During a game, the program alternate between every player turn.
+ *            
+ *            Possible actions during a turn :
+ *            - Get 2 gems of the same type
+ *            - Get 3 gems of different types
+ *            - Select a card
+ *            
+ *            The first player with 15 prestige points win the game
  */
 
 using Microsoft.VisualBasic;
