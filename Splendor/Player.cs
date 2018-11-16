@@ -27,6 +27,7 @@ namespace Splendor
         private int id;
         private int[] ressources;
         private int[] coins;
+        private int prestigeScore;
 
         #endregion Private attributes
 
@@ -89,6 +90,21 @@ namespace Splendor
             set
             {
                 id = value;
+            }
+        }
+
+        /// <summary>
+        /// Prestige score of the player
+        /// </summary>
+        public int PrestigeScore
+        {
+            get
+            {
+                return prestigeScore;
+            }
+            set
+            {
+                prestigeScore = value;
             }
         }
 
@@ -164,14 +180,5 @@ namespace Splendor
         }
 
         #endregion Private methods
-
-        #region Public methods
-
-        public string GetPrestigeScore()
-        {
-            return "WIP";
-        }
-
-        #endregion Public methods
     }
 }

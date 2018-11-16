@@ -44,7 +44,7 @@ namespace Splendor
         /// <param name="money"></param>
         /// <param name="price"></param>
         /// <returns>True if there is enought money to pay the price and false if not</returns>
-        public static bool CheckEnoughtToBuy(int[] money, int[] price)
+        public static bool CheckEnoughtToBuy(int[] money, int[] price, int[] discount)
         {
             //Check if price format is incorrect
             if (price.Length != 6)
@@ -58,6 +58,13 @@ namespace Splendor
                 throw new ArrayTypeMismatchException("The money must be int[6]");
             }
 
+            //Check if discount format is incorrect
+            if (money.Length != 6)
+            {
+                throw new ArrayTypeMismatchException("The discount must be int[6]");
+            }
+
+            /*
             Console.WriteLine("Player : ");
             for (int i = 0; i < money.Length; i++)
             {
@@ -71,12 +78,13 @@ namespace Splendor
             {
                 Console.WriteLine((Enum.GetName(typeof(Ressources), i)).ToString() + " : " + price[i]);
             }
+            */
 
             for (int i = 0; i < price.Length; i++)
             {
-                if (money[i] < price[i])
+                if (money[i] + discount[i] < price[i])
                 {
-                    //Console.WriteLine("money["+i+"] : " + money[i] + "   price ["+i+"] : " + price[i]);
+                    Console.WriteLine("money["+i+"] : " + money[i] + "   discount[" + i + "] : " + discount[i] + "   price [" +i+"] : " + price[i]);
                     return false;
                 }
             }

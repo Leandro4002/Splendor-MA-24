@@ -38,15 +38,19 @@ namespace Splendor
         private string newPlayer;
         private int playerNumber = 0;
 
+        //Contains all the cards
         private List<Card>[] cardLists = new List<Card>[4];
 
         //Player
         private List<Player> players = new List<Player>();
         private bool isPlaying = false;
         private int currentPlayerId; //Id of the player that is playing
+        private int selectedCardLevel;
+        private int selectedCardVal;
 
         //Card selection
         private Card selectedCard;
+        private bool isCardSelected;
         private System.Drawing.Color selectedCardColor = System.Drawing.Color.FromArgb(255, 102, 178, 255);
         private System.Drawing.Color unSelectedCardColor = System.Drawing.Color.FromArgb(255, 255, 255);
 
@@ -92,35 +96,8 @@ namespace Splendor
             cardLists[1] = Tools.Shuffle(conn.GetListCardAccordingToLevel(2));
             cardLists[2] = Tools.Shuffle(conn.GetListCardAccordingToLevel(3));
             cardLists[3] = Tools.Shuffle(conn.GetListCardAccordingToLevel(4));
-            
-            //Display the fourth cards for each level
-            #region First card display
 
-            //Level 1
-            txtLevel14.Text = cardLists[0][3].ToString();
-            txtLevel13.Text = cardLists[0][2].ToString();
-            txtLevel12.Text = cardLists[0][1].ToString();
-            txtLevel11.Text = cardLists[0][0].ToString();
-
-            //Level 2
-            txtLevel24.Text = cardLists[1][3].ToString();
-            txtLevel23.Text = cardLists[1][2].ToString();
-            txtLevel22.Text = cardLists[1][1].ToString();
-            txtLevel21.Text = cardLists[1][0].ToString();
-
-            //Level 3
-            txtLevel34.Text = cardLists[2][3].ToString();
-            txtLevel33.Text = cardLists[2][2].ToString();
-            txtLevel32.Text = cardLists[2][1].ToString();
-            txtLevel31.Text = cardLists[2][0].ToString();
-
-            //Level 4
-            txtLevel44.Text = cardLists[3][3].ToString();
-            txtLevel43.Text = cardLists[3][1].ToString();
-            txtLevel42.Text = cardLists[3][1].ToString();
-            txtLevel41.Text = cardLists[3][0].ToString();
-
-            #endregion First card display
+            RefreshCardsDisplay();
 
             this.Width = 680;
             this.Height = 540;
@@ -184,39 +161,50 @@ namespace Splendor
         /// <param name="e"></param>
         private void cmdValidateChoice_Click(object sender, EventArgs e)
         {
-
-            //If the selection is incorrect
-            if (!(totalGems == 2 && GetNumberOfDifferentGems() == 1) && !(totalGems == 3 && GetNumberOfDifferentGems() == 3))
+            //If a card is selected and there is no gems selected, the program ignore the card selection
+            if (!(isCardSelected && totalGems == 0))
             {
-                SelectionError();
-                return;
+                //If the gems selection is incorrect
+                if (!(totalGems == 2 && GetNumberOfDifferentGems() == 1) && !(totalGems == 3 && GetNumberOfDifferentGems() == 3))
+                {
+                    SelectionError();
+                    return;
+                }
+                //If the gems selection is correct
+                else
+                {
+                    //Add gems to player
+                    players[currentPlayerId - 1].Coins[1] += nbRubis;
+                    players[currentPlayerId - 1].Coins[2] += nbEmeraude;
+                    players[currentPlayerId - 1].Coins[3] += nbOnyx;
+                    players[currentPlayerId - 1].Coins[4] += nbSaphir;
+                    players[currentPlayerId - 1].Coins[5] += nbDiamant;
+
+                    //Delete gems from bank
+                    gemsInBank[1] -= nbRubis;
+                    gemsInBank[2] -= nbEmeraude;
+                    gemsInBank[3] -= nbOnyx;
+                    gemsInBank[4] -= nbSaphir;
+                    gemsInBank[5] -= nbDiamant;
+                }
             }
-
-
-            //Correct selection
-            cmdValidateChoice.Visible = false;
-            cmdNextPlayer.Visible = true;
-            enableClicLabel = false;
-
-            //Add gems to player
-            players[currentPlayerId - 1].Coins[1] += nbRubis;
-            players[currentPlayerId - 1].Coins[2] += nbEmeraude;
-            players[currentPlayerId - 1].Coins[3] += nbOnyx;
-            players[currentPlayerId - 1].Coins[4] += nbSaphir;
-            players[currentPlayerId - 1].Coins[5] += nbDiamant;
-
-            //Delete gems from bank
-            gemsInBank[1] -= nbRubis;
-            gemsInBank[2] -= nbEmeraude;
-            gemsInBank[3] -= nbOnyx;
-            gemsInBank[4] -= nbSaphir;
-            gemsInBank[5] -= nbDiamant;
+            //If the card is selected and there is no gems selected
+            else
+            {
+                //The selected card is picked (replace by another same level card and added to the player ressources)
+                PickCard(selectedCard, currentPlayerId - 1, selectedCardLevel, selectedCardVal);
+            }
 
             RefreshBankDisplay();
 
-            RefreshPlayerDisplay(currentPlayerId - 1);
+            //Correct selection
+            cmdValidateChoice.Visible = false;
+            SelectedCardHighlightClear();
+            cmdNextPlayer.Visible = true;
+            enableClicLabel = false;
+            isCardSelected = false;
 
-            //TO DO Check if card or coins are selected, impossible to do both at the same time
+            RefreshPlayerDisplay(currentPlayerId - 1);
         }
 
         /// <summary>
@@ -228,19 +216,19 @@ namespace Splendor
         /// <param name="e"></param>
         private void cmdInsertPlayer_Click(object sender, EventArgs e)
         {
-            newPlayer = Interaction.InputBox("Enter the name ", "Add player", "", 500, 500);
-            //Call the object "conn" to send player name's string to DB
-            conn.AddPlayer(newPlayer);
+            newPlayer = Interaction.InputBox("Entrez un nom : ", "Ajouter un joueur", "", 500, 500);
+            
             if (!string.IsNullOrWhiteSpace(newPlayer)) //if the field is empty or only contain white spaces
             {
                 //Displays a MessageBox to inform that the player is done.
-                MessageBox.Show("The player " + newPlayer + " has been added");
+                MessageBox.Show("Le joueur " + newPlayer + " a été ajouté");
                 playerNumber++;
                 lblPlayerNumber.Text = "Nombre de joueurs : " + playerNumber;
+                conn.AddPlayer(newPlayer);
             }
             else
             {
-                MessageBox.Show("It seem that there is no name in the field, try again", "Empty name field", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Veuillez entrer un joueur", "Ajout de joueur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -301,6 +289,8 @@ namespace Splendor
         private void SelectionError()
         {
             MessageBox.Show("Vous ne pouvez pas sélectionner une gemme qui a moins de 4\nPour suprimmer une gemme sélectionnée cliquez dessus dans la ligne du bas\nPour suprimmer une carte sélectionné, recliquer dessus\n\n3 options :\n-Choisir 3 gemmes de type différents\n-Choisir 2 gemmes du même type\n-Choisir une carte", "Sélection incorrecte", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            isCardSelected = false;
+            SelectedCardHighlightClear();
             nbRubis = 0;
             nbEmeraude = 0;
             nbOnyx = 0;
@@ -337,10 +327,16 @@ namespace Splendor
         {
             if (enableClicLabel)
             {
-                if (Tools.CheckEnoughtToBuy(players[currentPlayerId - 1].Coins, cardLists[level - 1][val - 1].Price))
+                //Set the selected card
+                selectedCard = cardLists[level - 1][val - 1];
+
+                if (Tools.CheckEnoughtToBuy(players[currentPlayerId - 1].Coins, selectedCard.Price, players[currentPlayerId - 1].Ressources))
                 {
-                    //Set the selected card
-                    selectedCard = cardLists[level - 1][val - 1];
+                    isCardSelected = true;
+
+                    //Values saved in memory to be used in another part of the code
+                    selectedCardLevel = level;
+                    selectedCardVal = val;
 
                     //Refresh the selected card display
                     choiceCard = (level - 1).ToString() + (val - 1).ToString();
@@ -349,13 +345,11 @@ namespace Splendor
                     //Clear the highlight of all cards (the selected card will be highlighted just after)
                     SelectedCardHighlightClear();
 
-                    //The selected card is picked (replace by another same level card and added to the player ressources)
-                    PickCard(cardLists[level - 1][val - 1], currentPlayerId - 1, level, val);
-
                     return true;
                 }
                 else
                 {
+                    isCardSelected = false;
                     MessageBox.Show("Vous n'avez pas assez de gemmes pour acheter cette carte");
                     return false;
                 }
@@ -368,70 +362,62 @@ namespace Splendor
         /// </summary>
         /// <param name="card"></param>
         /// <param name="player"></param>
-        private void PickCard(Card card, int playerId, int level, int val)
+        private void PickCard(Card pickedCard, int playerId, int level, int val)
         {
-            //Remove the card from the database
-            conn.RemoveCardById(card.Id);
-
-            List<Card> cardList = conn.GetListCardAccordingToLevel(card.Level);
-
-            string replaceText;
-
-            //If there is a card with the same level in the database
-            if (cardList.Count > 0)
+            if (cardLists[level - 1].Count > 4)
             {
-                //Replace the display of the card
-                replaceText = cardList[0].ToString();
+                cardLists[level - 1][val - 1] = cardLists[level - 1][4];
+
+                cardLists[level - 1].RemoveAt(4);
             }
-            //If there is no more card in the database
+            //If there is no more cards
             else
             {
-                //Clean the display of the card
-                replaceText = "";
+                cardLists[level - 1][val - 1] = new Card();
             }
 
-            switch (level)
-            {
-                case 1:
-                    switch (val)
-                    {
-                        case 1: txtLevel11.Text = replaceText; break;
-                        case 2: txtLevel12.Text = replaceText; break;
-                        case 3: txtLevel13.Text = replaceText; break;
-                        case 4: txtLevel14.Text = replaceText; break;
-                    }
-                    break;
-                case 2:
-                    switch (val)
-                    {
-                        case 1: txtLevel21.Text = replaceText; break;
-                        case 2: txtLevel22.Text = replaceText; break;
-                        case 3: txtLevel23.Text = replaceText; break;
-                        case 4: txtLevel24.Text = replaceText; break;
-                    }
-                    break;
-                case 3:
-                    switch (val)
-                    {
-                        case 1: txtLevel31.Text = replaceText; break;
-                        case 2: txtLevel32.Text = replaceText; break;
-                        case 3: txtLevel33.Text = replaceText; break;
-                        case 4: txtLevel34.Text = replaceText; break;
-                    }
-                    break;
-                case 4:
-                    switch (val)
-                    {
-                        case 1: txtLevel41.Text = replaceText; break;
-                        case 2: txtLevel42.Text = replaceText; break;
-                        case 3: txtLevel43.Text = replaceText; break;
-                        case 4: txtLevel44.Text = replaceText; break;
-                    }
-                    break;
-            }
+            RefreshCardsDisplay();
 
             //Add the ressource to the player
-            players[playerId].Ressources[(int)card.Ress] ++;
+            players[playerId].Ressources[(int)pickedCard.Ress] ++;
+
+            //Add the prestige to the player
+            players[playerId].PrestigeScore += pickedCard.PrestigePt;
+
+            if (players[playerId].PrestigeScore >= 15)
+            {
+                MessageBox.Show("Le joueur " + players[playerId].Name + " a gagné la partie !" + Environment.NewLine  + "Félicitations !");
+                Application.Exit();
+            }
+
+            int[] neededGems = { 0, 0, 0, 0, 0, 0 };
+
+            //Get all the gems needed by the player to pay the card
+            for (int i = 0; i < pickedCard.Price.Length; i++)
+            {
+                int discount = pickedCard.Price[i] - players[playerId].Ressources[i];
+
+                if (0 < discount)
+                {
+                    neededGems[i] = discount;
+                }
+            }
+
+            //Add the gems to the bank
+            gemsInBank[0] += neededGems[0];
+            gemsInBank[1] += neededGems[1];
+            gemsInBank[2] += neededGems[2];
+            gemsInBank[3] += neededGems[3];
+            gemsInBank[4] += neededGems[4];
+            gemsInBank[5] += neededGems[5];
+
+            //Remove the player's gems (if he paid)
+            players[playerId].Coins[0] -= neededGems[0];
+            players[playerId].Coins[1] -= neededGems[1];
+            players[playerId].Coins[2] -= neededGems[2];
+            players[playerId].Coins[3] -= neededGems[3];
+            players[playerId].Coins[4] -= neededGems[4];
+            players[playerId].Coins[5] -= neededGems[5];
         }
 
         /// <summary>
@@ -465,6 +451,36 @@ namespace Splendor
         #region Refresh display
 
         /// <summary>
+        /// Display the fourth cards for each level
+        /// </summary>
+        private void RefreshCardsDisplay()
+        {
+            //Level 1
+            txtLevel14.Text = cardLists[0][3].ToString();
+            txtLevel13.Text = cardLists[0][2].ToString();
+            txtLevel12.Text = cardLists[0][1].ToString();
+            txtLevel11.Text = cardLists[0][0].ToString();
+
+            //Level 2
+            txtLevel24.Text = cardLists[1][3].ToString();
+            txtLevel23.Text = cardLists[1][2].ToString();
+            txtLevel22.Text = cardLists[1][1].ToString();
+            txtLevel21.Text = cardLists[1][0].ToString();
+
+            //Level 3
+            txtLevel34.Text = cardLists[2][3].ToString();
+            txtLevel33.Text = cardLists[2][2].ToString();
+            txtLevel32.Text = cardLists[2][1].ToString();
+            txtLevel31.Text = cardLists[2][0].ToString();
+
+            //Level 4
+            txtLevel44.Text = cardLists[3][3].ToString();
+            txtLevel43.Text = cardLists[3][1].ToString();
+            txtLevel42.Text = cardLists[3][1].ToString();
+            txtLevel41.Text = cardLists[3][0].ToString();
+        }
+
+        /// <summary>
         /// Refresh the display related to a new turn
         /// </summary>
         /// <param name="id"></param>
@@ -479,7 +495,6 @@ namespace Splendor
             lblChoiceSaphir.Text = "";
             lblChoiceEmeraude.Text = "";
 
-            lblChoiceCard.Text = "";
 
             //Selected coins
             nbDiamant = 0;
@@ -547,10 +562,6 @@ namespace Splendor
                     lblChoiceDiamant.Visible = (nbDiamant > 0) ? true : false;
                     lblChoiceDiamant.Text = nbDiamant + "\r\n";
                     break;
-                case 6://Refresh Card
-                    lblChoiceCard.Visible = true;
-                    lblChoiceCard.Text = choiceCard;
-                    break;
                 default: break;
             }
         }
@@ -566,7 +577,20 @@ namespace Splendor
             lblPlayerOnyxCoin.Text = players[playerId].Coins[3].ToString();
             lblPlayerSaphirCoin.Text = players[playerId].Coins[4].ToString();
             lblPlayerDiamantCoin.Text = players[playerId].Coins[5].ToString();
-            lblNbPtPrestige.Text = players[playerId].GetPrestigeScore();
+            lblNbPtPrestige.Text = "Prestige : " + players[playerId].PrestigeScore.ToString();
+
+            string playerRessources = "";
+            
+            if (players[playerId].Ressources[1] > 0) playerRessources += "Rubis : " + players[playerId].Ressources[1] + Environment.NewLine;
+            if (players[playerId].Ressources[2] > 0) playerRessources += "Emeraude : " + players[playerId].Ressources[2] + Environment.NewLine;
+            if (players[playerId].Ressources[3] > 0) playerRessources += "Onyx : " + players[playerId].Ressources[3] + Environment.NewLine;
+            if (players[playerId].Ressources[4] > 0) playerRessources += "Saphir : " + players[playerId].Ressources[4] + Environment.NewLine;
+            if (players[playerId].Ressources[5] > 0) playerRessources += "Diamant : " + players[playerId].Ressources[5] + Environment.NewLine;
+
+            //Deletes the last character (to not have empty line)
+            if (playerRessources.Length > 0) playerRessources = playerRessources.Remove(playerRessources.Length - 1);
+
+            txtPlayerRessources.Text = playerRessources;
         }
 
         #endregion Refresh display
