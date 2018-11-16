@@ -64,32 +64,35 @@ namespace Splendor
                 throw new ArrayTypeMismatchException("The discount must be int[6]");
             }
 
-            /*
-            Console.WriteLine("Player : ");
-            for (int i = 0; i < money.Length; i++)
-            {
-                Console.WriteLine((Enum.GetName(typeof(Ressources), i)).ToString() + " : " + money[i]);
-            }
-
-            Console.WriteLine("");
-
-            Console.WriteLine("Card : ");
-            for (int i = 0; i < price.Length; i++)
-            {
-                Console.WriteLine((Enum.GetName(typeof(Ressources), i)).ToString() + " : " + price[i]);
-            }
-            */
-
             for (int i = 0; i < price.Length; i++)
             {
                 if (money[i] + discount[i] < price[i])
                 {
-                    Console.WriteLine("money["+i+"] : " + money[i] + "   discount[" + i + "] : " + discount[i] + "   price [" +i+"] : " + price[i]);
                     return false;
                 }
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Check if a noble want to go with a player. If there is one, add the noble index in a list
+        /// </summary>
+        /// <param name="playerId"></param>
+        /// <returns>A list of the noble index that go to the player</returns>
+        public static List<int> NobleGoingToPlayer(Player player, List<Card> cardList)
+        {
+            List<int> indexOfNobles = new List<int>();
+
+            for(int i = 0; i < cardList.Count; i++)
+            {
+                if (Tools.CheckEnoughtToBuy(player.Ressources, cardList[i].Price, new int[]{ 0, 0, 0, 0, 0, 0 }))
+                {
+                    indexOfNobles.Add(i);
+                }
+            }
+
+            return indexOfNobles;
         }
     }
 }

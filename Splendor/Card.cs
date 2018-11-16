@@ -130,7 +130,11 @@ namespace Splendor
             if (Ress != 0)
             {
                 res += " " + Enum.GetName(typeof(Ressources), Ress);
-            } 
+            }
+            else
+            {
+                res += " Noble";
+            }
             
             res += "\t";
             res += "\r\n\r\n";
@@ -153,6 +157,9 @@ namespace Splendor
                 loop++;
 
             }
+
+            //Remove the last caracter (\n)
+            res = res.Remove(res.Length - 1);
 
             return res;
         }

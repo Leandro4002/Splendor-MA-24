@@ -23,6 +23,19 @@ namespace Splendor
     {
         #region Private attributes
 
+        //Used to display the rules
+        string rulesText = "Pour déselectionner une gemme, cliquez dessus dans la section \"Choix actuel\" \n" +
+        "Pour déselectionner une carte, recliquez dessus\n" +
+        "\n" +
+        "3 options :\n" +
+        "-Choisir 3 gemmes de type différents\n" +
+        "-Choisir 2 gemmes du même type\n" +
+        "-Choisir une carte\n" +
+        "\n" +
+        "Autres infos :\n" +
+        "-Vous ne pouvez pas sélectionnez une gemme qui a moins de 4 unités dans la banque\n" +
+        "-Les ressources acquises en achentant des cartes permettent d'obtenir une réduction sur le prix des cartes";
+
         private int[] gemsInBank = { 5, 7, 7, 7, 7, 7 };
 
         //Used to store the number of coins selected for the current round of game
@@ -56,9 +69,6 @@ namespace Splendor
 
         //Boolean to enable us to know if the user can click on a coin or a card
         private bool enableClicLabel;
-
-        //Store the emplacement id of the choiced card
-        private string choiceCard;
 
         //Connection to the database
         private ConnectionDB conn;
@@ -100,7 +110,7 @@ namespace Splendor
             RefreshCardsDisplay();
 
             this.Width = 680;
-            this.Height = 540;
+            this.Height = 510;
 
             enableClicLabel = false;
 
@@ -118,6 +128,8 @@ namespace Splendor
             txtLevel43.Click += ClickOnNobleCard;
             txtLevel44.Click += ClickOnNobleCard;
         }
+
+        #region Buttons click
 
         /// <summary>
         /// Click on the play button
@@ -146,7 +158,7 @@ namespace Splendor
                 RefreshTurnDisplay(1);
 
                 Width = 680;
-                Height = 780;
+                Height = 710;
 
                 isPlaying = true;
                 cmdPlay.Enabled = false;
@@ -195,6 +207,8 @@ namespace Splendor
                 PickCard(selectedCard, currentPlayerId - 1, selectedCardLevel, selectedCardVal);
             }
 
+            CheckIfPlayerWin(players[currentPlayerId - 1]);
+
             RefreshBankDisplay();
 
             //Correct selection
@@ -240,11 +254,6 @@ namespace Splendor
         /// <param name="e"></param>
         private void cmdNextPlayer_Click(object sender, EventArgs e)
         {
-            //TO DO in release 1.0 : 3 is hard coded (number of players for the game), it shouldn't.
-            //TO DO Get the id of the player : in release 0.1 there are only 3 players
-            //Reload the data of the player
-            //We are not allowed to click on the next button
-
             currentPlayerId++;
 
             int numberOfPlayer = conn.GetNumberOfPlayers();
@@ -254,6 +263,32 @@ namespace Splendor
                 currentPlayerId = 1;
             }
 
+            //Move the nobles that can go to the player
+            foreach (int index in Tools.NobleGoingToPlayer(players[currentPlayerId - 1], cardLists[3]))
+            {
+                Card nobleGoingToPlayer = cardLists[3][index];
+
+                //If there is more cards after the one going to the player
+                if (cardLists[3].Count > 4)
+                {
+                    cardLists[3][index] = cardLists[3][4];
+
+                    cardLists[3].RemoveAt(4);
+                }
+                //If there is no more cards
+                else
+                {
+                    cardLists[3][index] = new Card();
+                }
+
+                //Add the prestige score to the player
+                players[currentPlayerId - 1].PrestigeScore += nobleGoingToPlayer.PrestigePt;
+
+                MessageBox.Show("La carte noble " + (index + 1) + " viens avec vous car vous avez assez de ressources\nVous gagnez des points de prestige !");
+            }
+
+            CheckIfPlayerWin(players[currentPlayerId - 1]);
+
             RefreshTurnDisplay(currentPlayerId);
 
             cmdValidateChoice.Visible = true;
@@ -262,6 +297,18 @@ namespace Splendor
 
             RefreshPlayerDisplay(currentPlayerId - 1);
         }
+
+        /// <summary>
+        /// Display a help message
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmdHelp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(rulesText, "Aide", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        #endregion Buttons click
 
         #region Private methods
 
@@ -288,7 +335,7 @@ namespace Splendor
         /// </summary>
         private void SelectionError()
         {
-            MessageBox.Show("Vous ne pouvez pas sélectionner une gemme qui a moins de 4\nPour suprimmer une gemme sélectionnée cliquez dessus dans la ligne du bas\nPour suprimmer une carte sélectionné, recliquer dessus\n\n3 options :\n-Choisir 3 gemmes de type différents\n-Choisir 2 gemmes du même type\n-Choisir une carte", "Sélection incorrecte", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("Vous ne pouvez pas faire cette action, voici un rappel des règles :\n\n" + rulesText, "Sélection incorrecte", MessageBoxButtons.OK, MessageBoxIcon.Error);
             isCardSelected = false;
             SelectedCardHighlightClear();
             nbRubis = 0;
@@ -327,6 +374,14 @@ namespace Splendor
         {
             if (enableClicLabel)
             {
+                //If the player click on an already selected card, unselected it
+                if (selectedCardLevel == level && selectedCardVal == val && isCardSelected)
+                {
+                    SelectedCardHighlightClear();
+                    isCardSelected = false;
+                    return false;
+                }
+
                 //Set the selected card
                 selectedCard = cardLists[level - 1][val - 1];
 
@@ -338,8 +393,6 @@ namespace Splendor
                     selectedCardLevel = level;
                     selectedCardVal = val;
 
-                    //Refresh the selected card display
-                    choiceCard = (level - 1).ToString() + (val - 1).ToString();
                     RefreshChoiceDisplay(6);
 
                     //Clear the highlight of all cards (the selected card will be highlighted just after)
@@ -384,11 +437,7 @@ namespace Splendor
             //Add the prestige to the player
             players[playerId].PrestigeScore += pickedCard.PrestigePt;
 
-            if (players[playerId].PrestigeScore >= 15)
-            {
-                MessageBox.Show("Le joueur " + players[playerId].Name + " a gagné la partie !" + Environment.NewLine  + "Félicitations !");
-                Application.Exit();
-            }
+            CheckIfPlayerWin(players[playerId]);
 
             int[] neededGems = { 0, 0, 0, 0, 0, 0 };
 
@@ -444,6 +493,15 @@ namespace Splendor
             txtLevel13.BackColor = unSelectedCardColor;
             txtLevel12.BackColor = unSelectedCardColor;
             txtLevel11.BackColor = unSelectedCardColor;
+        }
+
+        private void CheckIfPlayerWin(Player player)
+        {
+            if(player.PrestigeScore >= 15)
+            {
+                MessageBox.Show("Le joueur " + player.Name + " a gagné\nFélicitations !");
+                Application.Exit();
+            }
         }
 
         #endregion Private methods

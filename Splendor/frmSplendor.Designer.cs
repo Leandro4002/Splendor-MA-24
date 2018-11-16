@@ -76,6 +76,8 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.lblPlayerNumber = new System.Windows.Forms.Label();
+            this.lblActualChoice = new System.Windows.Forms.Label();
+            this.cmdHelp = new System.Windows.Forms.Button();
             this.flwCardLevel1.SuspendLayout();
             this.flwCardLevel2.SuspendLayout();
             this.flwCardLevel3.SuspendLayout();
@@ -85,10 +87,10 @@
             // lblGoldCoin
             // 
             this.lblGoldCoin.AutoSize = true;
-            this.lblGoldCoin.BackColor = System.Drawing.Color.Silver;
+            this.lblGoldCoin.BackColor = System.Drawing.Color.Gray;
             this.lblGoldCoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblGoldCoin.ForeColor = System.Drawing.Color.Gold;
-            this.lblGoldCoin.Location = new System.Drawing.Point(542, 15);
+            this.lblGoldCoin.Location = new System.Drawing.Point(542, 3);
             this.lblGoldCoin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblGoldCoin.Name = "lblGoldCoin";
             this.lblGoldCoin.Size = new System.Drawing.Size(71, 18);
@@ -101,7 +103,7 @@
             this.lblRubisCoin.BackColor = System.Drawing.Color.Red;
             this.lblRubisCoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblRubisCoin.ForeColor = System.Drawing.Color.White;
-            this.lblRubisCoin.Location = new System.Drawing.Point(19, 15);
+            this.lblRubisCoin.Location = new System.Drawing.Point(19, 3);
             this.lblRubisCoin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRubisCoin.Name = "lblRubisCoin";
             this.lblRubisCoin.Size = new System.Drawing.Size(77, 18);
@@ -116,7 +118,7 @@
             this.lblSaphirCoin.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblSaphirCoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblSaphirCoin.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblSaphirCoin.Location = new System.Drawing.Point(265, 15);
+            this.lblSaphirCoin.Location = new System.Drawing.Point(265, 3);
             this.lblSaphirCoin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSaphirCoin.Name = "lblSaphirCoin";
             this.lblSaphirCoin.Size = new System.Drawing.Size(81, 18);
@@ -130,7 +132,7 @@
             this.lblOnyxCoin.BackColor = System.Drawing.SystemColors.ControlText;
             this.lblOnyxCoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblOnyxCoin.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblOnyxCoin.Location = new System.Drawing.Point(186, 15);
+            this.lblOnyxCoin.Location = new System.Drawing.Point(186, 3);
             this.lblOnyxCoin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblOnyxCoin.Name = "lblOnyxCoin";
             this.lblOnyxCoin.Size = new System.Drawing.Size(73, 18);
@@ -144,7 +146,7 @@
             this.lblEmeraudeCoin.BackColor = System.Drawing.Color.Green;
             this.lblEmeraudeCoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblEmeraudeCoin.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblEmeraudeCoin.Location = new System.Drawing.Point(100, 15);
+            this.lblEmeraudeCoin.Location = new System.Drawing.Point(100, 3);
             this.lblEmeraudeCoin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEmeraudeCoin.Name = "lblEmeraudeCoin";
             this.lblEmeraudeCoin.Size = new System.Drawing.Size(107, 18);
@@ -157,8 +159,8 @@
             this.lblDiamantCoin.AutoSize = true;
             this.lblDiamantCoin.BackColor = System.Drawing.SystemColors.Window;
             this.lblDiamantCoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lblDiamantCoin.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.lblDiamantCoin.Location = new System.Drawing.Point(368, 15);
+            this.lblDiamantCoin.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.lblDiamantCoin.Location = new System.Drawing.Point(368, 3);
             this.lblDiamantCoin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDiamantCoin.Name = "lblDiamantCoin";
             this.lblDiamantCoin.Size = new System.Drawing.Size(94, 18);
@@ -176,6 +178,7 @@
             this.txtLevel31.ReadOnly = true;
             this.txtLevel31.Size = new System.Drawing.Size(102, 98);
             this.txtLevel31.TabIndex = 6;
+            this.txtLevel31.TabStop = false;
             this.txtLevel31.Click += new System.EventHandler(this.txtLevel31_Click);
             // 
             // txtLevel32
@@ -188,6 +191,7 @@
             this.txtLevel32.ReadOnly = true;
             this.txtLevel32.Size = new System.Drawing.Size(102, 98);
             this.txtLevel32.TabIndex = 7;
+            this.txtLevel32.TabStop = false;
             this.txtLevel32.Click += new System.EventHandler(this.txtLevel32_Click);
             // 
             // txtLevel33
@@ -200,6 +204,7 @@
             this.txtLevel33.ReadOnly = true;
             this.txtLevel33.Size = new System.Drawing.Size(102, 98);
             this.txtLevel33.TabIndex = 8;
+            this.txtLevel33.TabStop = false;
             this.txtLevel33.Click += new System.EventHandler(this.txtLevel33_Click);
             // 
             // txtLevel34
@@ -212,6 +217,7 @@
             this.txtLevel34.ReadOnly = true;
             this.txtLevel34.Size = new System.Drawing.Size(102, 98);
             this.txtLevel34.TabIndex = 9;
+            this.txtLevel34.TabStop = false;
             this.txtLevel34.Click += new System.EventHandler(this.txtLevel34_Click);
             // 
             // txtLevel21
@@ -224,6 +230,7 @@
             this.txtLevel21.ReadOnly = true;
             this.txtLevel21.Size = new System.Drawing.Size(102, 98);
             this.txtLevel21.TabIndex = 10;
+            this.txtLevel21.TabStop = false;
             this.txtLevel21.Click += new System.EventHandler(this.txtLevel21_Click);
             // 
             // txtLevel22
@@ -236,6 +243,7 @@
             this.txtLevel22.ReadOnly = true;
             this.txtLevel22.Size = new System.Drawing.Size(102, 98);
             this.txtLevel22.TabIndex = 11;
+            this.txtLevel22.TabStop = false;
             this.txtLevel22.Click += new System.EventHandler(this.txtLevel22_Click);
             // 
             // txtLevel23
@@ -248,6 +256,7 @@
             this.txtLevel23.ReadOnly = true;
             this.txtLevel23.Size = new System.Drawing.Size(102, 98);
             this.txtLevel23.TabIndex = 12;
+            this.txtLevel23.TabStop = false;
             this.txtLevel23.Click += new System.EventHandler(this.txtLevel23_Click);
             // 
             // txtLevel24
@@ -260,6 +269,7 @@
             this.txtLevel24.ReadOnly = true;
             this.txtLevel24.Size = new System.Drawing.Size(102, 98);
             this.txtLevel24.TabIndex = 13;
+            this.txtLevel24.TabStop = false;
             this.txtLevel24.Click += new System.EventHandler(this.txtLevel24_Click);
             // 
             // txtLevel14
@@ -270,8 +280,9 @@
             this.txtLevel14.Multiline = true;
             this.txtLevel14.Name = "txtLevel14";
             this.txtLevel14.ReadOnly = true;
-            this.txtLevel14.Size = new System.Drawing.Size(102, 96);
+            this.txtLevel14.Size = new System.Drawing.Size(102, 98);
             this.txtLevel14.TabIndex = 17;
+            this.txtLevel14.TabStop = false;
             this.txtLevel14.Click += new System.EventHandler(this.txtLevel14_Click);
             // 
             // txtLevel13
@@ -284,6 +295,7 @@
             this.txtLevel13.ReadOnly = true;
             this.txtLevel13.Size = new System.Drawing.Size(102, 98);
             this.txtLevel13.TabIndex = 15;
+            this.txtLevel13.TabStop = false;
             this.txtLevel13.Click += new System.EventHandler(this.txtLevel13_Click);
             // 
             // txtLevel12
@@ -296,6 +308,7 @@
             this.txtLevel12.ReadOnly = true;
             this.txtLevel12.Size = new System.Drawing.Size(102, 98);
             this.txtLevel12.TabIndex = 16;
+            this.txtLevel12.TabStop = false;
             this.txtLevel12.Click += new System.EventHandler(this.txtLevel12_Click);
             // 
             // txtLevel11
@@ -308,26 +321,27 @@
             this.txtLevel11.ReadOnly = true;
             this.txtLevel11.Size = new System.Drawing.Size(102, 98);
             this.txtLevel11.TabIndex = 17;
+            this.txtLevel11.TabStop = false;
             this.txtLevel11.Click += new System.EventHandler(this.txtLevel11_Click);
             // 
             // cmdInsertPlayer
             // 
-            this.cmdInsertPlayer.Location = new System.Drawing.Point(501, 153);
+            this.cmdInsertPlayer.Location = new System.Drawing.Point(501, 141);
             this.cmdInsertPlayer.Margin = new System.Windows.Forms.Padding(2);
             this.cmdInsertPlayer.Name = "cmdInsertPlayer";
             this.cmdInsertPlayer.Size = new System.Drawing.Size(82, 39);
-            this.cmdInsertPlayer.TabIndex = 18;
+            this.cmdInsertPlayer.TabIndex = 1;
             this.cmdInsertPlayer.Text = "Entrer joueur";
             this.cmdInsertPlayer.UseVisualStyleBackColor = true;
             this.cmdInsertPlayer.Click += new System.EventHandler(this.cmdInsertPlayer_Click);
             // 
             // cmdPlay
             // 
-            this.cmdPlay.Location = new System.Drawing.Point(501, 211);
+            this.cmdPlay.Location = new System.Drawing.Point(501, 199);
             this.cmdPlay.Margin = new System.Windows.Forms.Padding(2);
             this.cmdPlay.Name = "cmdPlay";
             this.cmdPlay.Size = new System.Drawing.Size(82, 39);
-            this.cmdPlay.TabIndex = 19;
+            this.cmdPlay.TabIndex = 2;
             this.cmdPlay.Text = "Jouer";
             this.cmdPlay.UseVisualStyleBackColor = true;
             this.cmdPlay.Click += new System.EventHandler(this.cmdPlay_Click);
@@ -337,21 +351,22 @@
             this.txtPlayerRessources.BackColor = System.Drawing.SystemColors.Control;
             this.txtPlayerRessources.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.txtPlayerRessources.ForeColor = System.Drawing.Color.Black;
-            this.txtPlayerRessources.Location = new System.Drawing.Point(20, 627);
+            this.txtPlayerRessources.Location = new System.Drawing.Point(20, 567);
             this.txtPlayerRessources.Margin = new System.Windows.Forms.Padding(2);
             this.txtPlayerRessources.Multiline = true;
             this.txtPlayerRessources.Name = "txtPlayerRessources";
             this.txtPlayerRessources.ReadOnly = true;
-            this.txtPlayerRessources.Size = new System.Drawing.Size(552, 107);
+            this.txtPlayerRessources.Size = new System.Drawing.Size(258, 97);
             this.txtPlayerRessources.TabIndex = 27;
+            this.txtPlayerRessources.TabStop = false;
             // 
             // lblPlayerDiamantCoin
             // 
             this.lblPlayerDiamantCoin.AutoSize = true;
             this.lblPlayerDiamantCoin.BackColor = System.Drawing.SystemColors.Window;
             this.lblPlayerDiamantCoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lblPlayerDiamantCoin.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.lblPlayerDiamantCoin.Location = new System.Drawing.Point(379, 593);
+            this.lblPlayerDiamantCoin.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.lblPlayerDiamantCoin.Location = new System.Drawing.Point(379, 543);
             this.lblPlayerDiamantCoin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlayerDiamantCoin.Name = "lblPlayerDiamantCoin";
             this.lblPlayerDiamantCoin.Size = new System.Drawing.Size(94, 18);
@@ -364,7 +379,7 @@
             this.lblPlayerEmeraudeCoin.BackColor = System.Drawing.Color.Green;
             this.lblPlayerEmeraudeCoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblPlayerEmeraudeCoin.ForeColor = System.Drawing.Color.White;
-            this.lblPlayerEmeraudeCoin.Location = new System.Drawing.Point(108, 593);
+            this.lblPlayerEmeraudeCoin.Location = new System.Drawing.Point(108, 543);
             this.lblPlayerEmeraudeCoin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlayerEmeraudeCoin.Name = "lblPlayerEmeraudeCoin";
             this.lblPlayerEmeraudeCoin.Size = new System.Drawing.Size(107, 18);
@@ -377,7 +392,7 @@
             this.lblPlayerOnyxCoin.BackColor = System.Drawing.SystemColors.ControlText;
             this.lblPlayerOnyxCoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblPlayerOnyxCoin.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblPlayerOnyxCoin.Location = new System.Drawing.Point(200, 593);
+            this.lblPlayerOnyxCoin.Location = new System.Drawing.Point(200, 543);
             this.lblPlayerOnyxCoin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlayerOnyxCoin.Name = "lblPlayerOnyxCoin";
             this.lblPlayerOnyxCoin.Size = new System.Drawing.Size(73, 18);
@@ -390,7 +405,7 @@
             this.lblPlayerSaphirCoin.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblPlayerSaphirCoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblPlayerSaphirCoin.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblPlayerSaphirCoin.Location = new System.Drawing.Point(284, 593);
+            this.lblPlayerSaphirCoin.Location = new System.Drawing.Point(284, 543);
             this.lblPlayerSaphirCoin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlayerSaphirCoin.Name = "lblPlayerSaphirCoin";
             this.lblPlayerSaphirCoin.Size = new System.Drawing.Size(81, 18);
@@ -403,7 +418,7 @@
             this.lblPlayerRubisCoin.BackColor = System.Drawing.Color.Red;
             this.lblPlayerRubisCoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblPlayerRubisCoin.ForeColor = System.Drawing.Color.White;
-            this.lblPlayerRubisCoin.Location = new System.Drawing.Point(18, 593);
+            this.lblPlayerRubisCoin.Location = new System.Drawing.Point(18, 543);
             this.lblPlayerRubisCoin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlayerRubisCoin.Name = "lblPlayerRubisCoin";
             this.lblPlayerRubisCoin.Size = new System.Drawing.Size(77, 18);
@@ -414,10 +429,10 @@
             // lblPlayerGoldCoin
             // 
             this.lblPlayerGoldCoin.AutoSize = true;
-            this.lblPlayerGoldCoin.BackColor = System.Drawing.Color.Silver;
+            this.lblPlayerGoldCoin.BackColor = System.Drawing.Color.Gray;
             this.lblPlayerGoldCoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblPlayerGoldCoin.ForeColor = System.Drawing.Color.Gold;
-            this.lblPlayerGoldCoin.Location = new System.Drawing.Point(501, 348);
+            this.lblPlayerGoldCoin.Location = new System.Drawing.Point(501, 336);
             this.lblPlayerGoldCoin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlayerGoldCoin.Name = "lblPlayerGoldCoin";
             this.lblPlayerGoldCoin.Size = new System.Drawing.Size(71, 18);
@@ -426,13 +441,14 @@
             // 
             // txtPlayerBookedCard
             // 
-            this.txtPlayerBookedCard.Location = new System.Drawing.Point(503, 374);
+            this.txtPlayerBookedCard.Location = new System.Drawing.Point(503, 362);
             this.txtPlayerBookedCard.Margin = new System.Windows.Forms.Padding(2);
             this.txtPlayerBookedCard.Multiline = true;
             this.txtPlayerBookedCard.Name = "txtPlayerBookedCard";
             this.txtPlayerBookedCard.ReadOnly = true;
             this.txtPlayerBookedCard.Size = new System.Drawing.Size(81, 98);
             this.txtPlayerBookedCard.TabIndex = 31;
+            this.txtPlayerBookedCard.TabStop = false;
             // 
             // lblChoiceRubis
             // 
@@ -440,7 +456,7 @@
             this.lblChoiceRubis.BackColor = System.Drawing.Color.Red;
             this.lblChoiceRubis.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblChoiceRubis.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblChoiceRubis.Location = new System.Drawing.Point(18, 524);
+            this.lblChoiceRubis.Location = new System.Drawing.Point(18, 491);
             this.lblChoiceRubis.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblChoiceRubis.Name = "lblChoiceRubis";
             this.lblChoiceRubis.Size = new System.Drawing.Size(79, 18);
@@ -454,7 +470,7 @@
             this.lblChoiceSaphir.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblChoiceSaphir.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblChoiceSaphir.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblChoiceSaphir.Location = new System.Drawing.Point(284, 524);
+            this.lblChoiceSaphir.Location = new System.Drawing.Point(284, 491);
             this.lblChoiceSaphir.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblChoiceSaphir.Name = "lblChoiceSaphir";
             this.lblChoiceSaphir.Size = new System.Drawing.Size(87, 18);
@@ -468,7 +484,7 @@
             this.lblChoiceOnyx.BackColor = System.Drawing.SystemColors.ControlText;
             this.lblChoiceOnyx.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblChoiceOnyx.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblChoiceOnyx.Location = new System.Drawing.Point(200, 524);
+            this.lblChoiceOnyx.Location = new System.Drawing.Point(200, 491);
             this.lblChoiceOnyx.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblChoiceOnyx.Name = "lblChoiceOnyx";
             this.lblChoiceOnyx.Size = new System.Drawing.Size(78, 18);
@@ -482,7 +498,7 @@
             this.lblChoiceEmeraude.BackColor = System.Drawing.Color.Green;
             this.lblChoiceEmeraude.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblChoiceEmeraude.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblChoiceEmeraude.Location = new System.Drawing.Point(108, 524);
+            this.lblChoiceEmeraude.Location = new System.Drawing.Point(108, 491);
             this.lblChoiceEmeraude.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblChoiceEmeraude.Name = "lblChoiceEmeraude";
             this.lblChoiceEmeraude.Size = new System.Drawing.Size(113, 18);
@@ -495,8 +511,8 @@
             this.lblChoiceDiamant.AutoSize = true;
             this.lblChoiceDiamant.BackColor = System.Drawing.SystemColors.Window;
             this.lblChoiceDiamant.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lblChoiceDiamant.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.lblChoiceDiamant.Location = new System.Drawing.Point(379, 524);
+            this.lblChoiceDiamant.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.lblChoiceDiamant.Location = new System.Drawing.Point(379, 491);
             this.lblChoiceDiamant.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblChoiceDiamant.Name = "lblChoiceDiamant";
             this.lblChoiceDiamant.Size = new System.Drawing.Size(99, 18);
@@ -506,22 +522,22 @@
             // 
             // cmdValidateChoice
             // 
-            this.cmdValidateChoice.Location = new System.Drawing.Point(20, 554);
+            this.cmdValidateChoice.Location = new System.Drawing.Point(287, 567);
             this.cmdValidateChoice.Margin = new System.Windows.Forms.Padding(2);
             this.cmdValidateChoice.Name = "cmdValidateChoice";
-            this.cmdValidateChoice.Size = new System.Drawing.Size(83, 21);
-            this.cmdValidateChoice.TabIndex = 38;
+            this.cmdValidateChoice.Size = new System.Drawing.Size(106, 33);
+            this.cmdValidateChoice.TabIndex = 3;
             this.cmdValidateChoice.Text = "Valider choix";
             this.cmdValidateChoice.UseVisualStyleBackColor = true;
             this.cmdValidateChoice.Click += new System.EventHandler(this.cmdValidateChoice_Click);
             // 
             // cmdNextPlayer
             // 
-            this.cmdNextPlayer.Location = new System.Drawing.Point(135, 554);
+            this.cmdNextPlayer.Location = new System.Drawing.Point(406, 567);
             this.cmdNextPlayer.Margin = new System.Windows.Forms.Padding(2);
             this.cmdNextPlayer.Name = "cmdNextPlayer";
-            this.cmdNextPlayer.Size = new System.Drawing.Size(106, 20);
-            this.cmdNextPlayer.TabIndex = 39;
+            this.cmdNextPlayer.Size = new System.Drawing.Size(106, 33);
+            this.cmdNextPlayer.TabIndex = 4;
             this.cmdNextPlayer.Text = "Joueur suivant";
             this.cmdNextPlayer.UseVisualStyleBackColor = true;
             this.cmdNextPlayer.Click += new System.EventHandler(this.cmdNextPlayer_Click);
@@ -529,7 +545,7 @@
             // lblPlayer
             // 
             this.lblPlayer.AutoSize = true;
-            this.lblPlayer.Location = new System.Drawing.Point(22, 499);
+            this.lblPlayer.Location = new System.Drawing.Point(19, 518);
             this.lblPlayer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlayer.Name = "lblPlayer";
             this.lblPlayer.Size = new System.Drawing.Size(58, 13);
@@ -546,6 +562,7 @@
             this.txtLevel44.ReadOnly = true;
             this.txtLevel44.Size = new System.Drawing.Size(102, 98);
             this.txtLevel44.TabIndex = 45;
+            this.txtLevel44.TabStop = false;
             // 
             // txtLevel43
             // 
@@ -557,6 +574,7 @@
             this.txtLevel43.ReadOnly = true;
             this.txtLevel43.Size = new System.Drawing.Size(102, 98);
             this.txtLevel43.TabIndex = 44;
+            this.txtLevel43.TabStop = false;
             // 
             // txtLevel42
             // 
@@ -568,6 +586,7 @@
             this.txtLevel42.ReadOnly = true;
             this.txtLevel42.Size = new System.Drawing.Size(102, 98);
             this.txtLevel42.TabIndex = 43;
+            this.txtLevel42.TabStop = false;
             // 
             // txtLevel41
             // 
@@ -579,12 +598,13 @@
             this.txtLevel41.ReadOnly = true;
             this.txtLevel41.Size = new System.Drawing.Size(102, 98);
             this.txtLevel41.TabIndex = 42;
+            this.txtLevel41.TabStop = false;
             // 
             // lblNbPtPrestige
             // 
             this.lblNbPtPrestige.AutoSize = true;
             this.lblNbPtPrestige.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lblNbPtPrestige.Location = new System.Drawing.Point(467, 592);
+            this.lblNbPtPrestige.Location = new System.Drawing.Point(467, 542);
             this.lblNbPtPrestige.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNbPtPrestige.Name = "lblNbPtPrestige";
             this.lblNbPtPrestige.Size = new System.Drawing.Size(99, 18);
@@ -597,7 +617,7 @@
             this.flwCardLevel1.Controls.Add(this.txtLevel13);
             this.flwCardLevel1.Controls.Add(this.txtLevel12);
             this.flwCardLevel1.Controls.Add(this.txtLevel11);
-            this.flwCardLevel1.Location = new System.Drawing.Point(14, 374);
+            this.flwCardLevel1.Location = new System.Drawing.Point(14, 363);
             this.flwCardLevel1.Margin = new System.Windows.Forms.Padding(2);
             this.flwCardLevel1.Name = "flwCardLevel1";
             this.flwCardLevel1.Size = new System.Drawing.Size(452, 107);
@@ -609,7 +629,7 @@
             this.flwCardLevel2.Controls.Add(this.txtLevel23);
             this.flwCardLevel2.Controls.Add(this.txtLevel22);
             this.flwCardLevel2.Controls.Add(this.txtLevel21);
-            this.flwCardLevel2.Location = new System.Drawing.Point(14, 257);
+            this.flwCardLevel2.Location = new System.Drawing.Point(14, 243);
             this.flwCardLevel2.Margin = new System.Windows.Forms.Padding(2);
             this.flwCardLevel2.Name = "flwCardLevel2";
             this.flwCardLevel2.Size = new System.Drawing.Size(452, 117);
@@ -621,7 +641,7 @@
             this.flwCardLevel3.Controls.Add(this.txtLevel33);
             this.flwCardLevel3.Controls.Add(this.txtLevel32);
             this.flwCardLevel3.Controls.Add(this.txtLevel31);
-            this.flwCardLevel3.Location = new System.Drawing.Point(14, 145);
+            this.flwCardLevel3.Location = new System.Drawing.Point(14, 133);
             this.flwCardLevel3.Margin = new System.Windows.Forms.Padding(2);
             this.flwCardLevel3.Name = "flwCardLevel3";
             this.flwCardLevel3.Size = new System.Drawing.Size(452, 111);
@@ -633,7 +653,7 @@
             this.flwCardLevel4.Controls.Add(this.txtLevel43);
             this.flwCardLevel4.Controls.Add(this.txtLevel42);
             this.flwCardLevel4.Controls.Add(this.txtLevel41);
-            this.flwCardLevel4.Location = new System.Drawing.Point(14, 37);
+            this.flwCardLevel4.Location = new System.Drawing.Point(14, 23);
             this.flwCardLevel4.Margin = new System.Windows.Forms.Padding(2);
             this.flwCardLevel4.Name = "flwCardLevel4";
             this.flwCardLevel4.Size = new System.Drawing.Size(452, 109);
@@ -656,17 +676,39 @@
             // lblPlayerNumber
             // 
             this.lblPlayerNumber.AutoSize = true;
-            this.lblPlayerNumber.Location = new System.Drawing.Point(478, 124);
+            this.lblPlayerNumber.Location = new System.Drawing.Point(478, 112);
             this.lblPlayerNumber.Name = "lblPlayerNumber";
             this.lblPlayerNumber.Size = new System.Drawing.Size(111, 13);
             this.lblPlayerNumber.TabIndex = 51;
             this.lblPlayerNumber.Text = "Nombre de joueurs : 0";
             // 
+            // lblActualChoice
+            // 
+            this.lblActualChoice.AutoSize = true;
+            this.lblActualChoice.Location = new System.Drawing.Point(17, 472);
+            this.lblActualChoice.Name = "lblActualChoice";
+            this.lblActualChoice.Size = new System.Drawing.Size(65, 13);
+            this.lblActualChoice.TabIndex = 52;
+            this.lblActualChoice.Text = "Choix actuel";
+            // 
+            // cmdHelp
+            // 
+            this.cmdHelp.Location = new System.Drawing.Point(501, 254);
+            this.cmdHelp.Name = "cmdHelp";
+            this.cmdHelp.Size = new System.Drawing.Size(82, 39);
+            this.cmdHelp.TabIndex = 5;
+            this.cmdHelp.TabStop = false;
+            this.cmdHelp.Text = "Aide";
+            this.cmdHelp.UseVisualStyleBackColor = true;
+            this.cmdHelp.Click += new System.EventHandler(this.cmdHelp_Click);
+            // 
             // frmSplendor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(606, 749);
+            this.ClientSize = new System.Drawing.Size(606, 694);
+            this.Controls.Add(this.cmdHelp);
+            this.Controls.Add(this.lblActualChoice);
             this.Controls.Add(this.lblPlayerNumber);
             this.Controls.Add(this.flwCardLevel4);
             this.Controls.Add(this.flwCardLevel3);
@@ -765,6 +807,8 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label lblPlayerNumber;
+        private System.Windows.Forms.Label lblActualChoice;
+        private System.Windows.Forms.Button cmdHelp;
     }
 }
 
