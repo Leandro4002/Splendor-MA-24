@@ -1,0 +1,157 @@
+\hypertarget{class_splendor_1_1_connection_d_b}{}\section{Splendor.\+Connection\+DB Class Reference}
+\label{class_splendor_1_1_connection_d_b}\index{Splendor.\+Connection\+DB@{Splendor.\+Connection\+DB}}
+
+
+Contains methods and attributes to connect and deal with the database  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_splendor_1_1_connection_d_b_aaaa5c66d4f12702d36a76dd21beb62c4}{Connection\+DB} ()
+\begin{DoxyCompactList}\small\item\em Constructor \+: Creates the connection to the database S\+Q\+Lite \end{DoxyCompactList}\item 
+void \hyperlink{class_splendor_1_1_connection_d_b_a122fc944f46910732f429432c0f80ec3}{Add\+Player} (string player\+Name)
+\begin{DoxyCompactList}\small\item\em Add a new player to the DB {\itshape player\+Name} Name of the player \end{DoxyCompactList}\item 
+int \hyperlink{class_splendor_1_1_connection_d_b_a5731b9d427109c1d15db9665f290bf9a}{Get\+Number\+Of\+Players} ()
+\begin{DoxyCompactList}\small\item\em Gets the number of players in the database \end{DoxyCompactList}\item 
+string \hyperlink{class_splendor_1_1_connection_d_b_a7d715d5452049ad06f4a407fa5df151c}{Get\+Player\+Name} (int id)
+\begin{DoxyCompactList}\small\item\em Get the name of the player according to his id \end{DoxyCompactList}\item 
+List$<$ \hyperlink{class_splendor_1_1_card}{Card} $>$ \hyperlink{class_splendor_1_1_connection_d_b_aedda6930c46d2667248333ffca06882a}{Get\+List\+Card\+According\+To\+Level} (int level)
+\begin{DoxyCompactList}\small\item\em Get the list of cards according to the level \end{DoxyCompactList}\item 
+List$<$ \hyperlink{class_splendor_1_1_card}{Card} $>$ \hyperlink{class_splendor_1_1_connection_d_b_a020bd54ace4a6b36ccc8c1661d5322e7}{Get\+List\+Card} ()
+\begin{DoxyCompactList}\small\item\em Get the list of all the cards \end{DoxyCompactList}\item 
+\hyperlink{class_splendor_1_1_card}{Card} \hyperlink{class_splendor_1_1_connection_d_b_a1d7511e41b837b176737fd1b8d19f921}{Get\+Card\+By\+Id} (int id)
+\begin{DoxyCompactList}\small\item\em Get card information with an id \end{DoxyCompactList}\item 
+void \hyperlink{class_splendor_1_1_connection_d_b_a00d157ae467fdd310bf38626472175b6}{Remove\+Card\+By\+Id} (int id)
+\begin{DoxyCompactList}\small\item\em Remove a card according a card with it\textquotesingle{}s id \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains methods and attributes to connect and deal with the database 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_splendor_1_1_connection_d_b_aaaa5c66d4f12702d36a76dd21beb62c4}\label{class_splendor_1_1_connection_d_b_aaaa5c66d4f12702d36a76dd21beb62c4}} 
+\index{Splendor\+::\+Connection\+DB@{Splendor\+::\+Connection\+DB}!Connection\+DB@{Connection\+DB}}
+\index{Connection\+DB@{Connection\+DB}!Splendor\+::\+Connection\+DB@{Splendor\+::\+Connection\+DB}}
+\subsubsection{\texorpdfstring{Connection\+D\+B()}{ConnectionDB()}}
+{\footnotesize\ttfamily Splendor.\+Connection\+D\+B.\+Connection\+DB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor \+: Creates the connection to the database S\+Q\+Lite 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_splendor_1_1_connection_d_b_a122fc944f46910732f429432c0f80ec3}\label{class_splendor_1_1_connection_d_b_a122fc944f46910732f429432c0f80ec3}} 
+\index{Splendor\+::\+Connection\+DB@{Splendor\+::\+Connection\+DB}!Add\+Player@{Add\+Player}}
+\index{Add\+Player@{Add\+Player}!Splendor\+::\+Connection\+DB@{Splendor\+::\+Connection\+DB}}
+\subsubsection{\texorpdfstring{Add\+Player()}{AddPlayer()}}
+{\footnotesize\ttfamily void Splendor.\+Connection\+D\+B.\+Add\+Player (\begin{DoxyParamCaption}\item[{string}]{player\+Name }\end{DoxyParamCaption})}
+
+
+
+Add a new player to the DB {\itshape player\+Name} Name of the player 
+
+\mbox{\Hypertarget{class_splendor_1_1_connection_d_b_a1d7511e41b837b176737fd1b8d19f921}\label{class_splendor_1_1_connection_d_b_a1d7511e41b837b176737fd1b8d19f921}} 
+\index{Splendor\+::\+Connection\+DB@{Splendor\+::\+Connection\+DB}!Get\+Card\+By\+Id@{Get\+Card\+By\+Id}}
+\index{Get\+Card\+By\+Id@{Get\+Card\+By\+Id}!Splendor\+::\+Connection\+DB@{Splendor\+::\+Connection\+DB}}
+\subsubsection{\texorpdfstring{Get\+Card\+By\+Id()}{GetCardById()}}
+{\footnotesize\ttfamily \hyperlink{class_splendor_1_1_card}{Card} Splendor.\+Connection\+D\+B.\+Get\+Card\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Get card information with an id 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \hyperlink{class_splendor_1_1_card}{Card}\textquotesingle{}s id\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_splendor_1_1_card}{Card} information
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_splendor_1_1_connection_d_b_a020bd54ace4a6b36ccc8c1661d5322e7}\label{class_splendor_1_1_connection_d_b_a020bd54ace4a6b36ccc8c1661d5322e7}} 
+\index{Splendor\+::\+Connection\+DB@{Splendor\+::\+Connection\+DB}!Get\+List\+Card@{Get\+List\+Card}}
+\index{Get\+List\+Card@{Get\+List\+Card}!Splendor\+::\+Connection\+DB@{Splendor\+::\+Connection\+DB}}
+\subsubsection{\texorpdfstring{Get\+List\+Card()}{GetListCard()}}
+{\footnotesize\ttfamily List$<$\hyperlink{class_splendor_1_1_card}{Card}$>$ Splendor.\+Connection\+D\+B.\+Get\+List\+Card (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the list of all the cards 
+
+\begin{DoxyReturn}{Returns}
+Cards list
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_splendor_1_1_connection_d_b_aedda6930c46d2667248333ffca06882a}\label{class_splendor_1_1_connection_d_b_aedda6930c46d2667248333ffca06882a}} 
+\index{Splendor\+::\+Connection\+DB@{Splendor\+::\+Connection\+DB}!Get\+List\+Card\+According\+To\+Level@{Get\+List\+Card\+According\+To\+Level}}
+\index{Get\+List\+Card\+According\+To\+Level@{Get\+List\+Card\+According\+To\+Level}!Splendor\+::\+Connection\+DB@{Splendor\+::\+Connection\+DB}}
+\subsubsection{\texorpdfstring{Get\+List\+Card\+According\+To\+Level()}{GetListCardAccordingToLevel()}}
+{\footnotesize\ttfamily List$<$\hyperlink{class_splendor_1_1_card}{Card}$>$ Splendor.\+Connection\+D\+B.\+Get\+List\+Card\+According\+To\+Level (\begin{DoxyParamCaption}\item[{int}]{level }\end{DoxyParamCaption})}
+
+
+
+Get the list of cards according to the level 
+
+
+\begin{DoxyParams}{Parameters}
+{\em level} & card\textquotesingle{}s level\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Cards list
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_splendor_1_1_connection_d_b_a5731b9d427109c1d15db9665f290bf9a}\label{class_splendor_1_1_connection_d_b_a5731b9d427109c1d15db9665f290bf9a}} 
+\index{Splendor\+::\+Connection\+DB@{Splendor\+::\+Connection\+DB}!Get\+Number\+Of\+Players@{Get\+Number\+Of\+Players}}
+\index{Get\+Number\+Of\+Players@{Get\+Number\+Of\+Players}!Splendor\+::\+Connection\+DB@{Splendor\+::\+Connection\+DB}}
+\subsubsection{\texorpdfstring{Get\+Number\+Of\+Players()}{GetNumberOfPlayers()}}
+{\footnotesize\ttfamily int Splendor.\+Connection\+D\+B.\+Get\+Number\+Of\+Players (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the number of players in the database 
+
+\begin{DoxyReturn}{Returns}
+The number of players
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_splendor_1_1_connection_d_b_a7d715d5452049ad06f4a407fa5df151c}\label{class_splendor_1_1_connection_d_b_a7d715d5452049ad06f4a407fa5df151c}} 
+\index{Splendor\+::\+Connection\+DB@{Splendor\+::\+Connection\+DB}!Get\+Player\+Name@{Get\+Player\+Name}}
+\index{Get\+Player\+Name@{Get\+Player\+Name}!Splendor\+::\+Connection\+DB@{Splendor\+::\+Connection\+DB}}
+\subsubsection{\texorpdfstring{Get\+Player\+Name()}{GetPlayerName()}}
+{\footnotesize\ttfamily string Splendor.\+Connection\+D\+B.\+Get\+Player\+Name (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Get the name of the player according to his id 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the player\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_splendor_1_1_player}{Player} name
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_splendor_1_1_connection_d_b_a00d157ae467fdd310bf38626472175b6}\label{class_splendor_1_1_connection_d_b_a00d157ae467fdd310bf38626472175b6}} 
+\index{Splendor\+::\+Connection\+DB@{Splendor\+::\+Connection\+DB}!Remove\+Card\+By\+Id@{Remove\+Card\+By\+Id}}
+\index{Remove\+Card\+By\+Id@{Remove\+Card\+By\+Id}!Splendor\+::\+Connection\+DB@{Splendor\+::\+Connection\+DB}}
+\subsubsection{\texorpdfstring{Remove\+Card\+By\+Id()}{RemoveCardById()}}
+{\footnotesize\ttfamily void Splendor.\+Connection\+D\+B.\+Remove\+Card\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Remove a card according a card with it\textquotesingle{}s id 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Splendor/\hyperlink{_connection_d_b_8cs}{Connection\+D\+B.\+cs}\end{DoxyCompactItemize}

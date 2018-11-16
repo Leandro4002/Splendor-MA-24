@@ -1,0 +1,32 @@
+\hypertarget{_connection_d_b_8cs}{}\section{Splendor/\+Connection\+DB.cs File Reference}
+\label{_connection_d_b_8cs}\index{Splendor/\+Connection\+D\+B.\+cs@{Splendor/\+Connection\+D\+B.\+cs}}
+
+
+Set of methods related to DB connection.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_splendor_1_1_connection_d_b}{Splendor.\+Connection\+DB}
+\begin{DoxyCompactList}\small\item\em Contains methods and attributes to connect and deal with the database \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Set of methods related to DB connection. 
+
+\begin{DoxyAuthor}{Author}
+Leandro Saraiva Maia \& Alexandre Baseia 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+September 14. 2018
+\end{DoxyDate}
+This file is used to handle all the connection with the pseudo database in S\+Q\+L\+I\+TE. S\+Q\+L\+I\+TE is a library that simulate a database localy. We use an object call m\+\_\+db\+Connection to initialize a connexion with the database. The m\+\_\+db\+Connection object is instanciated in the connection\+DB constructor. In this file, we ofently use {\ttfamily S\+Q\+Lite\+Command command = new S\+Q\+Lite\+Command(sql\+Request, m\+\_\+db\+Connection);} to create a new S\+Q\+L\+I\+TE command giving a string(sql\+Request) and a S\+Q\+L\+I\+Te connection(m\+\_\+db\+Connection). Then we use {\ttfamily S\+Q\+Lite\+Data\+Reader reader = command.\+Execute\+Reader();} to actually execute the query.
+
+The \char`\"{}\+Create and insert data\char`\"{} region is a set of function called on Connection\+DB constructor to create the all the cards of the game. The \char`\"{}\+Get query\char`\"{} region is a set of function to get miscellaneous value from the database The \char`\"{}\+Remove query\char`\"{} region is the same but to remove 
