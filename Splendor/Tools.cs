@@ -84,11 +84,14 @@ namespace Splendor
         {
             List<int> indexOfNobles = new List<int>();
 
-            for(int i = 0; i < cardList.Count; i++)
+            for(int i = 0; i < 4; i++)
             {
-                if (Tools.CheckEnoughtToBuy(player.Ressources, cardList[i].Price, new int[]{ 0, 0, 0, 0, 0, 0 }))
+                if (!cardList[i].IsEmpty)
                 {
-                    indexOfNobles.Add(i);
+                    if (Tools.CheckEnoughtToBuy(player.Ressources, cardList[i].Price, new int[] { 0, 0, 0, 0, 0, 0 }))
+                    {
+                        indexOfNobles.Add(i);
+                    }
                 }
             }
 

@@ -28,6 +28,7 @@ namespace Splendor
         private int level;
         private int id;
         private int[] price = new int[6];
+        private bool isEmpty = false;
 
         #endregion Private attributes
 
@@ -109,6 +110,18 @@ namespace Splendor
             }
         }
 
+        /// <summary>
+        /// Tell if the card is void (new Card())
+        /// </summary>
+        public bool IsEmpty {
+            get {
+                return isEmpty;
+            }
+            set {
+                isEmpty = value;
+            }
+        }
+
         #endregion Public attributes
 
         #region Public methods
@@ -119,6 +132,7 @@ namespace Splendor
         /// <returns>A representation of the card in a string</returns>
         public override string ToString()
         {
+
             string res = "";
             //If there is a prestige score, write it down
             if (prestigePt != 0)
@@ -131,7 +145,7 @@ namespace Splendor
             {
                 res += " " + Enum.GetName(typeof(Ressources), Ress);
             }
-            else
+            else if (level == 4)
             {
                 res += " Noble";
             }

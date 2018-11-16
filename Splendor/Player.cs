@@ -112,6 +112,8 @@ namespace Splendor
 
         #region Private methods
 
+        //Unfortunately, those functions haven't been implemented because a collaborator got really sick, we hope he recover fast.
+
         /// <summary>
         /// The player takes gems from the bank
         /// </summary>

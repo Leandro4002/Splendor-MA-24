@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblGoldCoin = new System.Windows.Forms.Label();
             this.lblRubisCoin = new System.Windows.Forms.Label();
             this.lblSaphirCoin = new System.Windows.Forms.Label();
             this.lblOnyxCoin = new System.Windows.Forms.Label();
@@ -54,8 +53,6 @@
             this.lblPlayerOnyxCoin = new System.Windows.Forms.Label();
             this.lblPlayerSaphirCoin = new System.Windows.Forms.Label();
             this.lblPlayerRubisCoin = new System.Windows.Forms.Label();
-            this.lblPlayerGoldCoin = new System.Windows.Forms.Label();
-            this.txtPlayerBookedCard = new System.Windows.Forms.TextBox();
             this.lblChoiceRubis = new System.Windows.Forms.Label();
             this.lblChoiceSaphir = new System.Windows.Forms.Label();
             this.lblChoiceOnyx = new System.Windows.Forms.Label();
@@ -83,19 +80,6 @@
             this.flwCardLevel3.SuspendLayout();
             this.flwCardLevel4.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblGoldCoin
-            // 
-            this.lblGoldCoin.AutoSize = true;
-            this.lblGoldCoin.BackColor = System.Drawing.Color.Gray;
-            this.lblGoldCoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lblGoldCoin.ForeColor = System.Drawing.Color.Gold;
-            this.lblGoldCoin.Location = new System.Drawing.Point(542, 3);
-            this.lblGoldCoin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblGoldCoin.Name = "lblGoldCoin";
-            this.lblGoldCoin.Size = new System.Drawing.Size(71, 18);
-            this.lblGoldCoin.TabIndex = 0;
-            this.lblGoldCoin.Text = "GoldCoin";
             // 
             // lblRubisCoin
             // 
@@ -426,30 +410,6 @@
             this.lblPlayerRubisCoin.Text = "RubisCoin";
             this.lblPlayerRubisCoin.UseMnemonic = false;
             // 
-            // lblPlayerGoldCoin
-            // 
-            this.lblPlayerGoldCoin.AutoSize = true;
-            this.lblPlayerGoldCoin.BackColor = System.Drawing.Color.Gray;
-            this.lblPlayerGoldCoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lblPlayerGoldCoin.ForeColor = System.Drawing.Color.Gold;
-            this.lblPlayerGoldCoin.Location = new System.Drawing.Point(501, 336);
-            this.lblPlayerGoldCoin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPlayerGoldCoin.Name = "lblPlayerGoldCoin";
-            this.lblPlayerGoldCoin.Size = new System.Drawing.Size(71, 18);
-            this.lblPlayerGoldCoin.TabIndex = 21;
-            this.lblPlayerGoldCoin.Text = "GoldCoin";
-            // 
-            // txtPlayerBookedCard
-            // 
-            this.txtPlayerBookedCard.Location = new System.Drawing.Point(503, 362);
-            this.txtPlayerBookedCard.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPlayerBookedCard.Multiline = true;
-            this.txtPlayerBookedCard.Name = "txtPlayerBookedCard";
-            this.txtPlayerBookedCard.ReadOnly = true;
-            this.txtPlayerBookedCard.Size = new System.Drawing.Size(81, 98);
-            this.txtPlayerBookedCard.TabIndex = 31;
-            this.txtPlayerBookedCard.TabStop = false;
-            // 
             // lblChoiceRubis
             // 
             this.lblChoiceRubis.AutoSize = true;
@@ -723,14 +683,12 @@
             this.Controls.Add(this.lblChoiceOnyx);
             this.Controls.Add(this.lblChoiceSaphir);
             this.Controls.Add(this.lblChoiceRubis);
-            this.Controls.Add(this.txtPlayerBookedCard);
             this.Controls.Add(this.txtPlayerRessources);
             this.Controls.Add(this.lblPlayerDiamantCoin);
             this.Controls.Add(this.lblPlayerEmeraudeCoin);
             this.Controls.Add(this.lblPlayerOnyxCoin);
             this.Controls.Add(this.lblPlayerSaphirCoin);
             this.Controls.Add(this.lblPlayerRubisCoin);
-            this.Controls.Add(this.lblPlayerGoldCoin);
             this.Controls.Add(this.cmdPlay);
             this.Controls.Add(this.cmdInsertPlayer);
             this.Controls.Add(this.lblDiamantCoin);
@@ -738,7 +696,6 @@
             this.Controls.Add(this.lblOnyxCoin);
             this.Controls.Add(this.lblSaphirCoin);
             this.Controls.Add(this.lblRubisCoin);
-            this.Controls.Add(this.lblGoldCoin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmSplendor";
@@ -758,8 +715,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblGoldCoin;
         private System.Windows.Forms.Label lblRubisCoin;
         private System.Windows.Forms.Label lblSaphirCoin;
         private System.Windows.Forms.Label lblOnyxCoin;
@@ -785,8 +740,6 @@
         private System.Windows.Forms.Label lblPlayerOnyxCoin;
         private System.Windows.Forms.Label lblPlayerSaphirCoin;
         private System.Windows.Forms.Label lblPlayerRubisCoin;
-        private System.Windows.Forms.Label lblPlayerGoldCoin;
-        private System.Windows.Forms.TextBox txtPlayerBookedCard;
         private System.Windows.Forms.Label lblChoiceRubis;
         private System.Windows.Forms.Label lblChoiceSaphir;
         private System.Windows.Forms.Label lblChoiceOnyx;

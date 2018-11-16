@@ -90,8 +90,6 @@ namespace Splendor
         /// <param name="e"></param>
         private void frmSplendor_Load(object sender, EventArgs e)
         {
-            lblGoldCoin.Text = "5";
-
             lblDiamantCoin.Text = "7";
             lblEmeraudeCoin.Text = "7" ;
             lblOnyxCoin.Text = "7";
@@ -148,7 +146,7 @@ namespace Splendor
                 //Test if there is at least 2 players
                 if (players.Count() < 2)
                 {
-                    MessageBox.Show("il faut au moins 2 joueurs pour commencer une partie", "Erreur");
+                    MessageBox.Show("il faut au moins 2 joueurs pour commencer une partie", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -235,7 +233,7 @@ namespace Splendor
             if (!string.IsNullOrWhiteSpace(newPlayer)) //if the field is empty or only contain white spaces
             {
                 //Displays a MessageBox to inform that the player is done.
-                MessageBox.Show("Le joueur " + newPlayer + " a été ajouté");
+                MessageBox.Show("Le joueur " + newPlayer + " a été ajouté", "Ajout joueur", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 playerNumber++;
                 lblPlayerNumber.Text = "Nombre de joueurs : " + playerNumber;
                 conn.AddPlayer(newPlayer);
@@ -278,13 +276,15 @@ namespace Splendor
                 //If there is no more cards
                 else
                 {
-                    cardLists[3][index] = new Card();
+                    Card card = new Card();
+                    card.IsEmpty = true;
+                    cardLists[3][index] = card;
                 }
 
                 //Add the prestige score to the player
                 players[currentPlayerId - 1].PrestigeScore += nobleGoingToPlayer.PrestigePt;
 
-                MessageBox.Show("La carte noble " + (index + 1) + " viens avec vous car vous avez assez de ressources\nVous gagnez des points de prestige !");
+                MessageBox.Show("La carte noble numéro" + (index + 1) + " viens avec vous car vous avez assez de ressources\nVous gagnez " + nobleGoingToPlayer.PrestigePt + " point(s) de prestige !", "Un noble vient !", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             CheckIfPlayerWin(players[currentPlayerId - 1]);
@@ -385,6 +385,13 @@ namespace Splendor
                 //Set the selected card
                 selectedCard = cardLists[level - 1][val - 1];
 
+                //Test if the card is empty
+                if (selectedCard.IsEmpty)
+                {
+                    MessageBox.Show("Il n'y a plus assez de cartes de ce niveau !", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
                 if (Tools.CheckEnoughtToBuy(players[currentPlayerId - 1].Coins, selectedCard.Price, players[currentPlayerId - 1].Ressources))
                 {
                     isCardSelected = true;
@@ -403,7 +410,8 @@ namespace Splendor
                 else
                 {
                     isCardSelected = false;
-                    MessageBox.Show("Vous n'avez pas assez de gemmes pour acheter cette carte");
+                    MessageBox.Show("Vous n'avez pas assez de gemmes pour acheter cette carte", "Selection gemme", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    SelectedCardHighlightClear();
                     return false;
                 }
             }
@@ -426,7 +434,9 @@ namespace Splendor
             //If there is no more cards
             else
             {
-                cardLists[level - 1][val - 1] = new Card();
+                Card card = new Card();
+                card.IsEmpty = true;
+                cardLists[level - 1][val - 1] = card;
             }
 
             RefreshCardsDisplay();
@@ -495,11 +505,15 @@ namespace Splendor
             txtLevel11.BackColor = unSelectedCardColor;
         }
 
+        /// <summary>
+        /// If the player win, show a message and exit the application
+        /// </summary>
+        /// <param name="player"></param>
         private void CheckIfPlayerWin(Player player)
         {
             if(player.PrestigeScore >= 15)
             {
-                MessageBox.Show("Le joueur " + player.Name + " a gagné\nFélicitations !");
+                MessageBox.Show("Le joueur " + player.Name + " a gagné\nFélicitations !", "Fin du jeu", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 Application.Exit();
             }
         }
@@ -572,7 +586,6 @@ namespace Splendor
         /// </summary>
         private void RefreshBankDisplay()
         {
-            lblGoldCoin.Text = gemsInBank[0].ToString();
             lblRubisCoin.Text = gemsInBank[1].ToString();
             lblEmeraudeCoin.Text = gemsInBank[2].ToString();
             lblOnyxCoin.Text = gemsInBank[3].ToString();
@@ -850,7 +863,7 @@ namespace Splendor
             if (enableClicLabel)
             {
                 //Show a message that to tell that a noble card is not selectable
-                MessageBox.Show("Vous ne pouvez pas sélectionner des cartes nobles\nElles viendront a vous quand vous aurez les ressources nécessaires");
+                MessageBox.Show("Vous ne pouvez pas sélectionner des cartes nobles\nElles viendront a vous quand vous aurez les ressources nécessaires", "Nobles", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
